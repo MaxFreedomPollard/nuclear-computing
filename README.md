@@ -1,96 +1,214 @@
-# Nuclear Computer
+# Nuclear Computing
 
-**Project Goal**: Radiation field as the computational medium itself. Constant radioactive source (Poisson process) converted into universal compute via physical interactions (gates) in the photon/nuclear fields. Focus: gating technology. Stochastic computing and neural-sampling paradigms. No downstream electronics inside the loop.
+**A foundational theoretical framework in which radiation - photons, particles, and nuclear populations - is the computational medium itself.**
 
-**Status**: New repo (add-only). Research plan executed via tools. Master theory below. Future: Issues + PRs only.
+The radioactive source is not the data and it is not the logic. It is the *metabolism*: a constant Poisson flux that supplies energy, entropy, and a natural clock. The actual computation is performed by the interactions of that radiation with matter and with itself, mediated by field-dependent nuclear and electromagnetic cross-sections. The central engineering problem - and the central theoretical problem - is the **gate**: a physical interaction whose probability or rate depends on the local radiation field in a controllable, nonlinear way.
 
-## 60-Minute Research Plan (Executed)
+This repository is the working home of the theory. It will be filled out with detailed derivations, simulation specifications, and reference implementations. For now, this document establishes the purpose, the model, the gate set, and the case for universality.
 
-**Intent**: Systematically investigate every aspect of the query using web_search/web_extract on NEEC/IGE, Th-229, Poisson/stochastic gates, Boltzmann transport, p-bits/thermodynamic computing, HotBits. Synthesize into master theory. All claims grounded in tool outputs. Repo created as working artifact.
+---
 
-**Timed Structure** (tools called in parallel batches for efficiency):
+## 1. What this project is
 
-- **0-5 min**: Repo creation + scope. `gh repo create nuclear-computer` (new, add-only). Cloned. Verified no prior "nuclear computer" projects in searches (HotBits is TRNG only).
+Nuclear Computing proposes a class of computers in which the state and the processor are the same physical object: a coupled radiation field and nuclear population field evolving under transport and kinetics. The goal is not to use radiation as a random number source, a sensor input, or a power supply for conventional electronics. The goal is to show that radiation, shaped by the right physical gates, can perform nontrivial computation *in the field*.
 
-- **5-15 min**: Gating technology (NEEC, IGE, triggered release). 
-  - Searched "nuclear isomer triggered release NEEC NEET gamma ray gate computing".
-  - Key: NEEC (nuclear excitation by electron capture) dominates XFEL-triggered isomer depletion (Gunst et al. PRL 2014: >10^6× more efficient than direct photoexcitation). IGE (induced gamma emission) via gateway states in isomers (¹⁷⁸Hfᵐ², ¹⁸⁰Taᵐ, ⁹³ᵐMo). Th-229 laser excitation (PRL 2024: 8.4 eV isomer in CaF₂ crystal, room-temp, 148 nm VUV, high Q ~10¹⁹). NEEC/NEET as controllable trigger for stored energy release = hard threshold gate.
+The name "nuclear computer" is shorthand. The focus is on **compute** - what can be computed, and what physical gates are sufficient - not on any particular device implementation. Implementations will follow once the theory is tight.
 
-- **15-25 min**: Mathematical definitions for gates.
-  - Poisson process N(t) rate λ: P(k) = e^{-λΔt}(λΔt)^k / k!. Thinning theorem: controllable aperture α gives rate αλ (input encoding x → r = xλ).
-  - Coincidence AND: output rate ∝ λ₁λ₂σ (interaction cross-section). Exact: P(event) = 1 - exp(-λ₁λ₂σ Δt).
-  - Nuclear rate eq: ṅ_m = σ_p φ n_g - [λ_m + R_trig(φ_ctrl, n)] n_m. R_trig(φ) = σ(φ)φ supplies nonlinearity g(Σ w_j φ_j).
-  - Boltzmann transport: (1/c ∂t + Ω·∇)φ = -Σ_t(φ,n)φ + ∫Σ_s φ' ...  Green's function 𝒢 realizes linear weighted sum (synapse).
+**Status of this repository**: early-stage, add-only. Future work is tracked through Issues and delivered through Pull Requests.
 
-- **25-35 min**: Stochastic computing with radiation.
-  - Poisson spike trains = native Bernoulli(p) via thresholding P(≥1) = 1-e^{-λΔt}. Independent increments → free decorrelated streams (time-slicing).
-  - Gates: multiply = coincidence (AND), scaled add = MUX via scattering kernel, NOT = complement (no-detection).
-  - Precision: relative error ≥1/√(rT), b bits requires rT ≥ 2^{2b}. HotBits (retired 2023) confirms decay timing as entropy source but sub-computational (BPP).
+---
 
-- **35-45 min**: Radiation as the computer (medium, not data source).
-  - State: photon field φ(r,Ω,E,t) + nuclear populations n_i(r,t). "1" = excited isomer or occupied mode.
-  - Compute = evolution of coupled fields under nonlinear transport. Linear part (𝒢) = synapses. Nonlinear σ(φ) or R_trig(φ) = gates (saturable resonance or triggered release).
-  - No digitization inside loop: photons interact with nuclei → output photons/spikes. Source = bias (metabolism). Readout only at boundary.
+## 2. The role of the constant radioactive source
 
-- **45-55 min**: Nuclear Boltzmann machine + universality.
-  - Recurrent stochastic regime: acceptance prob σ(u_k) on Poisson proposals yields stationary p(z) ∝ exp(½ z^T W z + b^T z) (detailed balance on flips).
-  - Universal approx: sigmoidal Φ from LIF first-passage (Siegert) + Cybenko theorem.
-  - Turing: NAND via high-threshold coincidence veto + bistable memory (mutually exciting neurons) + Poisson clock.
-  - Th-229 neuron mapping: isomer pop n_m = V (membrane), resonant pump = excitatory input, triggered de-excitation = spike, lifetime = memory.
+A constant radioactive source - for example, a long-lived gamma emitter such as Co-60, or a mixed particle/photon source - produces an unpatterned Poisson stream. That stream has three supporting roles and no executive role.
 
-- **55-60 min**: Prior art, complexity, synthesis.
-  - HotBits: TRNG limit (BPP, P=BPP conjecture). p-bits/thermodynamic computing: similar probabilistic niche but no native high-energy entanglement or room-temp nuclear coherence.
-  - Quantum tier: entangled gamma pairs (Na-22 annihilation), Mössbauer coherence (room-temp), nuclear-spin qubits via gamma control → reaches BQP (equal to quantum, superior engineering: no cryogenics).
-  - Honest claim: Tier 1 (stochastic) practical wins in sampling/Ising; Tier 2 (quantum DOF) rivals current QCs. Never beyond-BQP.
-  - Repo: this README + future /theory/, /gates/, /references/. All new material only.
+1. **Metabolism**. It supplies the energy budget of the system. Every absorption, excitation, scattering event, and readout photon is ultimately paid for by decays.
+2. **Entropy**. The independent-arrival statistics of a Poisson process provide a native source of physical randomness. This is essential for stochastic and sampling modes.
+3. **Clock**. The constant mean rate defines a natural time unit. Because the process has independent increments, any time slice can be treated as an independent trial.
 
-**Sources verified via tools**: Wikipedia IGE, APS NEEC viewpoint, arXiv Th-229 clock, HotBits archive, searches on stochastic/Poisson, Boltzmann in radiation, p-bits.
+The source does not encode data. Data and programs are written into the system by *thinning*, *routing*, *shielding*, and *modulating cross-sections* - by shaping how the radiation interacts, not by changing the source.
 
-## Master Theory (Succinct, Mathematical)
+---
 
-**Core Model**  
-Radiation field φ + nuclear field n are the state and the processor. Constant source λ (Poisson) supplies bias. Compute = relaxation/sampling under coupled dynamics.
+## 3. State representation
 
-**Equations** (the computer)
-Photon transport (linear + nonlinear):
+The computational state is carried by two coupled fields:
+
+- **Photon/radiation field**:  
+  \[
+  \phi(\mathbf r, \Omega, E, t)
+  \]
+  describing the occupation of photon and particle modes in space, direction, energy, and time.
+- **Nuclear population field**:  
+  \[
+  n_i(\mathbf r, t)
+  \]
+  describing the fraction of nuclei in each relevant energy level at position \(\mathbf r\).
+
+A logical "1" corresponds to an occupied mode or an excited isomeric nucleus. A logical "0" corresponds to an empty mode or a nucleus in its ground or nonresponsive state. These binary labels are used because the framework must support digital universality (NAND gates, memory, recurrence) as well as analog universality (continuous function approximation). The underlying physics remains probabilistic, so the binary labels are emergent: they are the result of thresholding continuous rates and populations.
+
+A purely analog/probabilistic mode is also possible, in which values are carried directly as occupation numbers or firing probabilities. That mode is the radiation analog of **p-bit** or **thermodynamic computing**; it is a subset of the framework rather than its only operating regime.
+
+---
+
+## 4. Dynamics: the equations of the computer
+
+All computation is the evolution of the coupled fields. The two governing equations are standard radiation transport and nuclear kinetics; what makes them a computer is the nonlinear coupling between them.
+
+**Photon/particle transport** (linear plus field-dependent terms):
 \[
-\left(\frac1c\partial_t + \Omega\cdot\nabla\right)\phi = -\Sigma_t(\phi,n)\phi + \int\Sigma_s(\Omega',E'\to\Omega,E)\phi'\,d\Omega'dE' + q(n)
+\left(\frac{1}{c}\partial_t + \Omega \cdot \nabla\right) \phi
+= -\Sigma_t(\phi, n)\,\phi
++ \int \Sigma_s(\Omega', E' \to \Omega, E; \phi)\,\phi'\, d\Omega' dE'
++ q(n)
 \]
-Nuclear kinetics (gate):
+where \(\Sigma_t\) is the total macroscopic cross-section, \(\Sigma_s\) is the scattering kernel, and \(q(n)\) is emission from nuclear de-excitation.
+
+**Nuclear kinetics** (the gate layer):
 \[
-\dot n_m = \sigma_p\phi\cdot n_g - [\lambda_m + R_\text{trig}(\phi_\text{ctrl},n)]n_m,\quad q = \text{branching}\cdot R_\text{trig}n_m
+\dot n_m = \sigma_p \phi \cdot n_g - \bigl[\lambda_m + R_{\text{trig}}(\phi_{\text{ctrl}}, n)\bigr] n_m
 \]
-
-**Gates (the crux, radiation-switched cross-section)**  
-Gate = any σ or R_trig that depends on local flux. Universal primitive:
+where \(n_m\) is the population of the metastable isomer, \(n_g\) the ground-state population, \(\sigma_p\) the pump cross-section, \(\lambda_m\) the spontaneous decay rate, and \(R_{\text{trig}}\) the field-triggered release rate. The emitted output is
 \[
-\phi_\text{out} = g\left(\sum_j w_j\phi_j\right),\quad g\text{ sigmoidal/thresholded}.
+q \;\propto\; \text{branching} \cdot R_{\text{trig}}(\phi_{\text{ctrl}})\, n_m.
 \]
-- **AND / multiply (stochastic gate)**: coincidence. Output rate λ_out = λ₁λ₂σ (Poisson marking + thinning). P(event) = 1 - e^{-λ₁λ₂σΔt} ≈ λ₁λ₂σΔt.
-- **MUX / add**: scattering kernel Σ_s or geometry realizes weighted sum (𝒢 Green's function of Boltzmann operator).
-- **NOT / complement**: detuned absorption (1-p).
-- **Neuron / threshold gate**: NEEC/IGE triggered release or saturable resonance T(φ) = T₀ + (1-T₀)φ/(φ+φ_sat). R_trig(φ) supplies hard threshold with gain. Th-229 concrete: laser-driven 8.4 eV isomer, triggered de-excitation = spike.
 
-**Proofs (constructive)**
-1. **Input encoding (Thm 1)**: Thinning → x ∈ [0,1] encodes as rate r = xλ. ∎
-2. **Synapse (Thm 2)**: Transport operator 𝒢 is linear map (weight matrix). Nonnegative weights via geometry/resonance; signed via push-pull (excitatory vs. inhibitory detuning). ∎
-3. **Activation (Thm 3)**: LIF with Poisson drive → Ornstein-Uhlenbeck → Siegert first-passage rate Φ(μ,σ) (sigmoid). ∎
-4. **Universality (Thm 4)**: Sigmoidal hidden layer + Cybenko/Hornik → sup-norm approx any continuous g on compact K. ∎
-5. **Turing (Thm 5)**: NAND (high-threshold coincidence veto) + bistable attractor (memory) + Poisson clock → FSM + tape. ∎
-6. **Boltzmann sampler (Thm 6)**: Recurrent stochastic acceptance σ(u_k) on proposals obeys detailed balance → stationary p(z) ∝ exp(½zᵀWz + bᵀz). Physical neural sampling / Ising optimizer. ∎
-7. **Precision (Thm 7)**: Poisson MLE variance → relative error 1/√(rT). b bits: rT ≥ 2^{2b}. ∎
+The linear transport operator has a Green's function \(\mathcal G\) that acts as a **weighted-sum/synapse** machine. The nonlinear terms \(\Sigma_t(\phi,n)\) and \(R_{\text{trig}}(\phi)\) are the **gates**.
 
-**One-line architecture**  
-Source (bias) → structured medium (𝒢 synapses) → field-dependent cross-sections (NEEC/IGE gates) → network relaxes to fixed-point or samples p∝e^E. Radiation particles perform the logic via interactions. Th-229 isomer = native room-temp neuron.
+---
 
-**Complexity & Niche**  
-Tier 0: TRNG (HotBits) — sub-computational.  
-Tier 1: Stochastic/p-bit (coincidence gates) — BPP (≈ classical, practical for Monte-Carlo/Bayesian).  
-Tier 2: Quantum DOF (entangled gammas, Mössbauer coherence, nuclear spins) — BQP (= quantum, room-temp, self-replenishing qubits).  
-Ceiling: quantum Extended Church-Turing (nothing physical exceeds BQP). Advantage: no cryogenics, intrinsic high-energy entanglement, radiation-hard.
+## 5. The gate (the crux of the theory)
 
-**Next (add-only only)**: Open Issue on gate engineering (NEEC confirmation in ⁹³ᵐMo/Th-229). Add /theory/gates.md with rate-equation derivations. All via PRs paired with Issues.
+A gate is any physical interaction whose rate depends on the local radiation field. The universal primitive has the form
+\[
+\phi_{\text{out}} = g\left(\sum_j w_j \phi_j\right),
+\]
+where \(g\) is sigmoidal or hard-thresholded and the weights \(w_j\) are realized by geometry, material composition, resonant absorption, or scattering.
 
-**References** (from tool results): Gunst PRL 2014 (NEEC), PRL 2024 Th-229 (laser excitation), Wikipedia IGE, HotBits archive, Boltzmann transport papers, p-bit/thermodynamic computing arXiv.
+The viability of Nuclear Computing depends on whether a sufficiently rich gate set can be engineered from radiation-matter interactions. The candidate gates below are chosen from real physics. Some are routine; some are frontier experiments. The theory treats all of them as physical hypotheses to be confirmed, not as finished hardware.
 
-This is the spine of the project. Radiation *is* the computer when the gate is the radiation-controlled nuclear release.
+### 5.1 AND / multiply (coincidence gate)
+
+Two independent Poisson streams with rates \(\lambda_1\) and \(\lambda_2\) are routed to the same small volume with a resolving time \(\sigma\) (a coincidence aperture). The probability that at least one joint event occurs in an interval \(\Delta t\) is
+\[
+P_{\text{AND}} = 1 - \exp(-\lambda_1 \lambda_2 \sigma \,\Delta t),
+\]
+so the output rate is
+\[
+\lambda_{\text{out}} = \lambda_1 \lambda_2 \sigma.
+\]
+
+If values \(x, y \in [0,1]\) are encoded by thinning the source to rates \(x\lambda\) and \(y\lambda\), the output rate is proportional to \(xy\). This is a physical stochastic AND gate. Gamma-gamma coincidence counting is the routine experimental realization.
+
+### 5.2 MUX / add (scattering gate)
+
+Weighted addition is implemented by the linear part of transport. A photon that can be scattered into one of several modes, or routed through a spatial split, produces an output stream whose rate is a convex combination of input rates. The Green's function \(\mathcal G\) of the Boltzmann operator is the continuous analog of a weight matrix. Signed weights can be obtained by push-pull pairs: an excitatory mode on resonance and an inhibitory mode slightly detuned.
+
+### 5.3 NOT / complement (absorption gate)
+
+Logical complement is obtained by detuned or off-resonant absorption. A strong absorber placed in a stream removes a fraction \(p\) of the photons; the surviving stream encodes \(1-p\). By making \(p\) depend on another field, one obtains a controlled NOT.
+
+### 5.4 Threshold / neuron gate (NEEC, IGE, saturable resonance)
+
+The hardest and most powerful gate is a threshold gate with gain. The leading physical candidates are:
+
+- **Nuclear excitation by electron capture (NEEC)** and its inverse **NEET**: a free electron is captured into an atomic shell while its kinetic energy excites the nucleus. NEEC can deplete a long-lived isomer by lifting it to a short-lived gateway state, releasing a cascade of high-energy photons. The rate depends on the local electron/photon flux that creates vacancies, so it is field-controllable. Gunst *et al.*, *Phys. Rev. Lett.* **112**, 082501 (2014), showed that NEEC-triggered isomer depletion can be orders of magnitude more efficient than direct photoexcitation at an XFEL.
+- **Induced gamma emission (IGE)**: a resonant gamma photon stimulates emission from a nuclear isomer. Triggered release from isomers such as \(^{178}\mathrm{Hf}^{m2}\), \(^{180}\mathrm{Ta}^{m}\), and \(^{93m}\mathrm{Mo}\) has been studied for decades. The isomer acts as a stored-energy cell; the control photon is the trigger.
+- **Saturable resonance**: a material with a resonant cross-section that bleaches at high flux gives a soft sigmoid transmission \(T(\phi) = T_0 + (1-T_0)\,\phi/(\phi+\phi_{\text{sat}})\). It is a weaker gate but easier to arrange than isomeric triggering.
+
+A concrete, room-temperature candidate is the **Th-229 nuclear isomer**. The transition from the ground nuclear state to the metastable state is only ~8.4 eV; Tiedau *et al.*, *Phys. Rev. Lett.* **132**, 182501 (2024), demonstrated direct laser excitation of this transition in Th-doped CaF\(_2\) crystals using tabletop VUV lasers. In the language of Nuclear Computing, the isomer population is a membrane potential; resonant pump is excitatory input; triggered de-excitation is a spike; the isomer lifetime is short-term memory. A room-temperature nuclear neuron is not a fantasy; it is an experimental frontier.
+
+---
+
+## 6. Universality
+
+The gate set above is sufficient for two kinds of universality.
+
+### 6.1 Analog universality
+
+A layer of weighted sums (linear transport, \(\mathcal G\)) followed by a sigmoidal threshold (a saturating or LIF-like gate) is a universal function approximator. For a leaky integrate-and-fire unit driven by Poisson input, the membrane potential becomes an Ornstein-Uhlenbeck process. The first-passage firing rate is given by the **Siegert formula**, a smooth sigmoidal function of the effective input. By the theorems of Cybenko and Hornik, a single hidden layer of such units can approximate any continuous function on a compact set to arbitrary accuracy.
+
+### 6.2 Digital universality
+
+NAND can be constructed from a coincidence gate followed by a high-threshold veto: output is HIGH unless both inputs are simultaneously HIGH. Persistent memory is realized through bistable states, either mutually exciting nuclear/photonic modes or two stable isomeric populations. The Poisson source supplies a clock. NAND + memory + clock is functionally complete and yields Turing-completeness.
+
+---
+
+## 7. Stochastic and sampling computation
+
+In addition to deterministic digital and analog modes, the framework naturally supports stochastic computation.
+
+- **Poisson thinning**: a value \(x\) is encoded as a rate \(x\lambda\). The stream is a sequence of Bernoulli trials when viewed in time slices short enough that multiple events are unlikely.
+- **AND = multiply**, via coincidence.
+- **MUX = scaled add**, via routing.
+- **NOT = complement**, via absorption.
+
+A recurrent arrangement of these gates, with local acceptance probabilities \(\sigma(u_k)\) where \(u_k = \sum_j W_{kj} z_j + b_k\), obeys detailed balance and converges to a stationary distribution
+\[
+p(\mathbf z) \propto \exp\!\left(\frac{1}{2}\mathbf z^T W \mathbf z + \mathbf b^T \mathbf z\right).
+\]
+That is a physical Boltzmann machine and a physical Ising sampler.
+
+The precision of any rate estimate is bounded by Poisson statistics. The relative standard deviation of a rate estimate from \(rT\) observed counts is \(1/\sqrt{rT}\). To obtain \(b\) bits of precision requires
+\[
+rT \ge 2^{2b}.
+\]
+For example, 8-bit precision requires \(rT \ge 65{,}536\) counts.
+
+---
+
+## 8. Complexity and physical limits
+
+The theory is honest about what it can and cannot claim.
+
+- **Tier 0 - Timing only**: Using decay times as random bits is not computation. It is the service that Fourmilab's HotBits provided until its retirement in 2023: a true random number generator. It sits in BPP and offers no computational advantage over a good pseudorandom source.
+- **Tier 1 - Stochastic/p-bit gates**: Coincidence gates and Boltzmann sampling can give practical advantages in Monte Carlo, Bayesian inference, and combinatorial optimization because the randomness and the nonlinearity are native to the medium. They remain in BPP (assuming P = BPP) but may be faster or more energy-efficient for the right problem class.
+- **Tier 2 - Quantum degrees of freedom**: The same substrate can host quantum behavior: entangled gamma pairs from positron annihilation, Mössbauer coherence at room temperature, and nuclear spin qubits controlled by gamma or RF fields. This tier reaches BQP - the same class as conventional quantum computers - but potentially with better engineering: no cryogenics, intrinsic radiation hardness, and self-replenishing qubits from the source.
+
+The ceiling is the **extended Church-Turing thesis as applied to quantum mechanics**: no physically realizable machine exceeds BQP. Nuclear Computing does not claim to go beyond quantum computation; it claims a different, and in some respects simpler, physical path to the same frontier.
+
+---
+
+## 9. Honest experimental status
+
+- **Coincidence gates**: routine. Gamma-gamma coincidence is a standard nuclear-instrumentation technique.
+- **Saturable/scattering gates**: routine at optical energies; harder but plausible for hard X-rays and gammas.
+- **NEEC/IGE triggered release**: theoretically well established, experimentally difficult, and actively pursued. It is the central unsolved engineering hypothesis of the framework.
+- **Th-229 laser control**: demonstrated at room temperature in doped crystals (Tiedau *et al.*, 2024). The transition energy is now known to high precision: \(148.3821(5)\) nm, \(2020.409(7)\) THz. This gives a concrete, near-term target for the first nuclear neuron.
+
+---
+
+## 10. The one-line architecture
+
+Source (bias) \(\to\) structured medium (\(\mathcal G\) synapses) \(\to\) field-dependent cross-sections (NEEC / IGE / saturable gates) \(\to\) network relaxes to fixed point or samples \(p \propto e^{E}\). Radiation particles perform the logic through their interactions. The isomer is the native memory element. The photon field is the bus. The radioactive source is the metabolism.
+
+---
+
+## 11. Roadmap and repository structure (future, add-only)
+
+Planned additions, all through Issues paired with Pull Requests:
+
+- `theory/`: full derivations of the gate rate equations and universality proofs.
+- `gates/`: candidate material systems, cross-section tables, and design notes.
+- `simulations/`: Monte Carlo specs and reference implementations of the core dynamics.
+- `references.bib`: curated literature list with verified bibliographic data.
+
+---
+
+## References
+
+1. J. Gunst *et al.*, "Dominant Secondary Nuclear Photoexcitation with the X-Ray Free-Electron Laser," *Phys. Rev. Lett.* **112**, 082501 (2014). [https://doi.org/10.1103/PhysRevLett.112.082501](https://doi.org/10.1103/PhysRevLett.112.082501)
+2. J. Tiedau *et al.*, "Laser Excitation of the Th-229 Nucleus," *Phys. Rev. Lett.* **132**, 182501 (2024). [https://doi.org/10.1103/PhysRevLett.132.182501](https://doi.org/10.1103/PhysRevLett.132.182501)
+3. "Induced gamma emission," Wikipedia. [https://en.wikipedia.org/wiki/Induced_gamma_emission](https://en.wikipedia.org/wiki/Induced_gamma_emission)
+4. "Nuclear excitation by electron capture," APS Physics Viewpoint, February 24, 2014. [https://physics.aps.org/articles/v7/20](https://physics.aps.org/articles/v7/20)
+5. Fourmilab HotBits archive. [https://www.fourmilab.ch/hotbits/](https://www.fourmilab.ch/hotbits/)
+6. K. Y. Camsari, R. Faria, B. M. Sutton, and S. Datta, "Stochastic p-bits for invertible logic," *Phys. Rev. X* **7**, 031014 (2017).
+7. G. Cybenko, "Approximation by superpositions of a sigmoidal function," *Math. Control Signals Syst.* **2**, 303 (1989).
+8. K. Hornik, M. Stinchcombe, and H. White, "Multilayer feedforward networks are universal approximators," *Neural Networks* **2**, 359 (1989).
+9. R. F. Pawula, "A modified Siegert's formula," *Phys. Rev. E* **49**, 4747 (1994), and standard treatments of the leaky integrate-and-fire neuron.
+10. Mössbauer effect and room-temperature recoilless gamma resonance: standard references in nuclear spectroscopy.
+11. Entangled gamma pairs from positron annihilation: standard references in gamma-gamma angular correlation experiments.
+
+---
+
+*Radiation is the computer when the gate is the radiation-controlled nuclear release.*
