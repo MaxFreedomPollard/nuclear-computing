@@ -1,0 +1,76 @@
+<svg viewBox="0 0 980 520" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#16213e"/>
+    </marker>
+    <marker id="arrowR" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="980" height="520" fill="white"/>
+  <text x="490" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#16213e">The Nuclear Computer: one closed radiation–matter loop</text>
+  <text x="490" y="56" text-anchor="middle" font-size="13" fill="#64748b">No conventional electronics inside the loop. Digitization happens only at the readout boundary.</text>
+
+  <!-- SOURCE -->
+  <rect x="40" y="120" width="150" height="150" rx="12" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+  <text x="115" y="150" text-anchor="middle" font-size="15" font-weight="bold" fill="#166534">SOURCE</text>
+  <text x="115" y="172" text-anchor="middle" font-size="12" fill="#166534">radioactive isotope</text>
+  <text x="115" y="190" text-anchor="middle" font-size="12" fill="#166534">(e.g. Co-60, Cs-137)</text>
+  <line x1="60" y1="202" x2="170" y2="202" stroke="#86efac" stroke-width="1.2"/>
+  <text x="115" y="222" text-anchor="middle" font-size="11.5" fill="#166534">• power (metabolism)</text>
+  <text x="115" y="240" text-anchor="middle" font-size="11.5" fill="#166534">• clock (mean rate λ)</text>
+  <text x="115" y="258" text-anchor="middle" font-size="11.5" fill="#166534">• entropy (Poisson)</text>
+
+  <!-- ENCODE -->
+  <rect x="245" y="135" width="120" height="120" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="305" y="178" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e40af">ENCODE</text>
+  <text x="305" y="200" text-anchor="middle" font-size="11.5" fill="#1e40af">thin / shutter</text>
+  <text x="305" y="217" text-anchor="middle" font-size="11.5" fill="#1e40af">aperture α</text>
+  <text x="305" y="238" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">x → r = xλ</text>
+
+  <!-- TRANSPORT -->
+  <rect x="420" y="120" width="150" height="150" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="495" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e40af">TRANSPORT</text>
+  <text x="495" y="180" text-anchor="middle" font-size="11.5" fill="#1e40af">geometry + scattering</text>
+  <text x="495" y="206" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e40af">𝒢 = Σ w·φ</text>
+  <text x="495" y="226" text-anchor="middle" font-size="11.5" fill="#1e40af">(linear weighted sum</text>
+  <text x="495" y="243" text-anchor="middle" font-size="11.5" fill="#1e40af">= the synapse)</text>
+
+  <!-- GATE -->
+  <rect x="625" y="120" width="160" height="150" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="705" y="155" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">GATE  (keystone)</text>
+  <text x="705" y="176" text-anchor="middle" font-size="11.5" fill="#b91c1c">field-dependent σ(φ)</text>
+  <text x="705" y="201" text-anchor="middle" font-size="13" font-weight="bold" fill="#b91c1c">g(Σ w·φ)</text>
+  <text x="705" y="222" text-anchor="middle" font-size="11.5" fill="#b91c1c">coincidence AND,</text>
+  <text x="705" y="239" text-anchor="middle" font-size="11.5" fill="#b91c1c">triggered release =</text>
+  <text x="705" y="256" text-anchor="middle" font-size="11.5" fill="#b91c1c">threshold / neuron</text>
+
+  <!-- READOUT -->
+  <rect x="840" y="135" width="105" height="120" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="892" y="180" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">READOUT</text>
+  <text x="892" y="201" text-anchor="middle" font-size="11" fill="#334155">scintillator /</text>
+  <text x="892" y="217" text-anchor="middle" font-size="11" fill="#334155">HPGe / SiPM</text>
+  <text x="892" y="238" text-anchor="middle" font-size="11" fill="#334155">boundary only</text>
+
+  <!-- flow arrows -->
+  <line x1="190" y1="195" x2="243" y2="195" stroke="#16213e" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="365" y1="195" x2="418" y2="195" stroke="#16213e" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="570" y1="195" x2="623" y2="195" stroke="#16213e" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="785" y1="195" x2="838" y2="195" stroke="#16213e" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- recurrence feedback loop: gate output back into transport -->
+  <path d="M705,270 C705,360 495,360 495,272" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#arrowR)"/>
+  <text x="600" y="352" text-anchor="middle" font-size="12" font-style="italic" fill="#dc2626">recurrence: output photons re-enter the medium → fixed point or Boltzmann sample</text>
+
+  <!-- three roles banner -->
+  <rect x="40" y="400" width="905" height="92" rx="12" fill="#fafafa" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="492" y="426" text-anchor="middle" font-size="14" font-weight="bold" fill="#16213e">Radiation plays all three roles of a computer simultaneously — the source supplies only power, clock, and entropy</text>
+  <text x="190" y="458" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1e40af">LOGIC</text>
+  <text x="190" y="477" text-anchor="middle" font-size="11" fill="#475569">photon–nucleus interactions = gates</text>
+  <text x="492" y="458" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#b45309">MEMORY</text>
+  <text x="492" y="477" text-anchor="middle" font-size="11" fill="#475569">isomer populations nᵢ = nonvolatile state</text>
+  <text x="800" y="458" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7c3aed">INTERCONNECT</text>
+  <text x="800" y="477" text-anchor="middle" font-size="11" fill="#475569">the photon field φ = the bus</text>
+  <line x1="345" y1="445" x2="345" y2="482" stroke="#cbd5e1" stroke-width="1.2"/>
+  <line x1="645" y1="445" x2="645" y2="482" stroke="#cbd5e1" stroke-width="1.2"/>
+</svg>
