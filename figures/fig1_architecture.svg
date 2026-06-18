@@ -8,14 +8,14 @@
     </marker>
   </defs>
   <rect width="980" height="520" fill="white"/>
-  <text x="490" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#16213e">The Nuclear Computer: one closed radiation–matter loop</text>
+  <text x="490" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#16213e">The Nuclear Computer: one closed radiation and matter loop</text>
   <text x="490" y="56" text-anchor="middle" font-size="13" fill="#64748b">No conventional electronics inside the loop. Digitization happens only at the readout boundary.</text>
 
   <!-- SOURCE -->
   <rect x="40" y="120" width="150" height="150" rx="12" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
   <text x="115" y="150" text-anchor="middle" font-size="15" font-weight="bold" fill="#166534">SOURCE</text>
   <text x="115" y="172" text-anchor="middle" font-size="12" fill="#166534">radioactive isotope</text>
-  <text x="115" y="190" text-anchor="middle" font-size="12" fill="#166534">(e.g. Co-60, Cs-137)</text>
+  <text x="115" y="190" text-anchor="middle" font-size="12" fill="#166534">(e.g. ⁶⁰Co, ¹³⁷Cs)</text>
   <line x1="60" y1="202" x2="170" y2="202" stroke="#86efac" stroke-width="1.2"/>
   <text x="115" y="222" text-anchor="middle" font-size="11.5" fill="#166534">• power (metabolism)</text>
   <text x="115" y="240" text-anchor="middle" font-size="11.5" fill="#166534">• clock (mean rate λ)</text>
@@ -39,7 +39,7 @@
   <!-- GATE -->
   <rect x="625" y="120" width="160" height="150" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/>
   <text x="705" y="155" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">GATE  (keystone)</text>
-  <text x="705" y="176" text-anchor="middle" font-size="11.5" fill="#b91c1c">field-dependent σ(φ)</text>
+  <text x="705" y="176" text-anchor="middle" font-size="11.5" fill="#b91c1c">field dependent σ(φ)</text>
   <text x="705" y="201" text-anchor="middle" font-size="13" font-weight="bold" fill="#b91c1c">g(Σ w·φ)</text>
   <text x="705" y="222" text-anchor="middle" font-size="11.5" fill="#b91c1c">coincidence AND,</text>
   <text x="705" y="239" text-anchor="middle" font-size="11.5" fill="#b91c1c">triggered release =</text>
@@ -60,13 +60,13 @@
 
   <!-- recurrence feedback loop: gate output back into transport -->
   <path d="M705,270 C705,360 495,360 495,272" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#arrowR)"/>
-  <text x="600" y="352" text-anchor="middle" font-size="12" font-style="italic" fill="#dc2626">recurrence: output photons re-enter the medium → fixed point or Boltzmann sample</text>
+  <text x="600" y="352" text-anchor="middle" font-size="12" font-style="italic" fill="#dc2626">recurrence: output photons reenter the medium → fixed point or Boltzmann sample</text>
 
   <!-- three roles banner -->
   <rect x="40" y="400" width="905" height="92" rx="12" fill="#fafafa" stroke="#cbd5e1" stroke-width="1.4"/>
-  <text x="492" y="426" text-anchor="middle" font-size="14" font-weight="bold" fill="#16213e">Radiation plays all three roles of a computer simultaneously — the source supplies only power, clock, and entropy</text>
+  <text x="492" y="426" text-anchor="middle" font-size="14" font-weight="bold" fill="#16213e">Radiation plays all three roles of a computer simultaneously, and the source supplies only power, clock, and entropy</text>
   <text x="190" y="458" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1e40af">LOGIC</text>
-  <text x="190" y="477" text-anchor="middle" font-size="11" fill="#475569">photon–nucleus interactions = gates</text>
+  <text x="190" y="477" text-anchor="middle" font-size="11" fill="#475569">photon and nucleus interactions = gates</text>
   <text x="492" y="458" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#b45309">MEMORY</text>
   <text x="492" y="477" text-anchor="middle" font-size="11" fill="#475569">isomer populations nᵢ = nonvolatile state</text>
   <text x="800" y="458" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7c3aed">INTERCONNECT</text>
