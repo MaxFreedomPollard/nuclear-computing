@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuclear Computing — Foundational Charter</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
+                      svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root { --ink:#16213e; --muted:#5b6b86; --line:#e5e9f0; --bg:#fbfcfe;
+           --blue:#2563eb; --red:#dc2626; --green:#16a34a; --code:#f4f6fb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:860px; margin:0 auto; padding:48px 24px 120px; }
+  h1 { font-size:2.3rem; line-height:1.15; margin:.2em 0 .1em; letter-spacing:-.5px; }
+  h3 { color:var(--muted); font-weight:500; margin:.2em 0 1.2em; font-size:1.2rem; }
+  h2 { font-size:1.5rem; margin:2.4em 0 .6em; padding-top:.5em; border-top:1px solid var(--line); }
+  h2:first-of-type { border-top:none; }
+  a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+  blockquote { margin:1.4em 0; padding:.8em 1.2em; background:#eef4ff;
+    border-left:4px solid var(--blue); border-radius:6px; }
+  blockquote strong { color:var(--ink); }
+  code { background:var(--code); padding:.12em .35em; border-radius:4px; font-size:.9em; }
+  pre { background:var(--code); padding:14px 16px; border-radius:8px; overflow-x:auto; }
+  img { max-width:100%; display:block; margin:1.5em auto; border:1px solid var(--line);
+    border-radius:10px; background:#fff; box-shadow:0 4px 18px rgba(22,33,62,.06); }
+  table { border-collapse:collapse; width:100%; margin:1.4em 0; font-size:.93rem; }
+  th,td { border:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:top; }
+  th { background:#eef2fa; }
+  tr:nth-child(even) td { background:#fafbfe; }
+  hr { border:none; border-top:1px solid var(--line); margin:2.5em 0; }
+  mjx-container { overflow-x:auto; overflow-y:hidden; max-width:100%; }
+  .wrap > p:first-of-type { font-size:1.05rem; }
+</style></head>
+<body><div class="wrap">
+<h1 id="nuclear-computing">Nuclear Computing</h1>
+<h3 id="a-new-model-of-computation-in-which-radiation-is-the-computer">A new model of computation in which radiation is the computer</h3>
+<p>Nuclear Computing proposes a new type of computer, distinct from classical, quantum, and photonic computing, in which a radiation field and the nuclear states it drives are themselves the processor, the memory, and the interconnect.</p>
+<blockquote>
+<p><strong>Thesis.</strong> A radiation field and the nuclear populations it drives are not a power source for a computer, not a data stream into a computer, and not one component of a computer. Together they <em>are</em> the computer: its logic, its memory, and its interconnect at once. A constant radioactive source supplies only what every machine needs and none computes with: power, clock, and entropy. <strong>Everything else (encoding, weighting, nonlinearity, memory, recurrence) happens inside the coupled radiation and matter field, with no conventional electronics in the loop.</strong></p>
+</blockquote>
+<p>It is called <em>nuclear</em> computing because the densest and most powerful realizations use nuclear scale quanta and states. But the object of study is <strong>compute</strong>, not any one device. We are after the model of computation, the gate algebra, and the physical limits, not a product.</p>
+<p>A one line map of the argument:</p>
+<blockquote>
+<p><strong>substrate → dynamics → gate set → three roles → universality → sampling → physical limits → complexity ceiling → prior art → readiness and the keystone risk → falsifiable roadmap → a worked single bit machine.</strong></p>
+</blockquote>
+<p><img alt="Architecture of the nuclear computer" src="figures/fig1_architecture.svg" /></p>
+<hr />
+<h2 id="the-claim-stated-plainly">The claim, stated plainly</h2>
+<p>Build nothing but a lump of structured matter, scatterers, absorbers, and a sparse lattice of addressable nuclei, and bathe it in radiation from a constant source. Shape the matter so that:</p>
+<ol>
+<li>the <strong>geometry and scattering</strong> of the medium perform a continuous weighted sum of photon fluxes (a linear map, the <em>synapse</em>);</li>
+<li>certain <strong>nuclei have cross sections that depend on the local field</strong>, so that the probability of an interaction is a nonlinear, thresholded function of how much radiation is already present (the <em>gate</em>);</li>
+<li>some nuclei hold <strong>metastable (isomeric) states</strong> whose populations persist and store the result, written by a resonant pump, held for the isomer's lifetime, and read out either by triggering a detectable emission burst or by a nondestructive resonant probe that senses occupancy without erasing it (the <em>memory</em>);</li>
+<li><strong>output quanta reenter the medium</strong>, closing the loop so the field relaxes to a fixed point or samples a probability distribution (the <em>recurrence</em>).</li>
+</ol>
+<p>If those four things can be arranged, the lump computes. The radiation that flows through it is doing the arithmetic; the nuclei that flip are holding the variables; the photon traffic between sites is the wiring. The source in the corner is just keeping the lights on.</p>
+<p>The rest of this document makes each clause precise, identifies which clauses are routine physics and which one is not, and shows that the whole question of viability collapses onto clause (2): <strong>the gate.</strong></p>
+<hr />
+<h2 id="why-it-is-feasible-now-three-results-that-removed-the-impossibilities">Why it is feasible now: three results that removed the impossibilities</h2>
+<p>Three independent experimental lines, all from 2014 or later and several from 2024 or later, have quietly removed the objections that would have made this proposal science fiction a decade ago:</p>
+<ul>
+<li><strong>Nuclear states are now optically addressable at room temperature.</strong> In 2024 the absolute frequency of the ²²⁹Th nuclear transition was measured directly with a vacuum ultraviolet frequency comb locked to a strontium optical clock: $\nu_{\text{Th}} = 2{,}020{,}407{,}384{,}335(2)$ kHz, i.e. $8.355733(8)$ eV, near $148.38$ nm, in a CaF₂ crystal at room temperature (<a href="https://www.nature.com/articles/s41586-024-07839-6">Nature 2024</a>; <a href="https://www.nist.gov/news-events/news/2024/09/major-leap-nuclear-clock-paves-way-ultraprecise-timekeeping">NIST</a>). A nucleus you can write and read with a laser is a memory cell and a candidate neuron.</li>
+<li><strong>Single nuclear γ photons can be coherently shaped at room temperature.</strong> Recoilless (Mössbauer) transitions retain quantum coherence in bulk solids, and the waveform of an individual γ photon has been coherently controlled (<a href="https://www.nature.com/articles/nature13018">Nature 2014</a>); hard X ray photon wavepackets can be stored in a nuclear quantum memory (<a href="https://www.science.org/doi/10.1126/sciadv.adn9825">Science Advances</a>). Trade publications already call this a route to <a href="https://physicsworld.com/a/gamma-ray-shaping-could-lead-to-nuclear-quantum-computers/">"nuclear quantum computers"</a>.</li>
+<li><strong>Probabilistic hardware is now real silicon.</strong> Magnetic tunnel junction probabilistic Ising machines (250 junctions, about 10× faster and about 10× more energy efficient than a GPU on the right problems; about 33 fJ/bit) show that <em>sampling in hardware</em> is a competitive paradigm (<a href="https://www.nature.com/articles/s41467-026-72020-8">Nature Communications 2026</a>). Nuclear computing's stochastic tier (below) is the same paradigm with a <em>native, truly random, self powered</em> source instead of an engineered noisy transistor.</li>
+</ul>
+<p>None of these <em>is</em> a nuclear computer. Each removes one classic "impossible." What remains genuinely unproven is exactly one thing, and it is the gate.</p>
+<hr />
+<h2 id="the-substrate-what-holds-the-state">The substrate: what holds the state</h2>
+<p>Two coupled physical fields carry all state. There is no third register.</p>
+<ul>
+<li><strong>Radiation field</strong> $\phi(\mathbf{r}, \mathbf{\Omega}, E, t)$, the occupation or flux of photon (and, in general, particle) modes at position $\mathbf{r}$, direction $\mathbf{\Omega}$, energy $E$, time $t$.</li>
+<li><strong>Nuclear field</strong> $n_i(\mathbf{r}, t)$, the fraction of nuclei at $\mathbf{r}$ occupying level $i$ (ground, isomer, gateway).</li>
+</ul>
+<p>A logical <strong>1</strong> is an occupied mode or an excited isomer; a logical <strong>0</strong> is an empty mode or a ground state nucleus. These binary labels are <em>emergent</em>, applied only after thresholding continuous rates and populations. The native physics is probabilistic, which is a feature, not a defect.</p>
+<p><strong>The source is not data.</strong> A constant activity $\lambda$ produces a Poisson process $N(t)$,</p>
+<p>$$ \Pr[N(t+s) - N(t) = k] = \frac{e^{-\lambda s}(\lambda s)^k}{k!}, $$</p>
+<p>whose three gifts are <strong>power</strong> (every event is paid for by a decay), <strong>clock</strong> (the mean rate $\lambda$ is a time unit; independent increments make any short interval an independent trial), and <strong>entropy</strong> (interarrival times are i.i.d. $\mathrm{Exp}(\lambda)$, true physical randomness, no pseudorandom generator). The raw stream carries no program. <strong>Programs are written by shaping interactions</strong>, by thinning, routing, shielding, and tuning cross sections, never by altering the source.</p>
+<hr />
+<h2 id="the-dynamics-the-two-equations-that-are-a-computer">The dynamics: the two equations that are a computer</h2>
+<p>All computation is the evolution of $\phi$ and $n$ under standard radiation transport coupled to standard nuclear kinetics. What makes the pair a computer rather than a shielding calculation is that the cross sections depend on the fields.</p>
+<p><strong>Photon and particle transport</strong> (the wiring plus the weighted sum):</p>
+<p>$$ \left(\tfrac{1}{c}\partial_t + \mathbf{\Omega}\cdot\nabla\right)\phi = -\,\Sigma_t(\phi,n)\,\phi + \int \Sigma_s(\mathbf{\Omega}',E'\!\to\!\mathbf{\Omega},E;\phi)\,\phi'\,d\mathbf{\Omega}'dE' + q(n). $$</p>
+<p><strong>Nuclear kinetics</strong> (the gate plus the memory):</p>
+<p>$$ \dot{n}_m = \sigma_p\,\phi\,n_g \;-\; \big[\lambda_m + R_{\text{trig}}(\phi_{\text{ctrl}},n)\big]\,n_m, \qquad q \;\propto\; \beta\,R_{\text{trig}}(\phi_{\text{ctrl}})\,n_m. $$</p>
+<p>Here $\Sigma_t$ is the total macroscopic cross section, $\Sigma_s$ the scattering kernel, $q(n)$ the emission from nuclear deexcitation; $n_m$ is the metastable (isomer) population, $n_g$ the ground fraction, $\sigma_p$ the pump cross section, $\lambda_m$ the spontaneous decay rate, $\beta$ the branching or cascade multiplicity, and $R_{\text{trig}}$ the <strong>field triggered release rate</strong>, the term that turns physics into logic.</p>
+<p>Two parts, two computational meanings:</p>
+<ul>
+<li><strong>Linear part is the synapse.</strong> When cross sections are momentarily frozen, transport is linear: $\phi_{\text{out}} = \mathcal{G}\,\phi_{\text{in}}$, where $\mathcal{G}$ is the Green's function of the Boltzmann operator. $\mathcal{G}(\mathbf{r},\mathbf{\Omega},E;\mathbf{r}',\mathbf{\Omega}',E')$ <em>is</em> a continuous weight matrix. Geometry and material set the weights. This is a weighted sum machine and it is textbook (MCNP, Geant4, and FLUKA compute $\mathcal{G}$ routinely).</li>
+<li><strong>Nonlinear part is the gate.</strong> The dependence of $\Sigma_t(\phi,n)$ and $R_{\text{trig}}(\phi)$ on the local field supplies the sigmoidal or threshold response that no linear machine can. This is where the theory concentrates all its risk.</li>
+</ul>
+<hr />
+<h2 id="the-gate-set-the-crux-of-the-entire-program">The gate set: the crux of the entire program</h2>
+<blockquote>
+<p>A <strong>gate</strong> is any interaction whose probability or rate depends on the local radiation field. The universal primitive is
+$$ \phi_{\text{out}} = g\!\left(\textstyle\sum_j w_j\,\phi_j\right), $$
+with weights $w_j$ realized by geometry, material, or resonance and $g$ sigmoidal or hard thresholded.</p>
+</blockquote>
+<p>Four physical gates realize a functionally complete, learnable set. Three are routine. The fourth decides everything.</p>
+<h3 id="and-or-multiply-the-coincidence-gate-routine">AND or multiply: the coincidence gate <em>(routine)</em></h3>
+<p>Two independent Poisson streams of rate $\lambda_1, \lambda_2$ are routed to the same interaction volume with coincidence window $\tau_w$. The chance coincidence (joint event) rate is the standard nuclear instrumentation result</p>
+<p>$$ \lambda_{\text{AND}} \approx \tau_w\,\lambda_1\,\lambda_2, \qquad P_{\text{AND}}(\Delta t) = 1 - e^{-\tau_w \lambda_1 \lambda_2 \Delta t}. $$</p>
+<p>Encode $x,y\in[0,1]$ by thinning the source to rates $x\lambda, y\lambda$ (thinning theorem); the output rate is proportional to $xy$. <strong>This is a physical multiplier, and γγ coincidence counting is done in every nuclear lab on Earth.</strong> Independence is exact, from the independent increments property, so a <em>single</em> source yields arbitrarily many decorrelated streams by time slicing (Appendix B.1).</p>
+<h3 id="mux-or-weighted-add-the-scattering-gate-routine">MUX or weighted add: the scattering gate <em>(routine)</em></h3>
+<p>Weighted addition is just the linear part of transport. A photon scattered into one of several modes, or routed through a geometric split, produces an output whose rate is a convex combination of inputs. <strong>Signed weights</strong> come from complementary pairs: an excitatory on resonance channel and an inhibitory detuned channel. This is the Green's function $\mathcal{G}$ used deliberately. One honesty note on programmability: weights written by geometry are set at fabrication, and run time reprogramming is limited to apertures, absorber positions, and Doppler tuning, so a given lump is a fixed function machine reprogrammed mechanically, not electronically.</p>
+<h3 id="not-or-complement-the-absorption-gate-routine">NOT or complement: the absorption gate <em>(routine)</em></h3>
+<p>A strong absorber removes fraction $p$ of a stream; the survivors encode $1-p$. Make $p$ depend on a second field (for example a control beam that bleaches or populates the absorber) and you have an element that behaves like a controlled NOT. Off resonant or Doppler detuning gives the complement directly.</p>
+<h3 id="threshold-or-neuron-the-triggered-release-gate-the-keystone">Threshold or neuron: the triggered release gate <em>(the keystone)</em></h3>
+<p>The only gate that supplies <strong>hard threshold with gain</strong>, and the only one not yet experimentally nailed down. An isomer stores energy; a control field of flux $\phi_{\text{ctrl}}$ triggers its release at rate $R_{\text{trig}} = \sigma_{\text{trig}}\,\phi_{\text{ctrl}}$, dumping a cascade of $\beta$ output quanta. Candidate mechanisms:</p>
+<ul>
+<li><strong>NEEC</strong> (nuclear excitation by electron capture): a free electron is captured into an atomic vacancy while its kinetic energy lifts the nucleus over a gateway, releasing a cascade. Predicted to dominate XFEL driven isomer depletion by more than $10^6\times$ over direct photoexcitation (Gunst et al., PRL 2014). <strong>Status: contested.</strong> The 2018 ⁹³ᵐMo claim (<a href="https://www.nature.com/articles/nature25483">Nature 2018</a>) has not been cleanly reproduced, alternative (inelastic scattering) explanations and much lower theoretical rates have been advanced, and precision Penning trap and EBIT tests are underway (<a href="https://arxiv.org/html/2501.05217v1">arXiv 2025</a>).</li>
+<li><strong>IGE</strong> (induced γ emission): a resonant photon stimulates emission from a stored isomer such as ¹⁷⁸ᵐ²Hf (2.45 MeV, $t_{1/2}=31$ yr), ¹⁸⁰ᵐTa, or ⁹³ᵐMo. <strong>Status: contested for every candidate with gain.</strong> The 1998 Hf "triggering" claim was never independently reproduced and is widely attributed to artifacts; detailed balance arguments make easy triggering implausible (<a href="https://en.wikipedia.org/wiki/Hafnium_controversy">Wikipedia: hafnium controversy</a>). One photon trigger, however, is <strong>proven</strong>: photoactivation of ¹⁸⁰ᵐTa through gateway states at and above 1.01 MeV was demonstrated with measured integrated cross sections (Belic et al., <em>PRL</em> 83, 5242 (1999)). Its ledger is upside down, about 1 MeV spent per 77 keV stored, so it is the existence proof that photon triggered isomer release is real physics, and simultaneously the cautionary unit of energy accounting: a proven switch, an impossible amplifier.</li>
+<li><strong>Saturable resonance</strong> <em>(routine)</em>: a resonant cross section bleaches at high flux, $T(\phi) = T_0 + (1-T_0)\,\phi/(\phi+\phi_{\text{sat}})$, a <em>soft</em> sigmoid with no net gain. Always available; gives a neuron, not an amplifier.</li>
+<li><strong>²²⁹Th</strong> <em>(routine, but β ≈ 1)</em>: the 8.4 eV isomer is laser writable and laser readable at room temperature. It is an excellent <strong>memory or qubit and soft threshold</strong>, but it releases about one low energy quantum per write: no photon number gain.</li>
+</ul>
+<h3 id="the-keystone-gate-criterion">The Keystone Gate Criterion</h3>
+<p>Reduce "is the gate viable?" to two measurable inequalities. Let $\eta$ be the probability that a stored isomer is released by the control field before it leaks spontaneously during the gate window, and let $\Gamma$ be the <strong>net photon gain</strong> of one gate evaluation:</p>
+<p>$$
+\boxed{\;\eta \;=\; \frac{R_{\text{trig}}}{R_{\text{trig}} + \lambda_m} \;=\; \frac{\sigma_{\text{trig}}\,\phi_{\text{ctrl}}}{\sigma_{\text{trig}}\,\phi_{\text{ctrl}} + \lambda_m}, \qquad\qquad \Gamma \;=\; \frac{\beta\,\eta}{C_{\text{in}}}\;}
+$$</p>
+<p>where $C_{\text{in}}$ is the number of control quanta spent per trigger and $\beta$ the cascade multiplicity. Two conditions:</p>
+<ol>
+<li><strong>Leak condition</strong> $\eta > \tfrac12$: the field must drive release faster than the isomer leaks, $\sigma_{\text{trig}}\,\phi_{\text{ctrl}} > \lambda_m$.</li>
+<li><strong>Amplification condition</strong> $\Gamma > 1$: a working logic gate (one that can drive its successors and overcome readout and coincidence losses) must put out more usable quanta than it consumes, $\beta\,\eta > C_{\text{in}}$.</li>
+</ol>
+<p>A gate that meets only the leak condition is a <strong>memory or neuron</strong>; a gate that meets both is a <strong>logic amplifier</strong>, the thing a scalable computer is built from. A third inequality, the <strong>rate condition</strong> $R_{\text{trig}} \gtrsim f_{\text{gate}}$, decides usefulness rather than existence and binds hardest for long lived isomers, whose tiny $\lambda_m$ makes the leak condition flattering; it is derived, together with the engineering form of the criterion (required areal density, self absorption, the fan out collection tax, and what <em>level restoration</em> means for cascadability), in <a href="theory/THEORY.md">theory/THEORY.md</a>. The criterion is evaluated against nuclear data for every candidate, with required fluxes per facility, in <a href="gates/">gates/</a>.</p>
+<p><img alt="The keystone gate viability" src="figures/fig3_keystone_gate.svg" /></p>
+<h3 id="the-central-tension-the-criterion-exposes">The central tension the criterion exposes</h3>
+<p>Plotting the criterion (figure above) makes the field's real problem visible, and it is not the one usually stated:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Leak condition</th>
+<th>Multiplicity $\beta$</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>²²⁹ᵐTh</strong> (8.4 eV, $t_{1/2}\!\approx\!29$ min)</td>
+<td><strong>easy</strong>, proven laser control</td>
+<td>$\approx 1$</td>
+<td>superb <strong>memory or qubit</strong>, <em>not</em> a logic amplifier</td>
+</tr>
+<tr>
+<td><strong>⁹³ᵐMo</strong> (6.85 h)</td>
+<td>plausible</td>
+<td>2.87 (ENSDF, see <code>/gates</code>)</td>
+<td>NEEC trigger <strong>unconfirmed</strong></td>
+</tr>
+<tr>
+<td><strong>¹⁷⁸ᵐ²Hf</strong> (2.45 MeV, 31 yr)</td>
+<td>leak trivially beaten</td>
+<td>12.4 (ENSDF, incl. the 1147 keV chain)</td>
+<td>trigger <strong>contested, unproven</strong></td>
+</tr>
+<tr>
+<td><strong>¹⁸⁰ᵐTa</strong> (77 keV, stable)</td>
+<td>leak trivially beaten</td>
+<td>$\approx 1$, and energy uphill</td>
+<td>trigger <strong>proven</strong> (photoactivation, 1999); an amplifier never</td>
+</tr>
+<tr>
+<td><strong>²⁴²ᵐAm</strong> (48.6 keV, 141 yr)</td>
+<td>beaten 4000× over at reactor flux</td>
+<td>fission: $\sim$3.3 n + $\sim$8 γ</td>
+<td>trigger <strong>proven</strong> ($\sigma_f \approx 6.4$ kb); <strong>both inequalities met</strong>, at reactor scale</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>The keystone insight:</strong> in the photon sector, the isomer with a <em>proven</em> trigger has no gain ($\beta\approx1$), and the isomers with large gain ($\beta\gg1$) have no proven trigger. <strong>Nuclear computing's make or break engineering problem is to find, or engineer, a single compact state that satisfies the leak condition <em>and</em> has $\beta>1$ <em>and</em> can drive its successors.</strong> Everything downstream (universality, sampling, the complexity tiers) is real physics <em>conditioned on that one cell existing</em>. It is the experiment this repository exists to settle.</p>
+</blockquote>
+<p>A theory that locates all its risk in one falsifiable place, and says so, is stronger than one that spreads risk everywhere and admits it nowhere.</p>
+<h3 id="the-keystone-already-exists-at-a-scale-nobody-wants">The keystone already exists, at a scale nobody wants</h3>
+<p>Apply the criterion, with no new physics, to the fissile nucleus, and every inequality closes at once. ²³⁵U stores 202 MeV behind a fission barrier ($\lambda_m = 3.1\times10^{-17}$ s⁻¹: the leak condition is free); its trigger is thermal neutron capture at $\sigma_f = 585$ b, tabulated to four significant figures; its multiplicity is $\bar\nu = 2.43$ neutrons plus about 7 prompt photons, for a gain per absorbed neutron of about 2.1; and it is <strong>level restoring</strong>, because fission neutrons are born fast at the same spectrum whatever triggered the fission, so outputs re trigger inputs with no conversion stage. ²⁴²ᵐAm closes the loop with the candidate table above: it is literally an isomer, and it is the one row in which trigger cross section, flux, and multiplicity are all <em>measured</em> quantities that satisfy both inequalities, at an ordinary reactor thermal column, with a margin of three orders of magnitude (<a href="gates/experiment_menu.md">gates/experiment_menu.md</a>). The gate network mathematics exists too: a subcritical region of multiplication $k<1$ is a threshold amplifier of gain $1/(1-k)$, coupled region kinetics (Avery, 1958) is this theory's Green's function synapse with gain on the diagonal, and local absorbers program thresholds and vetoes, all of it strictly subcritical, standard reactor physics rearranged into computational language (<a href="theory/THEORY.md">theory/THEORY.md</a>, Section 4). Nature has even run the loop unattended: the Oklo natural reactors sustained self restoring triggered release networks two billion years before anyone asked permission.</p>
+<p>None of this yields a computer anyone wants: a neutron gate is centimeters to meters of assembly wrapped in shielding and licensing, the constant source purity of this document's charter is preserved only in the steady state subcritical sense, and the energy per operation is grotesque by the honesty section below. What it yields is <strong>existence</strong>. The model of computation defined by the two governing equations is physically complete at one scale, with 1940s physics. The keystone program is therefore a <em>miniaturization</em> program, from meter scale neutron gates toward crystal scale photon gates, and not a search for whether the model can exist at all. That is a categorically stronger position, and it sharpens what the photon sector must deliver: not merely $\eta > \tfrac12$ and $\Gamma > 1$, but both <em>plus</em> level restoration, in a package that fits on a table.</p>
+<p><img alt="Every isomer on Earth" src="figures/fig8_isomer_landscape.svg" /></p>
+<hr />
+<h2 id="radiation-as-all-three-roles-at-once">Radiation as all three roles at once</h2>
+<p>The thesis is that radiation is simultaneously the logic, the memory, and the interconnect. The two governing equations make this exact:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Physical carrier</th>
+<th>Term in the dynamics</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logic</strong></td>
+<td>photon and nucleus interactions with field dependent cross section</td>
+<td>$R_{\text{trig}}(\phi)$, $\Sigma_t(\phi)$, coincidence</td>
+<td>3 of 4 gates routine; threshold gate is the keystone</td>
+</tr>
+<tr>
+<td><strong>Memory</strong></td>
+<td>isomer populations $n_i$ (nonvolatile, analog, in place)</td>
+<td>$n_m$ in the kinetics equation</td>
+<td>routine for ²²⁹Th; in memory by construction</td>
+</tr>
+<tr>
+<td><strong>Interconnect</strong></td>
+<td>the photon field $\phi$ as a penetrating, routable bus</td>
+<td>$\mathcal{G}$, the Green's function</td>
+<td>routine (transport)</td>
+</tr>
+<tr>
+<td><em>(power, clock, entropy)</em></td>
+<td><em>the source, the only thing that is </em><em>not</em><em> compute</em></td>
+<td>$\lambda$, $q$</td>
+<td>routine</td>
+</tr>
+</tbody>
+</table>
+<p>There is <strong>no separate RAM</strong> (the nucleus that computes is the nucleus that remembers, true compute in memory) and <strong>no separate bus</strong> (the quanta that carry signals are the quanta that interact). Remove any one of $\phi$, $n_i$, $\mathcal{G}$ and you have deleted a load bearing part of the machine.</p>
+<p><strong>How isomeric memory is actually written, held, and read.</strong> A natural objection is that "a nuclear population" sounds too diffuse to be a usable register. It is not; the read and write physics is concrete:</p>
+<ul>
+<li><strong>Write.</strong> A resonant pump (laser, X ray, or a gateway transition) drives the ground to isomer transition; the isomer fraction $n_m$ <em>is</em> the stored value, set in analog by the pump fluence or switched digitally by gating the pump. For ²²⁹Th this is the demonstrated 148.38 nm VUV excitation.</li>
+<li><strong>Hold.</strong> The isomer is metastable by construction, so the bit is <strong>nonvolatile</strong> for the isomer lifetime, from well under a second to seconds for ²²⁹Th, hours for ⁹³ᵐMo, 31 years for ¹⁷⁸ᵐ²Hf, and geologically stable for ¹⁸⁰ᵐTa. No refresh, no standby power.</li>
+<li><strong>Read, destructively.</strong> A trigger field releases the isomer and the emitted γ or photon burst is counted; the burst intensity is proportional to $n_m$. (This <em>is</em> the threshold gate, used as a readout.)</li>
+<li><strong>Read, nondestructively.</strong> An occupied isomer shifts the nucleus's resonant response (different transition energy, hyperfine structure, or nuclear charge radius), so a weak probe beam's absorption or fluorescence reports occupancy without erasing it. Mössbauer or nuclear resonance probing reads the level coherently.</li>
+<li><strong>Address.</strong> Bits are distinguished by <strong>position</strong> (a focused beam picks a lattice site), by <strong>energy</strong> (different isomers resonate at different, well separated quanta, that is spectral addressing), or by <strong>host</strong> (different dopant isotopes in different microdomains). The register is intrinsically nanoscale and radiation hard because the state lives inside the nucleus.</li>
+</ul>
+<hr />
+<h2 id="universality">Universality</h2>
+<p><strong>Analog (continuous functions).</strong> Drive a leaky integrate and fire site with Poisson input from the coincidence gate; in the diffusion limit the "membrane" is an Ornstein Uhlenbeck process and the first passage firing rate is the <strong>Siegert</strong> function $\Phi(\mu,\sigma)$, a smooth sigmoid that <em>emerges</em>, undesigned, from the physics (figure). A layer of weighted sums ($\mathcal{G}$) followed by $\Phi$ satisfies the hypotheses of the Cybenko and Hornik universal approximation theorems: one hidden layer approximates any continuous function on a compact set to arbitrary accuracy.</p>
+<p><img alt="Emergent Siegert activation" src="figures/fig7_siegert.svg" /></p>
+<p><strong>Digital (Turing).</strong> NAND is coincidence followed by a high threshold veto (output HIGH unless both inputs are HIGH). Two mutually exciting sites form a <strong>bistable</strong> memory cell. The Poisson source is the clock. NAND plus unbounded memory plus clock implies Turing completeness. Both constructions consume the triggered release threshold gate for the threshold and veto, so digital universality, like everything else, rests on the keystone.</p>
+<hr />
+<h2 id="stochastic-and-sampling-mode-where-the-substrate-is-most-at-home">Stochastic and sampling mode: where the substrate is most at home</h2>
+<p>Because randomness is native, the medium is a natural sampler. Encode values as rates (thinning); AND is multiply, MUX is scaled add, NOT is complement. Close the loop: a recurrent network whose sites accept proposals with probability $\sigma(u_k)$, $u_k = \sum_j W_{kj} z_j + b_k$, obeys detailed balance (Appendix B.3) and converges to</p>
+<p>$$ p(z) \;\propto\; \exp\!\big(\tfrac12 z^\top W z + b^\top z\big), $$</p>
+<p>a physical <strong>Boltzmann machine and Ising sampler</strong>. This is the same workload that magnetic tunnel junction probabilistic machines now beat GPUs on, but here the noise source is true, free, and self powered rather than an engineered low barrier transistor. <strong>Monte Carlo integration, Bayesian inference, and combinatorial optimization are the natural first applications</strong>, and they need only the <em>soft</em> threshold (saturable resonance, $\beta\approx1$), so they are reachable <em>before</em> the keystone amplifier is solved.</p>
+<p>This machine now runs, decay by decay, in <a href="simulator/">simulator/</a>: a frustrated 8 site instance converges to its exact Boltzmann law (KL divergence a few times $10^{-4}$ over all 256 states), draws an independent sample every <strong>26 decays</strong>, reaches its true ground state in a median of <strong>173 decays</strong> when annealed, and, at the 8.4 eV ²²⁹Th transition, costs about <strong>945 times less energy per sample</strong> than the magnetic tunnel junction machine it is benchmarked against ($3.5\times10^{-17}$ J versus 33 fJ). The same machine on 1.25 MeV quanta is 158 times <em>costlier</em> per sample: the carrier decides the economics, exactly as the energy honesty section argues.</p>
+<p><img alt="Digital twin results" src="figures/fig9_digital_twin.svg" /></p>
+<hr />
+<h2 id="physical-limits-three-laws-with-real-numbers">Physical limits: three laws with real numbers</h2>
+<h3 id="precision-law-poisson-cramer-rao">Precision law (Poisson, Cramér Rao)</h3>
+<p>A rate estimated from $N = rT$ counts has relative error $1/\sqrt{N}$. For $b$ bits,</p>
+<p>$$ \boxed{\,N = rT \;\geq\; 2^{2b}\,}. $$</p>
+<p>8 bit precision costs 65,536 counts; 16 bit costs about 4.3 billion. Precision in a Poisson medium is <em>bought with counts</em>, hence with time times activity.</p>
+<p><img alt="Precision law" src="figures/fig2_precision_law.svg" /></p>
+<h3 id="throughput-law">Throughput law</h3>
+<p>If each gate output must reach $b$ bits and the network's whole event budget is the source activity $\lambda$, the sustained gate evaluation rate is bounded by</p>
+<p>$$ \boxed{\,f_{\text{gate}} \;\approx\; \frac{\lambda}{2^{2b}}\,}. $$</p>
+<p>This is the law that makes activity the master resource: low precision sampling is cheap at megabecquerel sources; high precision deterministic logic demands reactor class fluxes. It also says <em>spend bits where you need them</em>: keep most of the machine stochastic and low $b$, reserve high $b$ for the few places it matters.</p>
+<p><img alt="Throughput law" src="figures/fig4_throughput.svg" /></p>
+<h3 id="energy-honesty-and-the-right-metric">Energy honesty, and the right metric</h3>
+<p>A megaelectronvolt γ carries $1.6\times10^{-13}$ J, about <strong>8 orders of magnitude above</strong> a modern CMOS switch and about <strong>$10^8$ above the Landauer limit</strong>. <em>Per operation, high energy nuclear logic is not cheap.</em> Three honest consequences:</p>
+<ol>
+<li><strong>Use the lowest energy state that works.</strong> The 8.4 eV ²²⁹Th transition ($1.3\times10^{-18}$ J), not MeV quanta, is the energetically sane carrier for <em>dense logic</em>. Reserve keV to MeV quanta for memory, interconnect, and the quantum tier.</li>
+<li><strong>The right figure of merit is not joules per operation but <em>ops per decay</em></strong>, how much computation you extract from each event you were going to pay for anyway. The source's energy is sunk cost; maximizing ops per decay is the real optimization target.</li>
+<li><strong>The advantage is not efficiency.</strong> It is <strong>density</strong> (in memory, no von Neumann shuttling), <strong>radiation hardness</strong> (the machine is made of what destroys ordinary chips), <strong>room temperature quantum coherence</strong>, and <strong>self powered autonomy</strong> (a sealed source runs for the isotope's half life with no battery).</li>
+</ol>
+<p><img alt="Energy per operation" src="figures/fig5_energy.svg" /></p>
+<hr />
+<h2 id="complexity-tiers-and-the-honest-ceiling">Complexity tiers and the honest ceiling</h2>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Mechanism</th>
+<th>Class</th>
+<th>Honest claim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>decay timing only</td>
+<td>TRNG ($\subseteq$ BPP)</td>
+<td>not computation, entropy only (HotBits)</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>stochastic coincidence and threshold gates</td>
+<td><strong>BPP</strong></td>
+<td>practical wins on sampling and Ising; same niche as probabilistic bits, with native randomness</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>quantum DOF in emissions</td>
+<td><strong>BQP</strong></td>
+<td>rivals quantum computers, room temperature, continually replenished qubits</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tier 2 levers</strong> (all experimentally seeded, none yet a computer): polarization <strong>entangled annihilation γ pairs</strong>, theoretically maximal, measured <em>stronger than separable but below maximal</em> on real detectors, with an open Pryce Ward versus Klein Nishina debate (<a href="https://www.nature.com/articles/s41598-023-34767-8">Sci. Rep. 2023</a>; <a href="https://link.aps.org/doi/10.1103/Physics.17.138">APS Physics 2024</a>); <strong>Mössbauer coherence</strong> and coherent single γ control at room temperature (<a href="https://www.nature.com/articles/nature13018">Nature 2014</a>); <strong>nuclear spin qubits</strong> addressed by γ or RF fields.</p>
+<p><strong>Ceiling, stated up front.</strong> The extended Church Turing thesis (quantum form) bounds <em>any</em> physical machine by BQP. <strong>Nuclear computing does not claim to exceed quantum computation.</strong> It claims a <em>different physical road to the same frontier</em>, one that may be far easier to engineer (no dilution refrigerator; intrinsic radiation tolerance; qubits delivered by the source). Beware anyone who claims more.</p>
+<hr />
+<h2 id="prior-art-and-the-honest-delta">Prior art, and the honest delta</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Uses radiation as</th>
+<th>What it is <em>not</em></th>
+<th>Relation to this proposal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HotBits and decay TRNGs</td>
+<td>entropy</td>
+<td>not logic (Tier 0)</td>
+<td>our clock and entropy layer only</td>
+</tr>
+<tr>
+<td>RTGs, betavoltaics</td>
+<td>power</td>
+<td>not compute</td>
+<td>our metabolism layer only</td>
+</tr>
+<tr>
+<td>γγ coincidence spectrometers</td>
+<td>a real multi stream <strong>gate</strong></td>
+<td>not programmable</td>
+<td>proof our AND gate is real</td>
+</tr>
+<tr>
+<td>NEEC, IGE, ²²⁹Th experiments</td>
+<td>field controlled nuclear transitions</td>
+<td>not a gate <em>network</em></td>
+<td>the keystone, in the lab</td>
+</tr>
+<tr>
+<td>coupled reactor cores (Avery 1958) and subcritical assemblies</td>
+<td>a real triggered release <strong>gain network</strong></td>
+<td>never framed or used as computation</td>
+<td>the proven keystone at reactor scale; our coupling mathematics</td>
+</tr>
+<tr>
+<td>Mössbauer and γ quantum optics</td>
+<td>coherent nuclear states</td>
+<td>not a processor</td>
+<td>our Tier 2 substrate</td>
+</tr>
+<tr>
+<td>MTJ <strong>probabilistic and Ising machines</strong></td>
+<td>(engineered noise, not radiation)</td>
+<td>not self powered or truly random</td>
+<td>our stochastic tier twin in silicon</td>
+</tr>
+<tr>
+<td>Photonic and optical neural nets</td>
+<td>(optical, not nuclear)</td>
+<td></td>
+<td>share the $\mathcal{G}$ math; we add nonvolatile nuclear memory plus MeV and quantum reach</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The genuinely new claim:</strong> <em>one physical substrate that is logic, memory, and interconnect at once, powered and clocked by its own decay, scaling from a free truly random sampler to a room temperature quantum processor</em>, with the entire question of feasibility honestly isolated in a single, named, falsifiable gate.</p>
+<hr />
+<h2 id="technology-readiness-and-where-the-risk-lives">Technology readiness, and where the risk lives</h2>
+<p><img alt="Readiness versus centrality" src="figures/fig6_readiness.svg" /></p>
+<p>Every component except one is either routine nuclear physics or recently demonstrated. The exception sits at maximum centrality and minimum readiness: the <strong>triggered release threshold gate with gain</strong>, the keystone. That single node is the theory's load bearing wall. The honest reading of this chart is the project's entire strategy: <strong>derisk the keystone first; everything else is integration.</strong></p>
+<hr />
+<h2 id="a-falsifiable-roadmap-with-kill-criteria">A falsifiable roadmap (with kill criteria)</h2>
+<p><strong>Phase A. Stochastic sampler (no keystone needed).</strong> Build a recurrent stochastic network using only routine gates (coincidence AND, absorption NOT, scattering MUX, the <em>soft</em> saturable threshold, ²²⁹Th memory). Benchmark a small Ising or sampling problem against a magnetic tunnel junction probabilistic machine on energy per sample and ops per decay.
+- <em>Kill criterion A:</em> if a native radiation sampler cannot match a probabilistic machine's quality on <em>any</em> problem class even in simulation, the stochastic tier has no niche.
+- <em>Status: the simulation half is settled, affirmatively.</em> The digital twin in <a href="simulator/">simulator/</a> samples its exact Boltzmann law at 26 decays per independent sample and beats the silicon benchmark on energy iff the carrier is the 8.4 eV transition. What remains of Phase A is hardware: the same measurement on a bench, with exempt quantity sources, detectors at the boundary only.</p>
+<p><strong>Phase B. Settle the keystone.</strong> Now two questions, one per sector.
+- <strong>B1, photon sector.</strong> Measure $(\sigma_{\text{trig}}, \beta, C_{\text{in}})$ for the best NEEC or IGE candidate (precision EBIT or Penning trap NEEC; resonant IGE of a mid energy isomer) and locate it on the keystone figure. The required cross sections per facility are tabulated in <a href="gates/experiment_menu.md">gates/experiment_menu.md</a>; the ongoing nondestructive Penning trap test of the ⁹³ᵐMo claim largely decides this sector.
+- <strong>B2, neutron sector.</strong> Existence is already answered by library data; what remains is architecture. Reproduce the two region NAND of coupled subcritical assemblies in OpenMC with ENDF data, all inputs public, everything at $k<1$: no laboratory required, and the coupling matrices, absorber programming, and clock rates it yields are inherited by the photon sector when its gate arrives.
+- <em>Kill criterion B (the big one, now confined to B1):</em> if <strong>no</strong> compact state can be shown to satisfy the leak condition, $\Gamma>1$, <em>and</em> level restoration at any achievable flux, then nuclear computing at benchtop scale is permanently confined to the <strong>stochastic tier plus memory</strong>, a real but bounded result, and the amplifier tier remains a reactor scale curiosity. The theory's <em>high</em> ambition lives or dies here.</p>
+<p><strong>Phase C. Tier 2 coherence.</strong> Demonstrate a two qubit operation on Mössbauer or nuclear spin DOF, or a usable Bell measurement on annihilation γ pairs after Compton analysis.
+- <em>Kill criterion C:</em> if coherence cannot survive realistic readout, Tier 2 collapses to the stochastic tier.</p>
+<p><strong>Repository deliverables that feed this roadmap, all live:</strong></p>
+<table>
+<thead>
+<tr>
+<th>directory</th>
+<th>contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="theory/">theory/</a></td>
+<td>full derivations, the engineering form of the keystone criterion (areal density, self absorption, collection, level restoration, reset, pile up), and the reactor scale existence proof</td>
+</tr>
+<tr>
+<td><a href="gates/">gates/</a></td>
+<td>the criterion evaluated against NUBASE2020 and ENSDF for all 1870 known isomers; curated candidates with measured multiplicities; the experiment menu of required cross sections per facility</td>
+</tr>
+<tr>
+<td><a href="transport/">transport/</a></td>
+<td>Monte Carlo demonstrations of every routine gate: the exact coincidence multiplier, absorption complement, a measured Green's matrix with superposition check, the saturable sigmoid</td>
+</tr>
+<tr>
+<td><a href="simulator/">simulator/</a></td>
+<td>the digital twin: a Tier 1 machine run decay by decay, validated against exact enumeration, with decays per sample and energy per sample measured</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-worked-example-a-single-bit-229th-processor">A worked example: a single bit ²²⁹Th processor</h2>
+<p>A concrete, idealized realization that uses <strong>only</strong> demonstrated physics (no keystone gain, this is a memory or neuron in the stochastic tier):</p>
+<ul>
+<li><strong>Setup.</strong> A Th:CaF₂ crystal between two scintillation detectors; a weak ⁶⁰Co source supplies a Poisson γ flux (clock, entropy, power); a tunable 148.38 nm VUV laser pumps ²²⁹Th into the 8.4 eV isomer (in crystal fluorescence lifetime about 630 s; vacuum half life about 1740 s, $\lambda_m \approx 4.0\times10^{-4}$ s⁻¹).</li>
+<li><strong>Encode.</strong> Isomer fraction $n_m$ is the bit: laser on for a calibrated time writes <strong>1</strong>; laser off lets spontaneous decay erase toward <strong>0</strong>.</li>
+<li><strong>Threshold readout (neuron).</strong> A control beam tuned to a gateway transition triggers release at rate $R_{\text{trig}}\propto\phi_{\text{ctrl}}$; choose $\phi_{\text{ctrl}}$ so the output burst is negligible when $n_m$ is low and large when $n_m$ is high. The output spike train <em>is</em> the read.</li>
+<li><strong>AND of two cells.</strong> Feed the trigger beam outputs of cells A and B into a coincidence detector (window $\tau_w$): $\lambda_{\text{AND}} = (R_{\text{trig},A} n_{m,A})(R_{\text{trig},B} n_{m,B})\,\tau_w$, HIGH only when both are 1. A third isomer fed by this coincidence propagates the computation; a high threshold veto on it builds NAND.</li>
+<li><strong>Why it is computation, not randomness.</strong> The source supplies tokens; the laser writes data; the isomer stores state; trigger beams and coincidence perform directed nonlinear operations on that state. Computation is the <em>evolution of the coupled fields under those rules</em>; timing alone (Tier 0) cannot do this, which is precisely why the gates are the theory.</li>
+</ul>
+<hr />
+<h2 id="open-problems-and-how-to-contribute">Open problems and how to contribute</h2>
+<ol>
+<li><strong>Keystone:</strong> propose or measure a compact state meeting the leak condition with $\beta>1$ <em>in a level restoring or convertible class</em> (theory, Section 2). <em>This is problem number one.</em> A concrete, computable subproblem: search ENSDF for <strong>heterogeneous pairs</strong> of isomers whose cascade lines and gateway lines are mutually resonant (gate A's output pumps gate B and vice versa); the search space is already tabulated in <code>/gates</code>.</li>
+<li>Tighten the throughput law for fan out reuse: when is a count "spent"?</li>
+<li>A learning rule: aperture update $\Delta\alpha \propto \mathrm{coincidence}(\text{pre},\text{post})$ is Hebbian or STDP using the <em>same</em> coincidence primitive as the AND gate (Appendix B.4); formalize and simulate.</li>
+<li>Transport level $\mathcal{G}$ for a real geometry that implements a target weight matrix (signed weights via complementary channels).</li>
+<li>Tier 2: a concrete two qubit gate on nuclear spin or Mössbauer DOF with a room temperature error budget.</li>
+</ol>
+<p>Open an Issue stating the claim and the test; pair every Pull Request with the Issue it closes.</p>
+<hr />
+<h2 id="references">References</h2>
+<p><strong>²²⁹Th nuclear clock and optical control of nuclei</strong>
+- Frequency ratio of the ²²⁹ᵐTh transition and the ⁸⁷Sr clock. <em>Nature</em> (2024): https://www.nature.com/articles/s41586-024-07839-6
+- NIST, "Major leap for nuclear clock…" (2024): https://www.nist.gov/news-events/news/2024/09/major-leap-nuclear-clock-paves-way-ultraprecise-timekeeping
+- JILA, frequency reproducible nuclear clock: https://jila.colorado.edu/news-events/articles/frequency-reproducible-nuclear-clock
+- Reproducibility of solid state ²²⁹Th clocks. arXiv 2507.01180 (2025): https://arxiv.org/html/2507.01180v1</p>
+<p><strong>NEEC, IGE, and triggered release (including disconfirming evidence)</strong>
+- Chiara et al., "Isomer depletion as evidence of NEEC." <em>Nature</em> 554, 216 (2018): https://www.nature.com/articles/nature25483
+- ⁹³ᵐMo beam based NEEC. <em>PRL</em> 122, 212501 (2019): https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.122.212501
+- Nondestructive NEEC test via precision mass spectrometry. arXiv 2501.05217 (2025): https://arxiv.org/html/2501.05217v1
+- Gunst et al., NEEC dominance in XFEL isomer depletion. <em>PRL</em> (2014).
+- Induced gamma emission, Wikipedia: https://en.wikipedia.org/wiki/Induced_gamma_emission
+- Hafnium controversy (the cautionary tale), Wikipedia: https://en.wikipedia.org/wiki/Hafnium_controversy</p>
+<p><strong>Nuclear and γ ray quantum optics</strong>
+- Vagizov, Kocharovskaya et al., coherent control of recoilless γ photon waveforms. <em>Nature</em> 508, 80 (2014): https://www.nature.com/articles/nature13018
+- Nuclear quantum memory for hard X ray photon wavepackets. <em>Science Advances</em>: https://www.science.org/doi/10.1126/sciadv.adn9825
+- "Gamma ray shaping could lead to nuclear quantum computers," <em>Physics World</em>: https://physicsworld.com/a/gamma-ray-shaping-could-lead-to-nuclear-quantum-computers/</p>
+<p><strong>Entangled annihilation photons (Tier 2)</strong>
+- Testing entanglement of annihilation photons. <em>Scientific Reports</em> (2023): https://www.nature.com/articles/s41598-023-34767-8
+- "PET could be aided by entanglement," <em>APS Physics</em> (2024): https://link.aps.org/doi/10.1103/Physics.17.138
+- Nonmaximal entanglement measured on a plastic PET scanner, PMC: https://pmc.ncbi.nlm.nih.gov/articles/PMC12042903/</p>
+<p><strong>Probabilistic and Ising hardware (stochastic tier comparison)</strong>
+- 250 MTJ probabilistic Ising machine. <em>Nature Communications</em> (2026): https://www.nature.com/articles/s41467-026-72020-8 (preprint arXiv 2506.14590)</p>
+<p><strong>Foundational (classical, by name)</strong>
+- G. Cybenko (1989), K. Hornik (1991), universal approximation. A. Siegert (1951), first passage firing rate. B. Gaines (1967), stochastic computing. K. Camsari and S. Datta, probabilistic bits. Nuclear data: ENDF/B, JEFF, JENDL, TENDL, ENSDF, EXFOR. Transport codes: MCNP, Geant4, FLUKA, PHITS.</p>
+<hr />
+<h2 id="appendix-a-notation">Appendix A. Notation</h2>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\phi(\mathbf{r},\mathbf{\Omega},E,t)$</td>
+<td>radiation (photon or particle) field, flux or occupation</td>
+</tr>
+<tr>
+<td>$n_i(\mathbf{r},t)$</td>
+<td>nuclear population fraction in level $i$</td>
+</tr>
+<tr>
+<td>$\lambda$</td>
+<td>source activity (Poisson rate)</td>
+</tr>
+<tr>
+<td>$\lambda_m$</td>
+<td>spontaneous decay rate of the isomer ($=\ln 2 / t_{1/2}$)</td>
+</tr>
+<tr>
+<td>$\sigma_p,\ \sigma_{\text{trig}}$</td>
+<td>pump and trigger cross sections</td>
+</tr>
+<tr>
+<td>$R_{\text{trig}}=\sigma_{\text{trig}}\phi_{\text{ctrl}}$</td>
+<td>field driven release rate</td>
+</tr>
+<tr>
+<td>$\beta$</td>
+<td>cascade multiplicity (output quanta per release)</td>
+</tr>
+<tr>
+<td>$C_{\text{in}}$</td>
+<td>control quanta consumed per trigger</td>
+</tr>
+<tr>
+<td>$\eta,\ \Gamma$</td>
+<td>trigger efficiency; net photon gain</td>
+</tr>
+<tr>
+<td>$\mathcal{G}$</td>
+<td>Green's function of the transport operator (the synapse)</td>
+</tr>
+<tr>
+<td>$\tau_w$</td>
+<td>coincidence window</td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix-b-derivation-sketches">Appendix B. Derivation sketches</h2>
+<p><strong>B.1 Independent streams from one source.</strong> A Poisson process has independent increments; disjoint time slices are independent, and marking or thinning preserves the Poisson property. Hence one physical source yields arbitrarily many decorrelated input streams, no second source and no pseudorandom generator.</p>
+<p><strong>B.2 Coincidence multiply.</strong> For two independent streams with windows $\tau_w$, the joint event (chance coincidence) rate is $\tau_w\lambda_1\lambda_2$ to leading order; the survival form is $P=1-e^{-\tau_w\lambda_1\lambda_2\Delta t}$. With $\lambda_i = x_i\lambda$, output is proportional to $x_1 x_2$.</p>
+<p><strong>B.3 Boltzmann stationarity.</strong> Single site flips with acceptance $\sigma(u_k)=1/(1+e^{-u_k})$, $u_k=\sum_j W_{kj}z_j+b_k$, satisfy detailed balance with respect to $p(z)\propto\exp(\tfrac12 z^\top W z + b^\top z)$ for symmetric $W$.</p>
+<p><strong>B.4 Hebbian aperture rule.</strong> $\Delta\alpha_{ij}\propto$ coincidence rate(pre$_i$, post$_j$) reuses the coincidence primitive (the AND gate) as a local learning rule; the gate and the synapse update are the <em>same</em> physical event.</p>
+<h2 id="appendix-c-candidate-states-computed-from-nubase2020-and-ensdf-in-gates-math157-values-are-summed-ensdf-intensities-leverage-is-energy-released-per-trigger-quantum-spent">Appendix C. Candidate states (computed from NUBASE2020 and ENSDF in <a href="gates/">gates/</a>; $\beta$ values are summed ENSDF intensities, leverage is energy released per trigger quantum spent)</h2>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Energy</th>
+<th>$t_{1/2}$</th>
+<th>$\lambda_m$ (s⁻¹)</th>
+<th>$\beta$</th>
+<th>Leverage</th>
+<th>Role</th>
+<th>Trigger status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>²²⁹ᵐTh</td>
+<td>8.355733(8) eV</td>
+<td>about 29 min (vac.)</td>
+<td>$4.0\times10^{-4}$</td>
+<td>1</td>
+<td>1</td>
+<td>memory or qubit, soft threshold</td>
+<td><strong>proven (laser)</strong></td>
+</tr>
+<tr>
+<td>²³⁵ᵐU</td>
+<td>76.7 eV</td>
+<td>26 min</td>
+<td>$4.4\times10^{-4}$</td>
+<td>1</td>
+<td></td>
+<td>second ultra low energy memory; decays by internal conversion, lifetime is chemistry sensitive</td>
+<td>none demonstrated</td>
+</tr>
+<tr>
+<td>⁹³ᵐMo</td>
+<td>2.425 MeV</td>
+<td>6.85 h</td>
+<td>$2.8\times10^{-5}$</td>
+<td>2.87</td>
+<td>$\approx 500$ (4.85 keV gateway)</td>
+<td>candidate logic, best energy leverage in the photon sector</td>
+<td>NEEC <strong>contested</strong></td>
+</tr>
+<tr>
+<td>¹⁷⁸ᵐ²Hf</td>
+<td>2.446 MeV</td>
+<td>31 yr</td>
+<td>$7.1\times10^{-10}$</td>
+<td>12.4</td>
+<td>$\approx 245$ (at 10 keV)</td>
+<td>high gain logic</td>
+<td>IGE <strong>contested</strong></td>
+</tr>
+<tr>
+<td>¹⁸⁰ᵐTa</td>
+<td>77 keV</td>
+<td>stable</td>
+<td>0</td>
+<td>$\approx 1$</td>
+<td>0.076</td>
+<td>proof that photon triggering is real; energy uphill</td>
+<td>photoactivation <strong>proven</strong> (1999)</td>
+</tr>
+<tr>
+<td>²⁴²ᵐAm</td>
+<td>48.6 keV</td>
+<td>141 yr</td>
+<td>$1.6\times10^{-10}$</td>
+<td>$\sim$11</td>
+<td>$8\times10^{12}$ (fission channel)</td>
+<td>the bridge: an isomer whose proven trigger opens fission</td>
+<td><strong>proven</strong> ($\sigma_f\approx6.4$ kb thermal)</td>
+</tr>
+<tr>
+<td>¹⁷⁷ᵐLu</td>
+<td>970 keV</td>
+<td>160 d</td>
+<td>$5.0\times10^{-8}$</td>
+<td>5.85</td>
+<td></td>
+<td>high K storage</td>
+<td>none demonstrated</td>
+</tr>
+<tr>
+<td>⁵⁷Fe</td>
+<td>14.4 keV</td>
+<td>98 ns</td>
+<td>$7\times10^{6}$</td>
+<td>1</td>
+<td>1</td>
+<td>Mössbauer, Tier 2 coherence, directional interconnect</td>
+<td><strong>routine</strong></td>
+</tr>
+<tr>
+<td>²³⁵U (n,f)</td>
+<td>202 MeV released</td>
+<td></td>
+<td></td>
+<td>2.43 n + $\sim$7 γ</td>
+<td>$8\times10^{12}$</td>
+<td>the proven keystone, reactor scale</td>
+<td><strong>proven</strong> (585 b thermal)</td>
+</tr>
+<tr>
+<td>⁹Be (n,2n)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>neutron multiplier without fissile material; convertible, not self restoring</td>
+<td><strong>proven</strong> (threshold 1.85 MeV)</td>
+</tr>
+</tbody>
+</table>
+<p>The full catalog (1870 isomeric states: 585 hold a bit for a second, 50 for a day, 38 of those store over 100 keV) is in <a href="gates/isomer_catalog.csv">gates/isomer_catalog.csv</a>, regenerated by <a href="gates/isomer_screen.py">gates/isomer_screen.py</a>.</p>
+<hr />
+<h2 id="license-and-citation">License and citation</h2>
+<p>Prose and figures are CC BY 4.0; code is MIT (see <a href="LICENSE">LICENSE</a> and <a href="LICENSE-DOCS">LICENSE-DOCS</a>). Cite via <a href="CITATION.cff">CITATION.cff</a>. Contributions follow the rule above: open an Issue stating the claim and the test, and pair every Pull Request with the Issue it closes.</p>
+<hr />
+<p><em>The supporting physics is settled. The keystone gate is proven at reactor scale and unproven at crystal scale. Shrinking it is the whole game.</em></p>
+</div></body></html>

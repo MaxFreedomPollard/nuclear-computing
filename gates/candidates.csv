@@ -1,0 +1,15 @@
+key,E_keV,t_half_s,beta_gamma,beta_note,mech,E_trig_keV,leverage,status,cite
+229mTh,0.008355733,1740.0,1.0,single 8.4 eV quantum,resonant VUV laser (stimulated pump/dump),0.008355733,1.0,"PROVEN trigger (laser, 2024)","Nature 633, 63 (2024); PRL 132, 182501 (2024)"
+235mU,0.0767,1560.0,1.0,internal conversion only,electronic environment / electronic bridge,,,no demonstrated trigger,NUBASE2020; lifetime is chemistry sensitive
+93mMo,2424.89,24660.0,2.87,ENSDF cascade,NEEC through the 4.85 keV gateway,4.85,499.977,CONTESTED (claim vs theory gap ~1e9),"Nature 554, 216 (2018); PRL 122, 212501 (2019); arXiv 2501.05217"
+178m2Hf,2446.09,978264706.0,12.39,ENSDF cascade incl. 1147 keV chain,IGE by keV X rays (claimed),10.0,244.609,"CONTESTED, unreproduced","Collins et al. PRL 82, 695 (1999); refuted PRL 92, 052504"
+180mTa,77.1,stable,1.0,"depletion feeds beta decay, not a cascade",photoactivation via gateways at and above 1.01 MeV,1010.0,0.076,"PROVEN trigger, energy uphill","Belic et al. PRL 83, 5242 (1999); PRC 65, 035801 (2002)"
+242mAm,48.6,4449526566.0,11.0,thermal fission: ~3.3 n + ~8 prompt gamma,"thermal neutron induced fission, sigma_f ~ 6.4 kb",2.5e-08,8080000000000.0,PROVEN trigger (fission channel),ENDF/B-VIII.0 MT=18; nu-bar ~ 3.26
+177mLu,970.18,13858560.0,5.85,ENSDF cascade (21.4% IT branch),proposed photodepletion (high K),,,no demonstrated trigger,ENSDF; depletion proposals in literature
+108mAg,109.44,13821933588.0,3.6,ENSDF cascade (mostly EC branch),none demonstrated,,,storage only,ENSDF
+166mHo,5.98,37868311200.0,3.7,beta decay follows,none demonstrated,,,storage only,ENSDF
+137mBa,661.66,153.12,1.0,the 662 keV line,readout reference (Cs-137 generator),,,readout workhorse,ENSDF
+99mTc,142.68,21625.199999999997,0.98,the 140 keV line,availability reference (Mo-99 generator),,,most available isomer on Earth,ENSDF
+57mFe,14.41,9.83e-08,1.0,"Mossbauer coherence, not memory","nuclear forward scattering (coherent, directional)",14.41,1.0,Tier 2 interconnect reference,routine at ESRF ID18 / APS 3-ID
+"235U (n_th, f)",202000.0,2.2216075904e+16,9.4,nu-bar 2.43 neutrons + ~7 prompt gamma,"thermal neutron induced fission, sigma_f = 585 b",2.5e-08,8080000000000.0,"PROVEN, tabulated to 4 digits",ENDF/B-VIII.0
+"9Be (n, 2n)",,stable,2.0,2 neutrons out per fast neutron in,"threshold reaction, E_n > 1.85 MeV, sigma ~ 0.5 b",1850.0,,PROVEN (standard reflector physics),ENDF/B-VIII.0

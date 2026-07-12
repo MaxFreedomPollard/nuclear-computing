@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use or build on this theory, please cite it as below."
+title: "Nuclear Computing: a model of computation in which radiation is the computer"
+authors:
+  - family-names: "Pollard"
+    given-names: "Max Freedom"
+repository-code: "https://github.com/MaxFreedomPollard/nuclear-computer"
+license: CC-BY-4.0
+keywords:
+  - nuclear computing
+  - unconventional computation
+  - nuclear isomers
+  - stochastic computing
+  - NEEC
+  - induced gamma emission
+  - thorium 229
+  - Ising machines
+abstract: >-
+  A radiation field and the nuclear populations it drives are proposed as a
+  complete computational substrate: logic, memory, and interconnect at once,
+  powered and clocked by a constant radioactive source. The theory reduces
+  its entire feasibility to one falsifiable component, a field triggered
+  nuclear release gate with gain, judged by three inequalities (leak,
+  amplification, rate), evaluates that criterion against NUBASE2020 and
+  ENSDF for every known isomer, demonstrates the routine gate set and a
+  decay by decay digital twin in simulation, and identifies the neutron
+  sector as the scale at which every keystone inequality is already
+  satisfied by library data.
