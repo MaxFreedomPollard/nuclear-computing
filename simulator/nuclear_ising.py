@@ -218,6 +218,7 @@ def make_figure(ckpts, kls, tvs, emp, p_exact, energy_rows):
         "grid.color": "#e5e7eb", "grid.linewidth": 0.8,
         "axes.spines.top": False, "axes.spines.right": False,
         "figure.dpi": 130,
+    "svg.hashsalt": "nuclear-computer",
     })
     fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(13.6, 4.3))
 
@@ -252,8 +253,9 @@ def make_figure(ckpts, kls, tvs, emp, p_exact, energy_rows):
     a3.set_title("C.  Carrier choice decides the economics")
     fig.tight_layout()
     for ext in ("svg", "png"):
+        kw = {"metadata": {"Date": None}} if ext == "svg" else {}
         fig.savefig(os.path.join(FIGS, f"fig9_digital_twin.{ext}"),
-                    bbox_inches="tight")
+                    bbox_inches="tight", **kw)
     plt.close(fig)
     print("wrote fig9_digital_twin")
 

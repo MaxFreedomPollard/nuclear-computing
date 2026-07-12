@@ -317,6 +317,7 @@ def make_figure(isomers):
         "grid.color": "#e5e7eb", "grid.linewidth": 0.8,
         "axes.spines.top": False, "axes.spines.right": False,
         "figure.dpi": 130,
+    "svg.hashsalt": "nuclear-computer",
     })
     STABLE_X = 1e19            # plotting position for stable isomers
     xs, ys = [], []
@@ -359,8 +360,9 @@ def make_figure(isomers):
     ax.legend(frameon=False, fontsize=9, loc="lower left")
     fig.tight_layout()
     for ext in ("svg", "png"):
+        kw = {"metadata": {"Date": None}} if ext == "svg" else {}
         fig.savefig(os.path.join(FIGS, f"fig8_isomer_landscape.{ext}"),
-                    bbox_inches="tight")
+                    bbox_inches="tight", **kw)
     plt.close(fig)
     print("wrote fig8_isomer_landscape")
 
