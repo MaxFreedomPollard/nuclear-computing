@@ -215,13 +215,13 @@ The charter forbids conventional electronics *inside* the loop; it says nothing 
 
 ### 8.3 The no penetration principle
 
-Together 8.1 and 8.2 permit a machine whose enclosure is never breached: problems enter as *fields and motions* (Zeeman maps, Doppler waveforms, aperture settings through magnetic couplings), answers leave as *glow* (the boundary emission spectrum, read by any external spectrometer or diode). Input by field, output by light, power by decay: the complete unit is specified in [device/SEALED.md](../device/SEALED.md).
+Together 8.1 and 8.2 permit a machine whose enclosure is never breached: problems enter as *fields and motions* (Zeeman maps, Doppler waveforms, aperture settings through magnetic couplings), answers leave as *glow* (the boundary emission spectrum, read by any external spectrometer or diode). Input by field, output by light, power by decay: the complete unit is specified in [transistor/SEALED.md](../transistor/SEALED.md).
 
 ---
 
 ## 9. The nuclear lamp: closing the bandwidth gap from inside
 
-The sealed unit's failure to write its own memory ([device/SEALED.md](../device/SEALED.md), Section 3) has a specific anatomy: an *atomic* light source (an excimer continuum, $10^{14}$ Hz wide) was aimed at a *nuclear* line ($10^{-4}$ Hz wide), and the overlap integral ate eighteen orders of magnitude. The fix is not a brighter lamp. It is to notice that the mismatch is a property of atomic light, and that a sealed decay inventory contains emitters that are not atomic.
+The sealed unit's failure to write its own memory ([transistor/SEALED.md](../transistor/SEALED.md), Section 3) has a specific anatomy: an *atomic* light source (an excimer continuum, $10^{14}$ Hz wide) was aimed at a *nuclear* line ($10^{-4}$ Hz wide), and the overlap integral ate eighteen orders of magnitude. The fix is not a brighter lamp. It is to notice that the mismatch is a property of atomic light, and that a sealed decay inventory contains emitters that are not atomic.
 
 ### 9.1 The bandwidth matching principle
 
@@ -234,7 +234,7 @@ The design consequence for the ampoule is one sentence: **the trim layer's reson
 
 ### 9.2 Radiogenic feeding: writing without photons
 
-The second nuclear channel skips light entirely: some parents decay *directly into the metastable state*. The canonical case is the machine's own memory isotope: about 2 percent of ²³³U alpha decays populate ²²⁹ᵐTh, which is how the isomer's radiation was first detected. A crystal doped with ²³³U therefore maintains a **standing isomer population** with no laser and no lamp, at equilibrium $n_m = 0.02\,\lambda_{233}\,N_{233}\,\tau_m$: computable, self replenishing, and proven physics. Numbers in [`sealed_results.md`](../device/sealed_results.md): at $10^{17}$ ²³³U per cm³ the standing population is of order $2\times10^5$ isomers per cm³. What radiogenic feeding does *not* provide is addressing: it writes everywhere at once, a bias, not a bit. It supplies the resonant reference ensemble (a carrier the trim layer can modulate), and it is the existence proof that the sealed unit can hold excited nuclear state without any penetration; the addressed write is what remains.
+The second nuclear channel skips light entirely: some parents decay *directly into the metastable state*. The canonical case is the machine's own memory isotope: about 2 percent of ²³³U alpha decays populate ²²⁹ᵐTh, which is how the isomer's radiation was first detected. A crystal doped with ²³³U therefore maintains a **standing isomer population** with no laser and no lamp, at equilibrium $n_m = 0.02\,\lambda_{233}\,N_{233}\,\tau_m$: computable, self replenishing, and proven physics. Numbers in [`sealed_results.md`](../transistor/sealed_results.md): at $10^{17}$ ²³³U per cm³ the standing population is of order $2\times10^5$ isomers per cm³. What radiogenic feeding does *not* provide is addressing: it writes everywhere at once, a bias, not a bit. It supplies the resonant reference ensemble (a carrier the trim layer can modulate), and it is the existence proof that the sealed unit can hold excited nuclear state without any penetration; the addressed write is what remains.
 
 ### 9.3 Resonance addressing: the MRI move
 

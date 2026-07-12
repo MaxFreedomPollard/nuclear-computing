@@ -7,7 +7,7 @@ Panel B: the crystal cell's write, hold, and read behavior.
 Panel C: the neutron gate's gain and switching time versus k, with the
 constant gain bandwidth product 1/Lambda.
 
-Companion to device/TRANSISTOR.md; every curve is the equation cited there.
+Companion to transistor/README.md; every curve is the equation cited there.
 """
 import os
 import numpy as np

@@ -257,5 +257,5 @@ if __name__ == "__main__":
     rows = boundary()
     worked_unit()
     open(os.path.join(HERE, "sealed_results.md"), "w").write("\n".join(OUT))
-    print("wrote device/sealed_results.md")
+    print("wrote transistor/sealed_results.md")
     figure(rows)
