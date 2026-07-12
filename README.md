@@ -299,7 +299,7 @@ Every component except one is either routine nuclear physics or recently demonst
 | [gates/](gates/) | the criterion evaluated against NUBASE2020 and ENSDF for all 1870 known isomers; curated candidates with measured multiplicities; the experiment menu of required cross sections per facility |
 | [transport/](transport/) | Monte Carlo demonstrations of every routine gate: the exact coincidence multiplier, absorption complement, a measured Green's matrix with superposition check, the saturable sigmoid |
 | [simulator/](simulator/) | the digital twin: a Tier 1 machine run decay by decay, validated against exact enumeration, with decays per sample and energy per sample measured |
-| [transistor/](transistor/) | **the reference transistor**: one pinout at three scales, the valve, the datasheet with characteristic curves and maximum ratings; with two accompanying notes, [SEALED.md](transistor/SEALED.md) (the machine: the ampoule, computed) and [SCALING.md](transistor/SCALING.md) (the trajectory: the ENIAC ledger) |
+| [transistor/](transistor/) | **the reference transistor**: one pinout at three scales, the valve, the datasheet with characteristic curves and maximum ratings; with four accompanying notes: [SEALED.md](transistor/SEALED.md) (the machine: the ampoule, computed), [EMBODIMENT.md](transistor/EMBODIMENT.md) (the build: one ampoule at assembly grade), [VALVE.md](transistor/VALVE.md) (the logic: the γ ray valve specified), and [SCALING.md](transistor/SCALING.md) (the trajectory: the ENIAC ledger) |
 
 ---
 

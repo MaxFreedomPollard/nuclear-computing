@@ -193,6 +193,16 @@ A sealed source decays; the machine built on it slows. This section proves that 
 
 **Corollary 2 (the aging law of a sealed machine).** A degree homogeneous machine of half life $T$ delivers throughput $C(t) = C_0\, 2^{-t/T}$ at unchanged accuracy, with no recalibration, no trimming, and no reference standard other than itself. Its performance at end of mission is known on the day of manufacture to Poisson precision. No battery powered computer can state its own end of life curve in closed form; this one can.
 
+### 7.1 The homogenization procedure
+
+The theorem becomes a construction method in three steps, and the method is machine checkable ([`transport/degree_check.py`](../transport/degree_check.py)):
+
+1. **Label.** Propagate degrees through the circuit by the induction rules: thinning and absorption preserve degree, coincidence adds the degrees of its inputs, MUX requires (and preserves) equal degree inputs.
+2. **Detect.** Flag every comparator, threshold, or MUX whose inputs carry unequal degrees. Each flag is a latent aging defect: the decision it guards will drift as $2^{-\Delta k\, t/T}$ for a degree mismatch $\Delta k$.
+3. **Repair.** Raise the lower degree side by coinciding it with a **reference stream**: a full open thinning of the same source (value $\approx 1$, degree 1). Semantically this multiplies by unity; dimensionally it raises the signal's degree by one. Repeat $\Delta k$ times. Each repair stage costs one coincidence volume and the usual variance bill of Section 10.1, and buys exact invariance under global activity scaling.
+
+The procedure terminates (degrees are finite nonnegative integers), never changes a circuit's meaning at the ship date activity, and converts "correct today" into "correct until the source is gone." Layout tools should run it the way silicon tools run design rule checks; the checker does exactly this on a circuit netlist and demonstrates, by simulation, an inhomogeneous comparator flipping its decision at half activity while the repaired circuit holds.
+
 ---
 
 ## 8. The boundary: translating compute in and out
@@ -243,6 +253,19 @@ Addressing is the third piece, and magnetic resonance imaging already solved it 
 $$ \delta x \;=\; \frac{\Gamma}{(dE/dB)\,G}. $$
 
 The sensitivity is set by the linewidth, which makes the ultranarrow lines the easy ones. For ⁵⁷Fe ($\Gamma = 4.7\times10^{-9}$ eV, about 0.7 linewidths per tesla) gradients of tesla per centimeter are needed: hard. For **¹⁸¹Ta** (6.2 keV, $t_{1/2} = 6.05$ µs, $\Gamma = 7.5\times10^{-11}$ eV) the same nuclear moment buys about **40 linewidths per tesla**, so a *millitesla* scale field moves a channel by a full linewidth, and modest gradients address millimeter voxels; its Doppler sensitivity, one linewidth per 3.6 µm/s, makes a whisper of a piezo a full modulation (and makes vibration isolation a real engineering line item, stated honestly). ¹⁸¹Ta is fed by ¹⁸¹W (121 d), a standard source; its 6 µs lifetime makes it not storage but a **latch**: a microsecond scale, field addressed, parent driven holding register, which is precisely the missing timing element between the 98 ns ⁵⁷Fe relay and the 630 s ²²⁹Th register. Known cost, stated plainly: the 6.2 keV transition is heavily conversion dominated and its recoil free fraction is small, so photon budgets are thin; the latch is real physics with an efficiency tax, not free.
+
+### 9.3a The addressing procedure, made operational
+
+The MRI move of 9.3 becomes a four step cycle:
+
+1. **Configure**: establish the field map that puts exactly the intended channels on resonance. Two regimes exist and the distinction is the honest heart of the method:
+   - **Discrete (per channel coils): the practical regime.** Each resonant foil carries its own small coil; millitesla class currents move a ¹⁸¹Ta channel by full linewidths (24 mT per $\Gamma$), so channel count is set by geometry, not field strength. This is the regime the [build note](../transistor/EMBODIMENT.md) specifies, and it is engineering triviality: sixteen channels are sixteen coils.
+   - **Continuous (gradient voxel selection): the scaling regime.** Within one extended medium, a gradient $G$ resolves $\delta x = \Gamma / ((dE/dB)\, G)$. For ¹⁸¹Ta: 24 cm at 0.1 T/m, 2.4 cm at 1 T/m, **2.4 mm at 10 T/m**; for ⁵⁷Fe the same table reads meters, which is why the sensitive line owns this method. Ten tesla per meter is beyond whole body MRI hardware but not beyond pulsed millimeter scale printed gradient coils at ampere class currents; it is the identified engineering lever, not an assumption.
+2. **Illuminate**: nothing to switch; the parent flood (9.1) is continuous, and only on resonance channels accept it.
+3. **Act**: perform the routing, latching, or modulation within the state's window (the ¹⁸¹Ta mean life is 8.7 µs; with microsecond coil rise times the address cycle is of order 10 µs, a 100 kHz addressing rate per bank).
+4. **Deselect**: relax the field map; detuned channels return to transparency.
+
+**Crosstalk is a chosen number, not a surprise**: a neighbor detuned by $\delta$ linewidths absorbs the Lorentzian tail $1/(1 + 4\delta^2)$, so separations of 3, 5, and 10 linewidths leak 2.7 percent, 1.0 percent, and 0.25 percent respectively. On a shared sight line the distinguishable setpoint count is $N = B_{\max}(dE/dB)/(S\,\Gamma)$: about 7 for ¹⁸¹Ta at half a tesla of authority and $S = 3$, which is why shared line discrimination is the *multiplexing garnish* and per channel coils are the *meal*.
 
 ### 9.4 What remains open
 
