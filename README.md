@@ -299,7 +299,7 @@ Every component except one is either routine nuclear physics or recently demonst
 | [gates/](gates/) | the criterion evaluated against NUBASE2020 and ENSDF for all 1870 known isomers; curated candidates with measured multiplicities; the experiment menu of required cross sections per facility |
 | [transport/](transport/) | Monte Carlo demonstrations of every routine gate: the exact coincidence multiplier, absorption complement, a measured Green's matrix with superposition check, the saturable sigmoid |
 | [simulator/](simulator/) | the digital twin: a Tier 1 machine run decay by decay, validated against exact enumeration, with decays per sample and energy per sample measured |
-| [device/](device/) | the nuclear transistor at three scales with one pinout; the ampoule (sealed self sustaining unit, inventory ledger, lamp arithmetic, aging curves, all computed); and the ENIAC ledger of component levers, ceilings, and borrowed industrial curves |
+| [device/](device/) | the physical embodiments at three altitudes: [TRANSISTOR.md](device/TRANSISTOR.md) (the unit: one pinout at three scales, the valve, the datasheet), [SEALED.md](device/SEALED.md) (the machine: the ampoule, computed), and [SCALING.md](device/SCALING.md) (the trajectory: the ENIAC ledger) |
 
 ---
 
@@ -317,7 +317,7 @@ A concrete, idealized realization that uses **only** demonstrated physics (no ke
 
 ## The unit you could hold: the nuclear transistor
 
-Every computing technology earns belief when it can point at its unit, the one physical object that switches, stores, and tiles. For electronics that object is the transistor, and what makes a transistor buildable is not its physics but its *pinout*: gate, source, drain, channel, body. This machine has the same pinout, and it exists at three scales today, drawn side by side in the figure below and specified part by part, with prices, dimensions, and the honest gaps, in [device/DEVICE.md](device/DEVICE.md).
+Every computing technology earns belief when it can point at its unit, the one physical object that switches, stores, and tiles. For electronics that object is the transistor, and what makes a transistor buildable is not its physics but its *pinout*: gate, source, drain, channel, body. This machine has the same pinout, and it exists at three scales today, drawn side by side in the figure below and specified part by part, with prices, dimensions, and the honest gaps, in [device/TRANSISTOR.md](device/TRANSISTOR.md).
 
 | terminal | benchtop cell (today, about $350) | crystal cell (the target) | neutron gate (proven) |
 |---|---|---|---|
@@ -329,7 +329,7 @@ Every computing technology earns belief when it can point at its unit, the one p
 | switching time | ms (servo aperture) | µs (Doppler) to ns (line response) | $\Lambda/(1-k)$: **gain × bandwidth = $1/\Lambda$** |
 | gain | none ($\beta \approx 1$) | **the empty socket: the keystone** | $1/(1-k)$, proven |
 
-Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942. The analogy is load bearing, not decorative, and the device document proves it three ways: silicon's *body effect* already exists in the nuclear device as the isomer shift, measured since 1960; the *field effect* already runs on every Mössbauer bench as a coil or Doppler drive gating a γ ray channel (the valve, a pass transistor available today); and the subcritical gate obeys a **constant gain bandwidth product** $M/\tau_{\text{switch}} = 1/\Lambda$ (10 kHz thermal, 100 MHz fast), the op amp law, hiding in reactor kinetics. The full datasheet, characteristic curves, packing densities spanning fourteen orders of magnitude, and absolute maximum ratings are in [device/DEVICE.md](device/DEVICE.md).
+Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942. The analogy is load bearing, not decorative, and the device document proves it three ways: silicon's *body effect* already exists in the nuclear device as the isomer shift, measured since 1960; the *field effect* already runs on every Mössbauer bench as a coil or Doppler drive gating a γ ray channel (the valve, a pass transistor available today); and the subcritical gate obeys a **constant gain bandwidth product** $M/\tau_{\text{switch}} = 1/\Lambda$ (10 kHz thermal, 100 MHz fast), the op amp law, hiding in reactor kinetics. The full datasheet, characteristic curves, packing densities spanning fourteen orders of magnitude, and absolute maximum ratings are in [device/TRANSISTOR.md](device/TRANSISTOR.md).
 
 ![The nuclear transistor at three scales](figures/fig10_nuclear_transistor.svg)
 
