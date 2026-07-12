@@ -299,7 +299,7 @@ Every component except one is either routine nuclear physics or recently demonst
 | [gates/](gates/) | the criterion evaluated against NUBASE2020 and ENSDF for all 1870 known isomers; curated candidates with measured multiplicities; the experiment menu of required cross sections per facility |
 | [transport/](transport/) | Monte Carlo demonstrations of every routine gate: the exact coincidence multiplier, absorption complement, a measured Green's matrix with superposition check, the saturable sigmoid |
 | [simulator/](simulator/) | the digital twin: a Tier 1 machine run decay by decay, validated against exact enumeration, with decays per sample and energy per sample measured |
-| [device/](device/) | the nuclear transistor: the machine's unit specified physically at three scales (benchtop, crystal, reactor), with one pinout, parts, prices, and the gain socket honestly empty; and the ampoule: the sealed self sustaining unit, with its inventory ledger, lamp arithmetic, and aging curves computed |
+| [device/](device/) | the nuclear transistor at three scales with one pinout; the ampoule (sealed self sustaining unit, inventory ledger, lamp arithmetic, aging curves, all computed); and the ENIAC ledger of component levers, ceilings, and borrowed industrial curves |
 
 ---
 
@@ -347,6 +347,10 @@ The worked unit: one liter, 1 GBq of ⁹⁰Sr/⁹⁰Y, a 64 site annealer with i
 
 ![The sealed machine](figures/fig11_sealed_unit.svg)
 
+The lamp's failure carries its own repair, developed in [theory/THEORY.md](theory/THEORY.md) Section 9: the mismatch was a property of *atomic* light, and the inventory contains emitters that are not atomic. Parent isotopes emit their daughters' lines at natural width (the Mössbauer source principle: ⁵⁷Co for ⁵⁷Fe, ¹⁸¹W for ¹⁸¹Ta), ²³³U feeds ²²⁹ᵐTh directly with no photons at all (2 percent branch, a computed standing population of $2\times10^5$ isomers per cm³), and field gradients turn tuning into *addressing* on the MRI principle, with ¹⁸¹Ta moving 42 linewidths per tesla: a millitesla addressed, microsecond latch, fed from inside. Section 10 completes the rate coded canon: the isolation lemma (every fan out is a fresh thinning, never a copy, and then error does not compound with depth at all), the one dial annealing schedule (Geman and Geman applies verbatim to the Poisson event clock), graceful degradation with onboard self calibration against a fixed nuclear line, and multi ampoule composition over energy multiplexed links.
+
+Where this all goes is the subject of [device/SCALING.md](device/SCALING.md), the **ENIAC ledger**: every component with its improvement lever, its physical ceiling, and whose industrial curve improves it for free (timing and collection ride PET and high energy physics; memory rides the nuclear clock laser program; sources ride isotope production). The machine starts nine orders of magnitude past ENIAC per operation on decay heat alone, and catalog technology, with no new physics, carries the sampler another five to six orders. The primitives are not placeholders: every lever multiplies the same counting, thinning, and coincidence the theory is written in.
+
 ---
 
 ## Open problems and how to contribute
@@ -356,7 +360,7 @@ The worked unit: one liter, 1 GBq of ⁹⁰Sr/⁹⁰Y, a 64 site annealer with i
 3. A learning rule: aperture update $\Delta\alpha \propto \mathrm{coincidence}(\text{pre},\text{post})$ is Hebbian or STDP using the *same* coincidence primitive as the AND gate (Appendix B.4); formalize and simulate.
 4. Transport level $\mathcal{G}$ for a real geometry that implements a target weight matrix (signed weights via complementary channels).
 5. Tier 2: a concrete two qubit gate on nuclear spin or Mössbauer DOF with a room temperature error budget.
-6. **The narrowline internal source.** The ampoule's lamp fails to write nuclear memory by a bandwidth ratio of $10^{18}$; any internal mechanism that concentrates decay energy into a sub kHz line (a nuclear pumped laser at a useful wavelength, superradiant narrowing, or something not yet named) reopens self written isomer memory and upgrades the sealed machine from appliance to computer.
+6. **The addressed long retention write.** The broadband route to self written memory is dead by a bandwidth ratio of $10^{18}$, and the narrowline route is now open in principle (nuclear lamps, radiogenic feeding, resonance addressing: theory Section 9); what remains is a state that is simultaneously *parent fed, gradient addressable, and long lived*. A concrete, computable search: scan the catalog in `/gates` for isomers with lifetime above seconds whose feeding parents emit Mössbauer class lines, and rank by the addressing sensitivity $\Gamma/(dE/dB)$.
 7. Measure realized bits per detected quantum for a pixelated spectroscopic boundary against the $\log_2(N_E N_x N_\tau)$ ceiling of the boundary theory.
 
 Open an Issue stating the claim and the test; pair every Pull Request with the Issue it closes.

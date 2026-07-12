@@ -219,4 +219,57 @@ Together 8.1 and 8.2 permit a machine whose enclosure is never breached: problem
 
 ---
 
-*Sections 1 through 3 are the referee armor: every known way a working gate quietly dies, written down with its inequality. Section 4 is the existence proof that the model survives them all at one scale. Sections 6 through 8 are the machine that needs no keystone, no calibration, and no wires: what can be built while the search runs. The rest is the search itself.*
+## 9. The nuclear lamp: closing the bandwidth gap from inside
+
+The sealed unit's failure to write its own memory ([device/SEALED.md](../device/SEALED.md), Section 3) has a specific anatomy: an *atomic* light source (an excimer continuum, $10^{14}$ Hz wide) was aimed at a *nuclear* line ($10^{-4}$ Hz wide), and the overlap integral ate eighteen orders of magnitude. The fix is not a brighter lamp. It is to notice that the mismatch is a property of atomic light, and that a sealed decay inventory contains emitters that are not atomic.
+
+### 9.1 The bandwidth matching principle
+
+The pumping rate of an absorber by a source is $R = \int \sigma(\nu)\,\phi_\nu\, d\nu$, and for a source of bandwidth $\Delta\nu_s$ delivering flux $\phi$ onto a line of width $\Gamma$, $R \sim \phi\,\sigma_0\,(\Gamma/\Delta\nu_s)$ when $\Delta\nu_s \gg \Gamma$. The figure of merit is the bandwidth ratio, and it is binary in practice:
+
+- **atomic sources** (thermal, excimer, scintillation, even most lasers) have $\Delta\nu_s/\Gamma \gtrsim 10^{12}$ against nuclear lines: dead, per the arithmetic already published;
+- **nuclear sources emit nuclear lines.** A radioactive parent that decays *into* the working transition emits quanta at exactly the resonant energy with exactly the natural width (recoil free fraction permitting): $\Delta\nu_s/\Gamma = 1$ by construction. This is not a proposal; it is the operating principle of every Mössbauer source since 1958. ⁵⁷Co embedded in a rhodium foil *is* a 14.4 keV lamp with a $10^{-8}$ eV linewidth: the narrowline internal source, sitting in catalogs for seventy years.
+
+The design consequence for the ampoule is one sentence: **the trim layer's resonant channels must be driven by embedded parent isotopes of their own working transitions, never by the broadband core.** The core remains power, clock, and entropy; the parents are the machine's monochromatic light plant, one line per channel. Standard matched pairs, all demonstrated: ⁵⁷Co → ⁵⁷Fe (14.4 keV), ¹¹⁹ᵐSn → ¹¹⁹Sn (23.9 keV), ¹⁵¹Sm → ¹⁵¹Eu (21.5 keV), ¹⁸¹W → ¹⁸¹Ta (6.2 keV).
+
+### 9.2 Radiogenic feeding: writing without photons
+
+The second nuclear channel skips light entirely: some parents decay *directly into the metastable state*. The canonical case is the machine's own memory isotope: about 2 percent of ²³³U alpha decays populate ²²⁹ᵐTh, which is how the isomer's radiation was first detected. A crystal doped with ²³³U therefore maintains a **standing isomer population** with no laser and no lamp, at equilibrium $n_m = 0.02\,\lambda_{233}\,N_{233}\,\tau_m$: computable, self replenishing, and proven physics. Numbers in [`sealed_results.md`](../device/sealed_results.md): at $10^{17}$ ²³³U per cm³ the standing population is of order $2\times10^5$ isomers per cm³. What radiogenic feeding does *not* provide is addressing: it writes everywhere at once, a bias, not a bit. It supplies the resonant reference ensemble (a carrier the trim layer can modulate), and it is the existence proof that the sealed unit can hold excited nuclear state without any penetration; the addressed write is what remains.
+
+### 9.3 Resonance addressing: the MRI move
+
+Addressing is the third piece, and magnetic resonance imaging already solved it in a different spectral register: flood the volume with a narrowline drive, and let a **field gradient** decide which voxel is on resonance. The trim layer's Zeeman tuning becomes spatial selection: with line sensitivity $dE/dB$ and gradient $G = dB/dx$, the addressable resolution is
+
+$$ \delta x \;=\; \frac{\Gamma}{(dE/dB)\,G}. $$
+
+The sensitivity is set by the linewidth, which makes the ultranarrow lines the easy ones. For ⁵⁷Fe ($\Gamma = 4.7\times10^{-9}$ eV, about 0.7 linewidths per tesla) gradients of tesla per centimeter are needed: hard. For **¹⁸¹Ta** (6.2 keV, $t_{1/2} = 6.05$ µs, $\Gamma = 7.5\times10^{-11}$ eV) the same nuclear moment buys about **40 linewidths per tesla**, so a *millitesla* scale field moves a channel by a full linewidth, and modest gradients address millimeter voxels; its Doppler sensitivity, one linewidth per 3.6 µm/s, makes a whisper of a piezo a full modulation (and makes vibration isolation a real engineering line item, stated honestly). ¹⁸¹Ta is fed by ¹⁸¹W (121 d), a standard source; its 6 µs lifetime makes it not storage but a **latch**: a microsecond scale, field addressed, parent driven holding register, which is precisely the missing timing element between the 98 ns ⁵⁷Fe relay and the 630 s ²²⁹Th register. Known cost, stated plainly: the 6.2 keV transition is heavily conversion dominated and its recoil free fraction is small, so photon budgets are thin; the latch is real physics with an efficiency tax, not free.
+
+### 9.4 What remains open
+
+Sections 9.1 to 9.3 upgrade the sealed machine from "no nuclear state at all" to: proven relays (ns), proven latch physics (µs, addressable), and a proven standing register population (minutes, unaddressed). The single remaining gap, now stated much more narrowly than "the bandwidth problem," is the **addressed long retention write**: either a parent fed, gradient addressed line with lifetime above seconds (a search the isomer catalog in [/gates](../gates/) can run: long lived isomers with Mössbauer class feeding parents), or a bright sub kHz source at 148.38 nm (the nuclear clock community's laser roadmap, arriving on its own schedule). That is Open Problem 6, sharpened.
+
+---
+
+## 10. The rate coded canon: everything that keeps stream computation honest
+
+Four results complete the defensibility of the rate coded machine, each short, each load bearing.
+
+### 10.1 The isolation lemma and the variance calculus
+
+Stream circuits fail in exactly one way: **reuse.** If a stream feeds two paths that later recombine, products are biased: $\mathbb{E}[z\,z] = x \neq x^2$, and generally $\mathbb{E}[z_1 z_2] = x_1 x_2 + \rho\,\sigma_1\sigma_2$ for correlation $\rho$. The cure is structural: by the independent increments property, disjoint time slices and independent thinnings of one source are exactly independent (Section 5.1), so the rule is: **every fan out is a fresh thinning, never a copy.** With the rule obeyed, the calculus is benign: each gate's output is itself a Bernoulli/Poisson stream whose *mean is exactly* the target function of the input means, so depth does not compound systematic error at all; an estimate from $N$ slices has $\mathrm{Var} = p(1-p)/N \leq 1/4N$ *at any depth*. Depth costs only budget: a depth $d$ circuit read to $b$ bits consumes $O(d\,2^{2b})$ events per evaluation. Error does not accumulate; only the bill does.
+
+### 10.2 The annealing schedule, as one moving part
+
+The sampler's temperature is a global scale on $u_k$, and $u_k$ is built from weight carrying fluxes: one master aperture on the weight paths scales all of them, so **the machine's temperature is a single mechanical dial**. The Geman and Geman theorem (IEEE PAMI 6, 721 (1984)) then applies verbatim: a logarithmic cooling schedule $T(k) \geq c/\log(1+k)$ converges in probability to the ground state, and any faster practical schedule inherits the usual guarantees on approximate optima. The ampoule anneals by turning one absorber, on a printed schedule, powered by a clockwork spring if need be. Asynchronous updates are not an approximation here: the Poisson event clock *is* Glauber dynamics, which is the setting the theorem wants.
+
+### 10.3 Graceful degradation and self calibration
+
+There is no bit to flip: a lost quantum perturbs a rate by one count in $N$, so single event upsets, the plague of conventional radiation adjacent electronics, do not exist as a failure class. Uniform losses (aging, uniform dose, detector fatigue) are global thinnings, absorbed exactly by degree homogeneity (Section 7). The residual hazard is *nonuniform* drift, one path fading faster than another, which breaks the like for like rule slowly; the counter is already onboard: a fixed nuclear line (the ²⁴¹Am 60 keV, or any parent line from 9.1) is a drift free standard against which every path's ratio can be re trimmed through the wall, MRI shim style. The machine carries its own meter stick, of nuclear invariance, at zero marginal cost.
+
+### 10.4 Modules
+
+Ampoules compose: each unit's boundary glow, filtered to a distinct emission line, is another unit's beam injection input (Section 8.2, item 4), so a rack of ampoules is a network with energy division multiplexed links, one line per edge, no shared electronics, and the aging theorem applying per module. Nothing about the theory is single vessel.
+
+---
+
+*Sections 1 through 3 are the referee armor: every known way a working gate quietly dies, written down with its inequality. Section 4 is the existence proof that the model survives them all at one scale. Sections 6 through 10 are the machine that needs no keystone, no calibration, and no wires: what can be built while the search runs. The rest is the search itself.*

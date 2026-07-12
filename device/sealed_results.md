@@ -18,6 +18,18 @@
 - excitation rate per nucleus R = 3.2e-15 /s; per voxel of 1e8 nuclei = 3.2e-07 /s, i.e. one write quantum per **36 days**
 - verdict: the bandwidth mismatch (lamp 1e+14 Hz / line 6e-05 Hz = 2e+18) cannot be bought back with activity. Broadband self pumping of neV lines is dead; the sealed unit computes in rates, not isomer populations.
 
+## The nuclear lamp: the fix, computed
+
+- radiogenic feeding: lambda(233U) = 1.38e-13/s; at 1e+17 233U/cm3 and a 2% branch, **276 isomers/s/cm3**
+- standing 229mTh population at tau_m = 630 s: **1.7e+05 isomers/cm3**, self replenishing, no photons, no penetrations (unaddressed: a carrier, not a bit)
+
+| line | Gamma (eV) | Zeeman shift per T (0.1 mu_N) | linewidths per T | field per linewidth | Doppler per linewidth |
+|---|---|---|---|---|---|
+| 57Fe 14.4 keV | 4.64e-09 | 3.2e-09 eV/T | **0.7** | 1472 mT | 96.62 um/s |
+| 181Ta 6.2 keV | 7.54e-11 | 3.2e-09 eV/T | **41.8** | 24 mT | 3.63 um/s |
+
+- reading: 57Fe needs tesla scale steering; **181Ta moves a full linewidth per ~24 mT and per 3.6 um/s**: millitesla gradients address it, whispers modulate it. Fed by 181W (121 d), it is the machine's microsecond, field addressed latch. Known tax: heavy internal conversion and a small recoil free fraction; the latch is real but photon poor.
+
 ## Boundary bandwidth (detected budget 1e7 events/s)
 
 | precision b (bits) | counts per read 2^2b | reads per second |
