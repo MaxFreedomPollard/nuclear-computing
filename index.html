@@ -382,7 +382,7 @@ $$</p>
 <tbody>
 <tr>
 <td><a href="theory/">theory/</a></td>
-<td>full derivations, the engineering form of the keystone criterion (areal density, self absorption, collection, level restoration, reset, pile up), and the reactor scale existence proof</td>
+<td>full derivations, the engineering form of the keystone criterion (areal density, self absorption, collection, level restoration, reset, pile up), the reactor scale existence proof, keystone free Bernstein universality, the aging invariance theorem, and the boundary (I/O) theory</td>
 </tr>
 <tr>
 <td><a href="gates/">gates/</a></td>
@@ -398,7 +398,7 @@ $$</p>
 </tr>
 <tr>
 <td><a href="device/">device/</a></td>
-<td>the nuclear transistor: the machine's unit specified physically at three scales (benchtop, crystal, reactor), with one pinout, parts, prices, and the gain socket honestly empty</td>
+<td>the nuclear transistor: the machine's unit specified physically at three scales (benchtop, crystal, reactor), with one pinout, parts, prices, and the gain socket honestly empty; and the ampoule: the sealed self sustaining unit, with its inventory ledger, lamp arithmetic, and aging curves computed</td>
 </tr>
 </tbody>
 </table>
@@ -430,6 +430,21 @@ Read the last row left to right and it is the research program in one line: the 
 
 ---
 
+## The ampoule: the machine, sealed
+
+Take the unit above, remove the wall socket, and ask what survives. The answer, worked out in [device/SEALED.md](device/SEALED.md) and computed line by line in [device/sealed_results.md](device/sealed_results.md), is a vessel with **no penetrations**: an alpha core in high pressure krypton is a nuclear pumped 148 nm lamp, clock, and entropy source at once; the problem is ground into a compute shell as geometry; weights are trimmed *through the sealed wall* by Zeeman coils (about 0.7 natural linewidths per tesla on ⁵⁷Fe) and piezoelectric Doppler rings (one linewidth per 0.097 mm/s); and a betavoltaic layer harvests the same decay budget to power the boundary readout, so the machine pays for its own mouth. Problems enter as fields, answers leave as glow.
+
+Two results, one negative and one positive, make the design honest:
+
+- **The lamp cannot write.** The krypton excimer continuum lands, remarkably, on the ²²⁹Th line at 148.38 nm, but the arithmetic is fatal: a 1 GBq core delivers about one write quantum per $10^8$ nucleus voxel every five weeks, because the lamp's bandwidth exceeds the nuclear linewidth by eighteen orders of magnitude and no activity buys that back. Broadband self pumping of neV lines is dead, so the sealed machine computes **in rates, not isomer populations**, until a narrowline internal source or the keystone exists.
+- **Rates are enough for more than expected.** Two additions to [theory/THEORY.md](theory/THEORY.md) carry the ampoule: the **Bernstein construction** (Section 6) proves any continuous function on $[0,1]$ is computable feed forward by the three routine gates alone, no gain anywhere, verified gate by gate in [/transport](transport/results.md); and the **aging invariance theorem** (Section 7) proves that a degree homogeneous circuit's correctness is exactly activity invariant, so a sealed source's decay costs speed and never accuracy. The design rule is one line: compare like coincidence degree only with like.
+
+The worked unit: one liter, 1 GBq of ⁹⁰Sr/⁹⁰Y, a 64 site annealer with its Ising instance etched in, about 38,000 independent samples per second at sealing, 8 bit readout at 153 reads per second through a $10^7$ event boundary budget, half of everything at year 29 with an identical stationary law, and an end of mission curve known in closed form on the day of manufacture. The boundary theory (Section 8: counts, currents, spectral channels, and a ceiling near 24 bits per detected quantum) prices every translation between the radiation native machine and the electronic world it reports to.
+
+![The sealed machine](figures/fig11_sealed_unit.svg)
+
+---
+
 ## Open problems and how to contribute
 
 1. **Keystone:** propose or measure a compact state meeting the leak condition with $\beta&gt;1$ *in a level restoring or convertible class* (theory, Section 2). *This is problem number one.* A concrete, computable subproblem: search ENSDF for **heterogeneous pairs** of isomers whose cascade lines and gateway lines are mutually resonant (gate A's output pumps gate B and vice versa); the search space is already tabulated in `/gates`.
@@ -437,6 +452,8 @@ Read the last row left to right and it is the research program in one line: the 
 3. A learning rule: aperture update $\Delta\alpha \propto \mathrm{coincidence}(\text{pre},\text{post})$ is Hebbian or STDP using the *same* coincidence primitive as the AND gate (Appendix B.4); formalize and simulate.
 4. Transport level $\mathcal{G}$ for a real geometry that implements a target weight matrix (signed weights via complementary channels).
 5. Tier 2: a concrete two qubit gate on nuclear spin or Mössbauer DOF with a room temperature error budget.
+6. **The narrowline internal source.** The ampoule's lamp fails to write nuclear memory by a bandwidth ratio of $10^{18}$; any internal mechanism that concentrates decay energy into a sub kHz line (a nuclear pumped laser at a useful wavelength, superradiant narrowing, or something not yet named) reopens self written isomer memory and upgrades the sealed machine from appliance to computer.
+7. Measure realized bits per detected quantum for a pixelated spectroscopic boundary against the $\log_2(N_E N_x N_\tau)$ ceiling of the boundary theory.
 
 Open an Issue stating the claim and the test; pair every Pull Request with the Issue it closes.
 

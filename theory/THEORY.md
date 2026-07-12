@@ -149,4 +149,74 @@ An estimate of a rate $r$ from a count $n \sim \mathrm{Poisson}(rT)$ has Fisher 
 
 ---
 
-*Sections 1 through 3 are the referee armor: every known way a working gate quietly dies, written down with its inequality. Section 4 is the existence proof that the model survives them all at one scale. The rest is the search for that survival at a scale you can hold.*
+## 6. Universality without the keystone: the Bernstein construction
+
+The universality results of the main document (Cybenko for analog, NAND for digital) both consume the threshold gate, and therefore both wait on the keystone. This section proves that a large and useful class of computation waits on nothing.
+
+**The stream algebra.** Encode $x \in [0,1]$ as a thinned Poisson stream of rate $x\lambda$ (Section 5.1), or equivalently as the Bernoulli occupancy of its time slices. The three routine gates then implement, exactly:
+
+- coincidence: $z = x \cdot y$ (independent streams multiply, Section 5.2),
+- scattering MUX with select weight $s$: $z = s\,x + (1-s)\,y$ (convex combination),
+- absorption: $z = 1 - x$ (complement).
+
+This is precisely the algebra of stochastic computing (Gaines 1967), realized in radiation rather than in shift registers.
+
+**Theorem (feed forward universality).** For any continuous $f : [0,1] \to [0,1]$ and any $\varepsilon > 0$ there is a *feed forward* circuit of the three routine gates whose output stream has rate $B_n[f](x)\,\lambda$ with $\sup_x |B_n[f](x) - f(x)| < \varepsilon$, where
+
+$$ B_n[f](x) \;=\; \sum_{k=0}^{n} \binom{n}{k} x^k (1-x)^{n-k}\, f\!\left(\tfrac{k}{n}\right) $$
+
+is the degree $n$ Bernstein polynomial of $f$.
+
+*Proof.* The Bernstein coefficients $\beta_k = f(k/n)$ lie in $[0,1]$ because $f$ does. Draw $n$ independent time slices of the input stream (independence by Section 5.1); the number $k$ of occupied slices is $\mathrm{Binomial}(n, x)$. Use $k$ to select, by a MUX tree, a reference stream of rate $\beta_k \lambda$ (a thinned aperture constant). The output occupancy is $\mathbb{E}[\beta_K] = B_n[f](x)$ by construction, and $B_n[f] \to f$ uniformly (Bernstein 1912), with error $O(\|f''\|_\infty / n)$ for smooth $f$. Every element used is a routine gate. $\square$
+
+The synthesis of arbitrary polynomials in this form is the stochastic logic architecture of Qian and Riedel (DAC 2008; IEEE Trans. Computers 60, 93 (2011)), imported here wholesale: their shift register Bernoulli sources are replaced by thinned decay streams that no circuit had to generate.
+
+**What the keystone actually buys.** The construction is feed forward and memoryless: it approximates functions, it does not iterate them. Three things remain locked behind the threshold gate with gain: *recurrence* (closing loops without signal death requires $\Gamma_{\text{eff}} \geq 1$), *restoration* (composing unbounded depth requires levels that do not degrade), and *memory coupled dynamics* (Turing completeness requires state that the computation itself rewrites). The honest hierarchy is therefore: **function approximation and Monte Carlo estimation are keystone free; open loop inference is keystone free; anything with a feedback loop crossing a gain deficit is not.** This sharpens both kill criteria: even a total failure of Phase B leaves a machine that evaluates arbitrary continuous functions and integrals by physics alone. The construction is verified numerically, gate by gate, in [/transport](../transport/results.md).
+
+**Cost accounting.** Precision still obeys Section 5.6 at every stage: a depth $d$ Bernstein circuit read to $b$ bits consumes $O(d\, 2^{2b})$ source events per evaluation, and the degree $n$ needed scales as $O(\|f''\|/\varepsilon)$. Nothing here is fast. It is merely universal, free of the keystone, and running on decays.
+
+---
+
+## 7. Aging invariance: correctness does not decay
+
+A sealed source decays; the machine built on it slows. This section proves that a properly designed machine slows *without becoming wrong*, which is the mathematical heart of self sustainment.
+
+**Setup.** Let every stream in the machine derive from one source of activity $\lambda(t) = \lambda_0\, 2^{-t/T}$, so all rates scale together by $s = \lambda(t)/\lambda_0$. Define the **coincidence degree** $\deg(r)$ of a signal: a thinned stream has degree 1; a coincidence output has $\deg = \deg_1 + \deg_2$ (its rate is $2\tau_w r_1 r_2$); MUX and absorption preserve degree (convex combinations and survival fractions of like degree streams).
+
+**Theorem (degree homogeneity).** Under global scaling $\lambda \to s\lambda$, every signal of degree $k$ transforms as $r \to s^k r$. Consequently any quantity formed as a *ratio of like degree signals* is invariant, and any decision made by comparing like degree signals is invariant, for all $s > 0$.
+
+*Proof.* Induction over the circuit. Thinning multiplies a degree $k$ signal by a constant; coincidence maps $(s^{k_1} r_1,\, s^{k_2} r_2) \mapsto 2\tau_w s^{k_1 + k_2} r_1 r_2$; MUX and absorption are linear with constant coefficients. Ratios of equal powers of $s$ cancel. $\square$
+
+**Design rule (boxed in one line).** *Compare like degree only with like degree.* A circuit that thresholds a degree 2 coincidence signal against a degree 1 reference is correct on the day it ships and drifts as $2^{-t/T}$ thereafter; the same circuit thresholded against a degree 2 reference is correct until the source is gone. Homogenization costs one gate per reference path and buys immunity to the only aging mechanism the substrate has.
+
+**Corollary 1 (the sampler does not age).** The Gibbs acceptance $\sigma(u_k)$ of the sampling tier depends only on occupancies $z_j \in \{0,1\}$ and dimensionless weights, never on absolute rates; the stationary law $p(z) \propto \exp(\tfrac12 z^\top W z + b^\top z)$ is therefore exactly activity invariant. Aging rescales only the event clock: mixing time in wall clock seconds grows as $2^{+t/T}$.
+
+**Corollary 2 (the aging law of a sealed machine).** A degree homogeneous machine of half life $T$ delivers throughput $C(t) = C_0\, 2^{-t/T}$ at unchanged accuracy, with no recalibration, no trimming, and no reference standard other than itself. Its performance at end of mission is known on the day of manufacture to Poisson precision. No battery powered computer can state its own end of life curve in closed form; this one can.
+
+---
+
+## 8. The boundary: translating compute in and out
+
+The charter forbids conventional electronics *inside* the loop; it says nothing about the skin. This section is the theory of the skin: how radiation native results become currents, counts, and spectra, and how external problems become apertures, velocities, and fields, with the price of every conversion stated.
+
+### 8.1 Outputs
+
+1. **Counts (digital).** A boundary detector converts a rate $r$ to counted quanta; the precision law prices it: $b$ bits per read costs $2^{2b}$ counts, so a boundary budget $\lambda_B$ (detected events per second) supports an output bandwidth $f_{\text{out}} = \lambda_B / 2^{2b}$. At $\lambda_B = 10^7$ s⁻¹ detected: about 150 reads per second at 8 bits, 40,000 at 4 bits. Precision is purchasable per port, per read.
+2. **Current (analog).** A photovoltaic or betavoltaic junction at the boundary converts a quantum rate to $I = e\, G\, r$ ($G$ the carrier yield per quantum). The shot noise of $I$ *is* the same Poisson limit in a different unit; nothing is gained or lost in the conversion, which is the correct sanity check.
+3. **Spectrum (energy division multiplexing).** Distinct isotope lines are orthogonal channels through one physical window: a boundary spectrometer with resolving power to separate $N_E$ lines reads $N_E$ parallel ports simultaneously. Position adds $N_x$ pixel ports; arrival time adds $N_\tau$ resolvable bins per mean interval.
+4. **The per quantum ceiling.** One detected quantum distinguishable among $N_E N_x N_\tau$ classes carries at most $\log_2(N_E N_x N_\tau)$ bits. A pixelated CZT boundary ($N_E \approx 10^2$ lines, $N_x = 256$ pixels, $N_\tau \approx 10^3$ timing bins) ceilings near **24 bits per detected quantum**; realized mutual information sits below this, but the ceiling sets the design target: *spend the decay budget on distinguishable quanta, not on more quanta.*
+
+### 8.2 Inputs
+
+1. **Apertures** (mechanical or magnetic shutters): set thinning fractions $x$; slow (ms and up), absolute, zero power at rest. The program counter of the stochastic tier.
+2. **Doppler drives.** A resonant channel detunes by one natural linewidth at $v = c\,\Gamma/E$: for ⁵⁷Fe, $0.097$ mm/s. Piezoelectric velocity transducers (the ordinary Mössbauer drive, seventy years of practice) modulate resonant transmission fully at kHz to MHz rates: **the fast input port**, writing waveforms directly into cross sections.
+3. **Zeeman programming.** An external field shifts hyperfine components by of order $0.1\,\mu_N B$: for ⁵⁷Fe about **0.7 natural linewidths per tesla**, enough to move a resonant channel on or off a line with ordinary coils, *through a sealed wall, with no penetration*. Weights become field maps: the machine is reprogrammed the way an MRI shims, from outside.
+4. **Beam injection** through thin windows (X ray, VUV, or neutron): the high bandwidth port when a penetration is acceptable.
+
+### 8.3 The no penetration principle
+
+Together 8.1 and 8.2 permit a machine whose enclosure is never breached: problems enter as *fields and motions* (Zeeman maps, Doppler waveforms, aperture settings through magnetic couplings), answers leave as *glow* (the boundary emission spectrum, read by any external spectrometer or diode). Input by field, output by light, power by decay: the complete unit is specified in [device/SEALED.md](../device/SEALED.md).
+
+---
+
+*Sections 1 through 3 are the referee armor: every known way a working gate quietly dies, written down with its inequality. Section 4 is the existence proof that the model survives them all at one scale. Sections 6 through 8 are the machine that needs no keystone, no calibration, and no wires: what can be built while the search runs. The rest is the search itself.*

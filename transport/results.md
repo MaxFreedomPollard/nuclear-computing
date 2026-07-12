@@ -64,3 +64,17 @@ Superposition check with mixed input x = [1.0, 0.3, 0.0, 0.7]: worst port error 
 | 10.0 | 0.9136 | 0.9136 |
 
 A soft threshold with no net gain: the neuron of the stochastic tier, available today with no keystone physics.
+
+## 5. Bernstein feed forward universality (keystone free)
+
+Target f(x) = 1/4 + x^2/2, coefficients beta_k = f(k/n). Per trial: n independent time sliced Bernoulli(x) samples of the input stream, k = their sum, output drawn from the aperture stream Bernoulli(beta_k). Gates used: thinning, coincidence counting, scattering MUX. No gain element anywhere (THEORY.md, Section 6). The circuit realizes the Bernstein polynomial B_n[f], which approaches f as 1/n; the table shows both the noise level agreement with B_n and the 1/n convergence.
+
+| x | f(x) | B_2 exact | B_2 measured | B_8 exact | B_8 measured |
+|---|---|---|---|---|---|
+| 0.0 | 0.2500 | 0.2500 | 0.2499 | 0.2500 | 0.2499 |
+| 0.25 | 0.2812 | 0.3281 | 0.3277 | 0.2930 | 0.2929 |
+| 0.5 | 0.3750 | 0.4375 | 0.4377 | 0.3906 | 0.3900 |
+| 0.75 | 0.5312 | 0.5781 | 0.5776 | 0.5430 | 0.5442 |
+| 1.0 | 0.7500 | 0.7500 | 0.7500 | 0.7500 | 0.7488 |
+
+The circuit matches its Bernstein polynomial to **0.0012** (counting noise at 300,000 trials), and the polynomial approaches the target as the theorem requires: max |B_n - f| = 0.0625 at n = 2, 0.0156 at n = 8 (the exact x(1-x)f''/2n law, halving per doubling of degree). A feed forward circuit of routine gates evaluates a nonlinear function of its input rate: function approximation does not wait on the keystone.
