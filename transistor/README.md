@@ -47,6 +47,14 @@ This is the p bit of the stochastic tier, and nothing in it awaits a discovery.
 
 **What is electronics and what is not.** In this version the weighted sum is geometry, the randomness is nuclear, the state is a rate, and the threshold is a discriminator at the boundary. The purity claim of the charter is staged, not violated: each successive version pushes the boundary outward, and the document says so plainly.
 
+**The recurrence loop, specified.** The feedback that makes cells a sampler rather than a calculator is one control law per site, executed on a fixed cycle:
+
+1. count the site's coincidence volume for a window $T_{\text{loop}}$, yielding $n_k$;
+2. form the drive $u_k = (n_k - n_0)/s$, with offset and scale set once at calibration (they encode the site's bias and the weight normalization);
+3. set the site's aperture to **duty** $\sigma(u_k)$ for the next window: the shutter dwells open that fraction of the cycle, a pulse width modulated Gibbs acceptance.
+
+The timing closes on itself: at a thinned input rate of $10^4$ per second and 4 bit drive resolution, the precision law sets $T_{\text{loop}} = 2^{2b}/r \approx 26$ ms, which is a 40 Hz loop, which is exactly a hobby servo's natural cadence. Quantized acceptance biases the sampled law by an amount bounded by the quantization step (the variance calculus of theory Section 10.1 prices it); 4 bits is ample for annealing. Two implementations, honestly ranked: **Mode A** (the working mode): a boundary counter and lookup table drive the servos at up to kHz, electronics touching only counts and servo commands, never quanta in flight. **Mode B** (the demonstration mode): the duty table is printed and a clockwork cam or a patient human executes it at tenths of hertz, proving the loop contains no essential silicon, at a pace that makes the point and nothing else. Electronics free recurrence at speed is precisely what the valve fabric ([VALVE.md](VALVE.md)) and the keystone are for.
+
 ## Between the scales: the valve, or why "field effect" is not a metaphor
 
 Before the crystal cell, one device deserves its own heading because it exists today and is usually overlooked: put a resonant absorber foil (⁵⁷Fe, or ¹⁸¹Ta for sensitivity) in a beam from its matched parent source, and wrap it in a coil. The foil transmits when detuned and blocks when on line; the coil's field moves the line (0.7 linewidths per tesla for ⁵⁷Fe, 42 for ¹⁸¹Ta); therefore **current in a coil gates a γ ray stream**. That is a field effect device in the literal sense of both words: a field, effecting conduction in a channel, at 14.4 keV. A piezoelectric Doppler mount does the same job kinematically at kHz to MHz rates, and has since the 1960s in every Mössbauer laboratory on Earth, where it is called a drive and never called what it is: a modulator terminal on a nuclear valve.
@@ -118,9 +126,11 @@ A visitor looking at the finished crystal machine would see a lead lined box hol
 
 ## Notes accompanying this reference design
 
-Two companion notes extend the unit to its consequences, and stay subordinate to it:
+Four companion notes extend the unit to its consequences, and stay subordinate to it:
 
 - [SEALED.md](SEALED.md): **the machine note**, the ampoule, a sealed self sustaining vessel built from these units, every number computed by [`sealed_unit.py`](sealed_unit.py) into [`sealed_results.md`](sealed_results.md) and figure 11;
+- [EMBODIMENT.md](EMBODIMENT.md): **the build note**, the ampoule at assembly grade: shell by shell dimensions and materials, the assembly sequence, commissioning, the operating procedure, and failure modes;
+- [VALVE.md](VALVE.md): **the logic note**, the field effect γ ray valve as a specified device, an algebra (series is AND of openness, parallel is OR, velocity offsets multiplex one sight line), and a modulator;
 - [SCALING.md](SCALING.md): **the trajectory note**, the ENIAC ledger of how each part of the unit improves, on whose budget, toward which ceiling.
 
 Figure scripts, all deterministic, all run in CI: [`make_transistor_figure.py`](make_transistor_figure.py) (figure 10), [`make_datasheet_figure.py`](make_datasheet_figure.py) (figure 12).

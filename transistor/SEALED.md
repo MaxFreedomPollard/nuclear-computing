@@ -66,7 +66,7 @@ The boundary translates by the theory of THEORY.md Section 8. For a detected bou
 
 - digital ports: $f_{\text{out}} = \lambda_B / 2^{2b}$: about **150 reads per second at 8 bits**, 2,400 at 6 bits, 40,000 at 4 bits (figure 11, panel C);
 - analog ports: betavoltaic current proportional to rate, shot noise limited, same Poisson bound in different units;
-- spectral ports: each distinct emission line in the machine is a separate simultaneous channel through one window; the ²⁴¹Am 60 keV line serves as a free onboard energy calibration;
+- spectral ports: each distinct emission line in the machine is a separate simultaneous channel through one window (the computed channel plan, eight clean CZT channels from catalog sources, is [gates/edm_channels.md](../gates/edm_channels.md)); the ²⁴¹Am 60 keV line serves as a free onboard energy calibration;
 - the ceiling: a pixelated spectroscopic boundary approaches 20 to 25 bits per detected quantum; the design target is always *more distinguishable* quanta, not more quanta.
 
 Inputs cross the wall without holes: aperture settings by magnetic coupling, waveforms by Doppler rings, weight maps by Zeeman coils. The complete I/O surface is fields in, glow out.
@@ -78,6 +78,6 @@ A sealed cylinder, roughly a liter, one GBq of ⁹⁰Sr/⁹⁰Y at the core (181
 - proposal budget: thinned streams totalling $10^6$ proposals per second across sites → order $4\times10^4$ independent samples per second at birth (26 decays per sample, measured in [/simulator](../simulator/results.md));
 - readout: 8 bit sample statistics at about 150 reads per second through the counting port, continuous analog anneal energy on the current port;
 - at year 29: exactly half of all of the above, same answers;
-- license class: GBq sealed sources are institutional (this is the tier between the exempt benchtop cell and the reactor gate of [the reference transistor](README.md)); the ampoule is a laboratory instrument, not a consumer object, and the document says so.
+- assembly grade specification: every shell, dimension, material, and procedure is in the [build note](EMBODIMENT.md); license class: GBq sealed sources are institutional (this is the tier between the exempt benchtop cell and the reactor gate of [the reference transistor](README.md)); the ampoule is a laboratory instrument, not a consumer object, and the document says so.
 
 *The ampoule closes the loop the charter opened: a lump of structured matter, bathed in its own radiation, computing. Nothing enters but fields; nothing leaves but light; nothing inside it can be recalled, recharged, or corrected, and by the aging theorem nothing needs to be.*

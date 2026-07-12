@@ -8,6 +8,7 @@ This directory is the working end of the foundational document's central claim: 
 | `isomer_catalog.csv` | every isomer on Earth: excitation energy, half life, $\lambda_m$, spin parity, decay modes |
 | `candidates.csv`, `candidates.md` | the curated candidates with measured multiplicities, trigger mechanisms, energy leverage, and citations |
 | `experiment_menu.md` | required trigger cross sections and fluxes per candidate per facility; where the keystone lives and dies |
+| `edm_plan.py`, `edm_channels.md` | the computed energy division multiplexing channel plan: eight clean CZT interconnect channels from catalog sources, with leakage matrices and longevity |
 | `data/` | cached NUBASE2020 and ENSDF decay radiation files (IAEA), so every number is reproducible offline |
 
 Headline numbers, all computed from the data in this directory:
