@@ -4,7 +4,7 @@ Figure 10: the nuclear transistor at three scales.
 
 One schematic, three physical embodiments, terminals labeled with the same
 pinout in every panel (GATE, SOURCE, DRAIN, CHANNEL, BODY). Companion to
-device/TRANSISTOR.md; every number drawn here is derived there or in /gates.
+transistor/README.md; every number drawn here is derived there or in /gates.
 """
 import os
 import matplotlib

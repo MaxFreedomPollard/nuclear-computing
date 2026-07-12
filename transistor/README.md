@@ -1,4 +1,4 @@
-# The nuclear transistor: one unit of this computer, held in your hand
+# The reference transistor: one unit of this computer, held in your hand
 
 Every computing technology earns belief at the moment it can point to its unit: the one physical object that switches, stores, and can be tiled into a machine. For electronics that object is the transistor. This document is the answer to "what is yours?", and it gives the answer three times, because the same schematic exists today at three scales: a benchtop cell you could assemble this month from catalog parts, a crystal cell that is the program's target, and a reactor scale cell that already exists and proves the schematic closes. One drawing, three sizes ([figure 10](../figures/fig10_nuclear_transistor.svg)).
 
@@ -113,3 +113,14 @@ Fourteen orders of magnitude of packing density separate the three embodiments o
 A visitor looking at the finished crystal machine would see a lead lined box holding a fingernail sized crystal, two or three laser feeds entering through windows, and a detector ring at the boundary. Nothing moves. There is no hum. The entire computation, the weighted sums flowing through the Green's function, the isomer registers filling and dumping, the coincidence multiplications, is photon traffic inside the crystal, invisible and silent, paid for by a decay budget. The benchtop version is the same idea a visitor can watch: servos clicking apertures, scintillators flashing faintly in the dark, a counter ticking off samples that no pseudorandom generator anywhere had to fake.
 
 *The pinout is the argument, and the datasheet is the proof that the pinout is native: the body effect was already in the Mössbauer textbooks as the isomer shift, the field effect was already on every laboratory bench as the Doppler drive, and the op amp's constant gain bandwidth product was already hiding in reactor kinetics as $1/\Lambda$. If a device has a gate, a source, a drain, a state, and a substrate, it can be tiled; if one of the three embodiments above already runs with gain, the question is not whether this machine can exist, but at what scale it must.*
+
+---
+
+## Notes accompanying this reference design
+
+Two companion notes extend the unit to its consequences, and stay subordinate to it:
+
+- [SEALED.md](SEALED.md): **the machine note**, the ampoule, a sealed self sustaining vessel built from these units, every number computed by [`sealed_unit.py`](sealed_unit.py) into [`sealed_results.md`](sealed_results.md) and figure 11;
+- [SCALING.md](SCALING.md): **the trajectory note**, the ENIAC ledger of how each part of the unit improves, on whose budget, toward which ceiling.
+
+Figure scripts, all deterministic, all run in CI: [`make_transistor_figure.py`](make_transistor_figure.py) (figure 10), [`make_datasheet_figure.py`](make_datasheet_figure.py) (figure 12).

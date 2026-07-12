@@ -1,5 +1,7 @@
 # The ENIAC ledger: what improves, by how much, and what it hits
 
+*A note accompanying [the reference transistor](README.md): how each part of the unit improves, and what it hits.*
+
 Every computing substrate that matters began contemptible. ENIAC (1945) performed five thousand additions per second, drew 150 kilowatts, weighed twenty seven tons, and lost a vacuum tube every day or two: thirty joules per operation, a number so bad that no extrapolation from it predicted the transistor era, because extrapolation was never the point. The point was that the machine's weaknesses lived in *separately improvable components*, each with a physical lever and a distant ceiling. Tubes became transistors became integrated circuits; delay lines became core became DRAM; plugboards became stored programs. Nobody improved "the computer." They improved its parts.
 
 This document is that ledger for the nuclear machine: every component as it exists in this repository today, the lever that improves it, the ceiling physics imposes, and whose industrial curve it rides. The discipline it enforces is the one the user of this argument must accept in both directions: today's numbers are small, and none of them is stuck.

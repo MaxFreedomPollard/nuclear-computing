@@ -397,8 +397,8 @@ $$</p>
 <td>the digital twin: a Tier 1 machine run decay by decay, validated against exact enumeration, with decays per sample and energy per sample measured</td>
 </tr>
 <tr>
-<td><a href="device/">device/</a></td>
-<td>the physical embodiments at three altitudes: <a href="device/TRANSISTOR.md">TRANSISTOR.md</a> (the unit: one pinout at three scales, the valve, the datasheet), <a href="device/SEALED.md">SEALED.md</a> (the machine: the ampoule, computed), and <a href="device/SCALING.md">SCALING.md</a> (the trajectory: the ENIAC ledger)</td>
+<td><a href="transistor/">transistor/</a></td>
+<td><strong>the reference transistor</strong>: one pinout at three scales, the valve, the datasheet with characteristic curves and maximum ratings; with two accompanying notes, <a href="transistor/SEALED.md">SEALED.md</a> (the machine: the ampoule, computed) and <a href="transistor/SCALING.md">SCALING.md</a> (the trajectory: the ENIAC ledger)</td>
 </tr>
 </tbody>
 </table>
@@ -414,7 +414,7 @@ $$</p>
 </ul>
 <hr />
 <h2 id="the-unit-you-could-hold-the-nuclear-transistor">The unit you could hold: the nuclear transistor</h2>
-<p>Every computing technology earns belief when it can point at its unit, the one physical object that switches, stores, and tiles. For electronics that object is the transistor, and what makes a transistor buildable is not its physics but its <em>pinout</em>: gate, source, drain, channel, body. This machine has the same pinout, and it exists at three scales today, drawn side by side in the figure below and specified part by part, with prices, dimensions, and the honest gaps, in <a href="device/TRANSISTOR.md">device/TRANSISTOR.md</a>.</p>
+<p>Every computing technology earns belief when it can point at its unit, the one physical object that switches, stores, and tiles. For electronics that object is the transistor, and what makes a transistor buildable is not its physics but its <em>pinout</em>: gate, source, drain, channel, body. This machine has the same pinout, and it exists at three scales today, drawn side by side in the figure below and specified part by part, with prices, dimensions, and the honest gaps, in <a href="transistor/README.md">the reference transistor</a>.</p>
 <p>| terminal | benchtop cell (today, about $350) | crystal cell (the target) | neutron gate (proven) |
 |---|---|---|---|
 | GATE | shutter aperture $\alpha$ | 148.38 nm beam | control absorber |
@@ -425,7 +425,7 @@ $$</p>
 | switching time | ms (servo aperture) | µs (Doppler) to ns (line response) | $\Lambda/(1-k)$: **gain × bandwidth = $1/\Lambda$** |
 | gain | none ($\beta \approx 1$) | **the empty socket: the keystone** | $1/(1-k)$, proven |
 
-Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942. The analogy is load bearing, not decorative, and the device document proves it three ways: silicon's *body effect* already exists in the nuclear device as the isomer shift, measured since 1960; the *field effect* already runs on every Mössbauer bench as a coil or Doppler drive gating a γ ray channel (the valve, a pass transistor available today); and the subcritical gate obeys a **constant gain bandwidth product** $M/\tau_{\text{switch}} = 1/\Lambda$ (10 kHz thermal, 100 MHz fast), the op amp law, hiding in reactor kinetics. The full datasheet, characteristic curves, packing densities spanning fourteen orders of magnitude, and absolute maximum ratings are in [device/TRANSISTOR.md](device/TRANSISTOR.md).
+Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942. The analogy is load bearing, not decorative, and the device document proves it three ways: silicon's *body effect* already exists in the nuclear device as the isomer shift, measured since 1960; the *field effect* already runs on every Mössbauer bench as a coil or Doppler drive gating a γ ray channel (the valve, a pass transistor available today); and the subcritical gate obeys a **constant gain bandwidth product** $M/\tau_{\text{switch}} = 1/\Lambda$ (10 kHz thermal, 100 MHz fast), the op amp law, hiding in reactor kinetics. The full datasheet, characteristic curves, packing densities spanning fourteen orders of magnitude, and absolute maximum ratings are in [the reference transistor](transistor/README.md).
 
 ![The nuclear transistor at three scales](figures/fig10_nuclear_transistor.svg)
 
@@ -433,7 +433,7 @@ Read the last row left to right and it is the research program in one line: the 
 
 ## The ampoule: the machine, sealed
 
-Take the unit above, remove the wall socket, and ask what survives. The answer, worked out in [device/SEALED.md](device/SEALED.md) and computed line by line in [device/sealed_results.md](device/sealed_results.md), is a vessel with **no penetrations**: an alpha core in high pressure krypton is a nuclear pumped 148 nm lamp, clock, and entropy source at once; the problem is ground into a compute shell as geometry; weights are trimmed *through the sealed wall* by Zeeman coils (about 0.7 natural linewidths per tesla on ⁵⁷Fe) and piezoelectric Doppler rings (one linewidth per 0.097 mm/s); and a betavoltaic layer harvests the same decay budget to power the boundary readout, so the machine pays for its own mouth. Problems enter as fields, answers leave as glow.
+Take the unit above, remove the wall socket, and ask what survives. The answer, worked out in [transistor/SEALED.md](transistor/SEALED.md) and computed line by line in [transistor/sealed_results.md](transistor/sealed_results.md), is a vessel with **no penetrations**: an alpha core in high pressure krypton is a nuclear pumped 148 nm lamp, clock, and entropy source at once; the problem is ground into a compute shell as geometry; weights are trimmed *through the sealed wall* by Zeeman coils (about 0.7 natural linewidths per tesla on ⁵⁷Fe) and piezoelectric Doppler rings (one linewidth per 0.097 mm/s); and a betavoltaic layer harvests the same decay budget to power the boundary readout, so the machine pays for its own mouth. Problems enter as fields, answers leave as glow.
 
 Two results, one negative and one positive, make the design honest:
 
@@ -446,7 +446,7 @@ The worked unit: one liter, 1 GBq of ⁹⁰Sr/⁹⁰Y, a 64 site annealer with i
 
 The lamp's failure carries its own repair, developed in [theory/THEORY.md](theory/THEORY.md) Section 9: the mismatch was a property of *atomic* light, and the inventory contains emitters that are not atomic. Parent isotopes emit their daughters' lines at natural width (the Mössbauer source principle: ⁵⁷Co for ⁵⁷Fe, ¹⁸¹W for ¹⁸¹Ta), ²³³U feeds ²²⁹ᵐTh directly with no photons at all (2 percent branch, a computed standing population of $2\times10^5$ isomers per cm³), and field gradients turn tuning into *addressing* on the MRI principle, with ¹⁸¹Ta moving 42 linewidths per tesla: a millitesla addressed, microsecond latch, fed from inside. Section 10 completes the rate coded canon: the isolation lemma (every fan out is a fresh thinning, never a copy, and then error does not compound with depth at all), the one dial annealing schedule (Geman and Geman applies verbatim to the Poisson event clock), graceful degradation with onboard self calibration against a fixed nuclear line, and multi ampoule composition over energy multiplexed links.
 
-Where this all goes is the subject of [device/SCALING.md](device/SCALING.md), the **ENIAC ledger**: every component with its improvement lever, its physical ceiling, and whose industrial curve improves it for free (timing and collection ride PET and high energy physics; memory rides the nuclear clock laser program; sources ride isotope production). The machine starts nine orders of magnitude past ENIAC per operation on decay heat alone, and catalog technology, with no new physics, carries the sampler another five to six orders. The primitives are not placeholders: every lever multiplies the same counting, thinning, and coincidence the theory is written in.
+Where this all goes is the subject of [transistor/SCALING.md](transistor/SCALING.md), the **ENIAC ledger**: every component with its improvement lever, its physical ceiling, and whose industrial curve improves it for free (timing and collection ride PET and high energy physics; memory rides the nuclear clock laser program; sources ride isotope production). The machine starts nine orders of magnitude past ENIAC per operation on decay heat alone, and catalog technology, with no new physics, carries the sampler another five to six orders. The primitives are not placeholders: every lever multiplies the same counting, thinning, and coincidence the theory is written in.
 
 ---
 
