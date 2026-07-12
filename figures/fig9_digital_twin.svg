@@ -4234,8 +4234,8 @@ L 930.126332 230.663889
       </g>
      </g>
      <g id="text_40">
-      <!-- MTJ p-bit -->
-      <g style="fill: #16213e" transform="translate(664.846121 229.72803) scale(0.09 -0.09)">
+      <!-- MTJ p bit -->
+      <g style="fill: #16213e" transform="translate(665.232839 229.72803) scale(0.09 -0.09)">
        <defs>
         <path id="DejaVuSans-4d" d="M 628 4666 
 L 1569 4666 
@@ -4253,23 +4253,16 @@ L 628 0
 L 628 4666 
 z
 " transform="scale(0.015625)"/>
-        <path id="DejaVuSans-2d" d="M 313 2009 
-L 1997 2009 
-L 1997 1497 
-L 313 1497 
-L 313 2009 
-z
-" transform="scale(0.015625)"/>
        </defs>
        <use xlink:href="#DejaVuSans-4d"/>
        <use xlink:href="#DejaVuSans-54" x="86.279297"/>
        <use xlink:href="#DejaVuSans-4a" x="147.363281"/>
        <use xlink:href="#DejaVuSans-20" x="176.855469"/>
        <use xlink:href="#DejaVuSans-70" x="208.642578"/>
-       <use xlink:href="#DejaVuSans-2d" x="272.119141"/>
-       <use xlink:href="#DejaVuSans-62" x="308.203125"/>
-       <use xlink:href="#DejaVuSans-69" x="371.679688"/>
-       <use xlink:href="#DejaVuSans-74" x="399.462891"/>
+       <use xlink:href="#DejaVuSans-20" x="272.119141"/>
+       <use xlink:href="#DejaVuSans-62" x="303.90625"/>
+       <use xlink:href="#DejaVuSans-69" x="367.382812"/>
+       <use xlink:href="#DejaVuSans-74" x="395.166016"/>
       </g>
       <!-- (silicon) -->
       <g style="fill: #16213e" transform="translate(668.955183 239.806061) scale(0.09 -0.09)">
@@ -4310,6 +4303,13 @@ L 1344 794
 L 1344 0 
 L 684 0 
 L 684 794 
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-2d" d="M 313 2009 
+L 1997 2009 
+L 1997 1497 
+L 313 1497 
+L 313 2009 
 z
 " transform="scale(0.015625)"/>
      </defs>

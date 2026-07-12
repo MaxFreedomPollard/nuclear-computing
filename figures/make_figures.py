@@ -220,6 +220,7 @@ comp = [
     ("Mossbauer γ quantum optics", 5.6, 6.0, BLUE, 0.18, 0.0),
     ("Entangled annihilation γ (Tier 2)", 4.6, 5.2, PURPLE, 0.18, -0.1),
     ("TRIGGERED RELEASE GATE\n(NEEC / IGE): THE KEYSTONE", 2.0, 9.7, RED, -1.7, -1.3),
+    ("Fission gate network (proven,\nreactor scale: the existence proof)", 9.8, 8.6, GREEN, -5.2, 0.5),
 ]
 for name, rx, cy, c, dx, dy in comp:
     s = 520 if "KEYSTONE" in name else 230

@@ -299,6 +299,7 @@ Every component except one is either routine nuclear physics or recently demonst
 | [gates/](gates/) | the criterion evaluated against NUBASE2020 and ENSDF for all 1870 known isomers; curated candidates with measured multiplicities; the experiment menu of required cross sections per facility |
 | [transport/](transport/) | Monte Carlo demonstrations of every routine gate: the exact coincidence multiplier, absorption complement, a measured Green's matrix with superposition check, the saturable sigmoid |
 | [simulator/](simulator/) | the digital twin: a Tier 1 machine run decay by decay, validated against exact enumeration, with decays per sample and energy per sample measured |
+| [device/](device/) | the nuclear transistor: the machine's unit specified physically at three scales (benchtop, crystal, reactor), with one pinout, parts, prices, and the gain socket honestly empty |
 
 ---
 
@@ -311,6 +312,25 @@ A concrete, idealized realization that uses **only** demonstrated physics (no ke
 - **Threshold readout (neuron).** A control beam tuned to a gateway transition triggers release at rate $R_{\text{trig}}\propto\phi_{\text{ctrl}}$; choose $\phi_{\text{ctrl}}$ so the output burst is negligible when $n_m$ is low and large when $n_m$ is high. The output spike train *is* the read.
 - **AND of two cells.** Feed the trigger beam outputs of cells A and B into a coincidence detector (window $\tau_w$): $\lambda_{\text{AND}} = (R_{\text{trig},A} n_{m,A})(R_{\text{trig},B} n_{m,B})\,\tau_w$, HIGH only when both are 1. A third isomer fed by this coincidence propagates the computation; a high threshold veto on it builds NAND.
 - **Why it is computation, not randomness.** The source supplies tokens; the laser writes data; the isomer stores state; trigger beams and coincidence perform directed nonlinear operations on that state. Computation is the *evolution of the coupled fields under those rules*; timing alone (Tier 0) cannot do this, which is precisely why the gates are the theory.
+
+---
+
+## The unit you could hold: the nuclear transistor
+
+Every computing technology earns belief when it can point at its unit, the one physical object that switches, stores, and tiles. For electronics that object is the transistor, and what makes a transistor buildable is not its physics but its *pinout*: gate, source, drain, channel, body. This machine has the same pinout, and it exists at three scales today, drawn side by side in the figure below and specified part by part, with prices, dimensions, and the honest gaps, in [device/DEVICE.md](device/DEVICE.md).
+
+| terminal | benchtop cell (today, about $350) | crystal cell (the target) | neutron gate (proven) |
+|---|---|---|---|
+| GATE | shutter aperture $\alpha$ | 148.38 nm beam | control absorber |
+| SOURCE | ¹³⁷Cs disk, 1 µCi | pump laser + source bath | driver and neighbor flux |
+| DRAIN | coincidence rate out | 8.4 eV burst $\propto n_m$ | multiplied leakage |
+| CHANNEL | encoded rate $x\lambda$ | isomer fraction $n_m$ | neutron population |
+| BODY | scintillator | CaF₂ lattice | moderator |
+| gain | none ($\beta \approx 1$) | **the empty socket: the keystone** | $1/(1-k)$, proven |
+
+Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942.
+
+![The nuclear transistor at three scales](figures/fig10_nuclear_transistor.svg)
 
 ---
 
