@@ -29,7 +29,7 @@ Final KL divergence after 2,000,000 decays: **5.15e-04** over all 256 states. Th
 
 ## Energy per independent sample, by carrier
 
-| carrier | J per quantum | J per sample | vs MTJ p-bit (33 fJ/sample) |
+| carrier | J per quantum | J per sample | vs MTJ p bit (33 fJ/sample) |
 |---|---|---|---|
 | 229mTh quantum (8.4 eV) | 1.34e-18 | 3.49e-17 | 945x cheaper |
 | 57Fe quantum (14.4 keV) | 2.31e-15 | 6.02e-14 | 2x costlier |

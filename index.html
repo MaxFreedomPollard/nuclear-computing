@@ -396,6 +396,10 @@ $$</p>
 <td><a href="simulator/">simulator/</a></td>
 <td>the digital twin: a Tier 1 machine run decay by decay, validated against exact enumeration, with decays per sample and energy per sample measured</td>
 </tr>
+<tr>
+<td><a href="device/">device/</a></td>
+<td>the nuclear transistor: the machine's unit specified physically at three scales (benchtop, crystal, reactor), with one pinout, parts, prices, and the gain socket honestly empty</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -409,219 +413,109 @@ $$</p>
 <li><strong>Why it is computation, not randomness.</strong> The source supplies tokens; the laser writes data; the isomer stores state; trigger beams and coincidence perform directed nonlinear operations on that state. Computation is the <em>evolution of the coupled fields under those rules</em>; timing alone (Tier 0) cannot do this, which is precisely why the gates are the theory.</li>
 </ul>
 <hr />
-<h2 id="open-problems-and-how-to-contribute">Open problems and how to contribute</h2>
-<ol>
-<li><strong>Keystone:</strong> propose or measure a compact state meeting the leak condition with $\beta>1$ <em>in a level restoring or convertible class</em> (theory, Section 2). <em>This is problem number one.</em> A concrete, computable subproblem: search ENSDF for <strong>heterogeneous pairs</strong> of isomers whose cascade lines and gateway lines are mutually resonant (gate A's output pumps gate B and vice versa); the search space is already tabulated in <code>/gates</code>.</li>
-<li>Tighten the throughput law for fan out reuse: when is a count "spent"?</li>
-<li>A learning rule: aperture update $\Delta\alpha \propto \mathrm{coincidence}(\text{pre},\text{post})$ is Hebbian or STDP using the <em>same</em> coincidence primitive as the AND gate (Appendix B.4); formalize and simulate.</li>
-<li>Transport level $\mathcal{G}$ for a real geometry that implements a target weight matrix (signed weights via complementary channels).</li>
-<li>Tier 2: a concrete two qubit gate on nuclear spin or Mössbauer DOF with a room temperature error budget.</li>
-</ol>
-<p>Open an Issue stating the claim and the test; pair every Pull Request with the Issue it closes.</p>
-<hr />
-<h2 id="references">References</h2>
-<p><strong>²²⁹Th nuclear clock and optical control of nuclei</strong>
-- Frequency ratio of the ²²⁹ᵐTh transition and the ⁸⁷Sr clock. <em>Nature</em> (2024): https://www.nature.com/articles/s41586-024-07839-6
+<h2 id="the-unit-you-could-hold-the-nuclear-transistor">The unit you could hold: the nuclear transistor</h2>
+<p>Every computing technology earns belief when it can point at its unit, the one physical object that switches, stores, and tiles. For electronics that object is the transistor, and what makes a transistor buildable is not its physics but its <em>pinout</em>: gate, source, drain, channel, body. This machine has the same pinout, and it exists at three scales today, drawn side by side in the figure below and specified part by part, with prices, dimensions, and the honest gaps, in <a href="device/DEVICE.md">device/DEVICE.md</a>.</p>
+<p>| terminal | benchtop cell (today, about $350) | crystal cell (the target) | neutron gate (proven) |
+|---|---|---|---|
+| GATE | shutter aperture $\alpha$ | 148.38 nm beam | control absorber |
+| SOURCE | ¹³⁷Cs disk, 1 µCi | pump laser + source bath | driver and neighbor flux |
+| DRAIN | coincidence rate out | 8.4 eV burst $\propto n_m$ | multiplied leakage |
+| CHANNEL | encoded rate $x\lambda$ | isomer fraction $n_m$ | neutron population |
+| BODY | scintillator | CaF₂ lattice | moderator |
+| gain | none ($\beta \approx 1$) | **the empty socket: the keystone** | $1/(1-k)$, proven |
+
+Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942.
+
+![The nuclear transistor at three scales](figures/fig10_nuclear_transistor.svg)
+
+---
+
+## Open problems and how to contribute
+
+1. **Keystone:** propose or measure a compact state meeting the leak condition with $\beta&gt;1$ *in a level restoring or convertible class* (theory, Section 2). *This is problem number one.* A concrete, computable subproblem: search ENSDF for **heterogeneous pairs** of isomers whose cascade lines and gateway lines are mutually resonant (gate A's output pumps gate B and vice versa); the search space is already tabulated in `/gates`.
+2. Tighten the throughput law for fan out reuse: when is a count "spent"?
+3. A learning rule: aperture update $\Delta\alpha \propto \mathrm{coincidence}(\text{pre},\text{post})$ is Hebbian or STDP using the *same* coincidence primitive as the AND gate (Appendix B.4); formalize and simulate.
+4. Transport level $\mathcal{G}$ for a real geometry that implements a target weight matrix (signed weights via complementary channels).
+5. Tier 2: a concrete two qubit gate on nuclear spin or Mössbauer DOF with a room temperature error budget.
+
+Open an Issue stating the claim and the test; pair every Pull Request with the Issue it closes.
+
+---
+
+## References
+
+**²²⁹Th nuclear clock and optical control of nuclei**
+- Frequency ratio of the ²²⁹ᵐTh transition and the ⁸⁷Sr clock. *Nature* (2024): https://www.nature.com/articles/s41586-024-07839-6
 - NIST, "Major leap for nuclear clock…" (2024): https://www.nist.gov/news-events/news/2024/09/major-leap-nuclear-clock-paves-way-ultraprecise-timekeeping
 - JILA, frequency reproducible nuclear clock: https://jila.colorado.edu/news-events/articles/frequency-reproducible-nuclear-clock
-- Reproducibility of solid state ²²⁹Th clocks. arXiv 2507.01180 (2025): https://arxiv.org/html/2507.01180v1</p>
-<p><strong>NEEC, IGE, and triggered release (including disconfirming evidence)</strong>
-- Chiara et al., "Isomer depletion as evidence of NEEC." <em>Nature</em> 554, 216 (2018): https://www.nature.com/articles/nature25483
-- ⁹³ᵐMo beam based NEEC. <em>PRL</em> 122, 212501 (2019): https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.122.212501
+- Reproducibility of solid state ²²⁹Th clocks. arXiv 2507.01180 (2025): https://arxiv.org/html/2507.01180v1
+
+**NEEC, IGE, and triggered release (including disconfirming evidence)**
+- Chiara et al., "Isomer depletion as evidence of NEEC." *Nature* 554, 216 (2018): https://www.nature.com/articles/nature25483
+- ⁹³ᵐMo beam based NEEC. *PRL* 122, 212501 (2019): https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.122.212501
 - Nondestructive NEEC test via precision mass spectrometry. arXiv 2501.05217 (2025): https://arxiv.org/html/2501.05217v1
-- Gunst et al., NEEC dominance in XFEL isomer depletion. <em>PRL</em> (2014).
+- Gunst et al., NEEC dominance in XFEL isomer depletion. *PRL* (2014).
 - Induced gamma emission, Wikipedia: https://en.wikipedia.org/wiki/Induced_gamma_emission
-- Hafnium controversy (the cautionary tale), Wikipedia: https://en.wikipedia.org/wiki/Hafnium_controversy</p>
-<p><strong>Nuclear and γ ray quantum optics</strong>
-- Vagizov, Kocharovskaya et al., coherent control of recoilless γ photon waveforms. <em>Nature</em> 508, 80 (2014): https://www.nature.com/articles/nature13018
-- Nuclear quantum memory for hard X ray photon wavepackets. <em>Science Advances</em>: https://www.science.org/doi/10.1126/sciadv.adn9825
-- "Gamma ray shaping could lead to nuclear quantum computers," <em>Physics World</em>: https://physicsworld.com/a/gamma-ray-shaping-could-lead-to-nuclear-quantum-computers/</p>
-<p><strong>Entangled annihilation photons (Tier 2)</strong>
-- Testing entanglement of annihilation photons. <em>Scientific Reports</em> (2023): https://www.nature.com/articles/s41598-023-34767-8
-- "PET could be aided by entanglement," <em>APS Physics</em> (2024): https://link.aps.org/doi/10.1103/Physics.17.138
-- Nonmaximal entanglement measured on a plastic PET scanner, PMC: https://pmc.ncbi.nlm.nih.gov/articles/PMC12042903/</p>
-<p><strong>Probabilistic and Ising hardware (stochastic tier comparison)</strong>
-- 250 MTJ probabilistic Ising machine. <em>Nature Communications</em> (2026): https://www.nature.com/articles/s41467-026-72020-8 (preprint arXiv 2506.14590)</p>
-<p><strong>Foundational (classical, by name)</strong>
-- G. Cybenko (1989), K. Hornik (1991), universal approximation. A. Siegert (1951), first passage firing rate. B. Gaines (1967), stochastic computing. K. Camsari and S. Datta, probabilistic bits. Nuclear data: ENDF/B, JEFF, JENDL, TENDL, ENSDF, EXFOR. Transport codes: MCNP, Geant4, FLUKA, PHITS.</p>
-<hr />
-<h2 id="appendix-a-notation">Appendix A. Notation</h2>
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$\phi(\mathbf{r},\mathbf{\Omega},E,t)$</td>
-<td>radiation (photon or particle) field, flux or occupation</td>
-</tr>
-<tr>
-<td>$n_i(\mathbf{r},t)$</td>
-<td>nuclear population fraction in level $i$</td>
-</tr>
-<tr>
-<td>$\lambda$</td>
-<td>source activity (Poisson rate)</td>
-</tr>
-<tr>
-<td>$\lambda_m$</td>
-<td>spontaneous decay rate of the isomer ($=\ln 2 / t_{1/2}$)</td>
-</tr>
-<tr>
-<td>$\sigma_p,\ \sigma_{\text{trig}}$</td>
-<td>pump and trigger cross sections</td>
-</tr>
-<tr>
-<td>$R_{\text{trig}}=\sigma_{\text{trig}}\phi_{\text{ctrl}}$</td>
-<td>field driven release rate</td>
-</tr>
-<tr>
-<td>$\beta$</td>
-<td>cascade multiplicity (output quanta per release)</td>
-</tr>
-<tr>
-<td>$C_{\text{in}}$</td>
-<td>control quanta consumed per trigger</td>
-</tr>
-<tr>
-<td>$\eta,\ \Gamma$</td>
-<td>trigger efficiency; net photon gain</td>
-</tr>
-<tr>
-<td>$\mathcal{G}$</td>
-<td>Green's function of the transport operator (the synapse)</td>
-</tr>
-<tr>
-<td>$\tau_w$</td>
-<td>coincidence window</td>
-</tr>
-</tbody>
-</table>
-<h2 id="appendix-b-derivation-sketches">Appendix B. Derivation sketches</h2>
-<p><strong>B.1 Independent streams from one source.</strong> A Poisson process has independent increments; disjoint time slices are independent, and marking or thinning preserves the Poisson property. Hence one physical source yields arbitrarily many decorrelated input streams, no second source and no pseudorandom generator.</p>
-<p><strong>B.2 Coincidence multiply.</strong> For two independent streams with windows $\tau_w$, the joint event (chance coincidence) rate is $\tau_w\lambda_1\lambda_2$ to leading order; the survival form is $P=1-e^{-\tau_w\lambda_1\lambda_2\Delta t}$. With $\lambda_i = x_i\lambda$, output is proportional to $x_1 x_2$.</p>
-<p><strong>B.3 Boltzmann stationarity.</strong> Single site flips with acceptance $\sigma(u_k)=1/(1+e^{-u_k})$, $u_k=\sum_j W_{kj}z_j+b_k$, satisfy detailed balance with respect to $p(z)\propto\exp(\tfrac12 z^\top W z + b^\top z)$ for symmetric $W$.</p>
-<p><strong>B.4 Hebbian aperture rule.</strong> $\Delta\alpha_{ij}\propto$ coincidence rate(pre$_i$, post$_j$) reuses the coincidence primitive (the AND gate) as a local learning rule; the gate and the synapse update are the <em>same</em> physical event.</p>
-<h2 id="appendix-c-candidate-states-computed-from-nubase2020-and-ensdf-in-gates-math157-values-are-summed-ensdf-intensities-leverage-is-energy-released-per-trigger-quantum-spent">Appendix C. Candidate states (computed from NUBASE2020 and ENSDF in <a href="gates/">gates/</a>; $\beta$ values are summed ENSDF intensities, leverage is energy released per trigger quantum spent)</h2>
-<table>
-<thead>
-<tr>
-<th>State</th>
-<th>Energy</th>
-<th>$t_{1/2}$</th>
-<th>$\lambda_m$ (s⁻¹)</th>
-<th>$\beta$</th>
-<th>Leverage</th>
-<th>Role</th>
-<th>Trigger status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>²²⁹ᵐTh</td>
-<td>8.355733(8) eV</td>
-<td>about 29 min (vac.)</td>
-<td>$4.0\times10^{-4}$</td>
-<td>1</td>
-<td>1</td>
-<td>memory or qubit, soft threshold</td>
-<td><strong>proven (laser)</strong></td>
-</tr>
-<tr>
-<td>²³⁵ᵐU</td>
-<td>76.7 eV</td>
-<td>26 min</td>
-<td>$4.4\times10^{-4}$</td>
-<td>1</td>
-<td></td>
-<td>second ultra low energy memory; decays by internal conversion, lifetime is chemistry sensitive</td>
-<td>none demonstrated</td>
-</tr>
-<tr>
-<td>⁹³ᵐMo</td>
-<td>2.425 MeV</td>
-<td>6.85 h</td>
-<td>$2.8\times10^{-5}$</td>
-<td>2.87</td>
-<td>$\approx 500$ (4.85 keV gateway)</td>
-<td>candidate logic, best energy leverage in the photon sector</td>
-<td>NEEC <strong>contested</strong></td>
-</tr>
-<tr>
-<td>¹⁷⁸ᵐ²Hf</td>
-<td>2.446 MeV</td>
-<td>31 yr</td>
-<td>$7.1\times10^{-10}$</td>
-<td>12.4</td>
-<td>$\approx 245$ (at 10 keV)</td>
-<td>high gain logic</td>
-<td>IGE <strong>contested</strong></td>
-</tr>
-<tr>
-<td>¹⁸⁰ᵐTa</td>
-<td>77 keV</td>
-<td>stable</td>
-<td>0</td>
-<td>$\approx 1$</td>
-<td>0.076</td>
-<td>proof that photon triggering is real; energy uphill</td>
-<td>photoactivation <strong>proven</strong> (1999)</td>
-</tr>
-<tr>
-<td>²⁴²ᵐAm</td>
-<td>48.6 keV</td>
-<td>141 yr</td>
-<td>$1.6\times10^{-10}$</td>
-<td>$\sim 11$</td>
-<td>$8\times10^{12}$ (fission channel)</td>
-<td>the bridge: an isomer whose proven trigger opens fission</td>
-<td><strong>proven</strong> ($\sigma_f\approx6.4$ kb thermal)</td>
-</tr>
-<tr>
-<td>¹⁷⁷ᵐLu</td>
-<td>970 keV</td>
-<td>160 d</td>
-<td>$5.0\times10^{-8}$</td>
-<td>5.85</td>
-<td></td>
-<td>high K storage</td>
-<td>none demonstrated</td>
-</tr>
-<tr>
-<td>⁵⁷Fe</td>
-<td>14.4 keV</td>
-<td>98 ns</td>
-<td>$7\times10^{6}$</td>
-<td>1</td>
-<td>1</td>
-<td>Mössbauer, Tier 2 coherence, directional interconnect</td>
-<td><strong>routine</strong></td>
-</tr>
-<tr>
-<td>²³⁵U (n,f)</td>
-<td>202 MeV released</td>
-<td></td>
-<td></td>
-<td>2.43 n + $\sim 7$ γ</td>
-<td>$8\times10^{12}$</td>
-<td>the proven keystone, reactor scale</td>
-<td><strong>proven</strong> (585 b thermal)</td>
-</tr>
-<tr>
-<td>⁹Be (n,2n)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>2</td>
-<td></td>
-<td>neutron multiplier without fissile material; convertible, not self restoring</td>
-<td><strong>proven</strong> (threshold 1.85 MeV)</td>
-</tr>
-</tbody>
-</table>
+- Hafnium controversy (the cautionary tale), Wikipedia: https://en.wikipedia.org/wiki/Hafnium_controversy
+
+**Nuclear and γ ray quantum optics**
+- Vagizov, Kocharovskaya et al., coherent control of recoilless γ photon waveforms. *Nature* 508, 80 (2014): https://www.nature.com/articles/nature13018
+- Nuclear quantum memory for hard X ray photon wavepackets. *Science Advances*: https://www.science.org/doi/10.1126/sciadv.adn9825
+- "Gamma ray shaping could lead to nuclear quantum computers," *Physics World*: https://physicsworld.com/a/gamma-ray-shaping-could-lead-to-nuclear-quantum-computers/
+
+**Entangled annihilation photons (Tier 2)**
+- Testing entanglement of annihilation photons. *Scientific Reports* (2023): https://www.nature.com/articles/s41598-023-34767-8
+- "PET could be aided by entanglement," *APS Physics* (2024): https://link.aps.org/doi/10.1103/Physics.17.138
+- Nonmaximal entanglement measured on a plastic PET scanner, PMC: https://pmc.ncbi.nlm.nih.gov/articles/PMC12042903/
+
+**Probabilistic and Ising hardware (stochastic tier comparison)**
+- 250 MTJ probabilistic Ising machine. *Nature Communications* (2026): https://www.nature.com/articles/s41467-026-72020-8 (preprint arXiv 2506.14590)
+
+**Foundational (classical, by name)**
+- G. Cybenko (1989), K. Hornik (1991), universal approximation. A. Siegert (1951), first passage firing rate. B. Gaines (1967), stochastic computing. K. Camsari and S. Datta, probabilistic bits. Nuclear data: ENDF/B, JEFF, JENDL, TENDL, ENSDF, EXFOR. Transport codes: MCNP, Geant4, FLUKA, PHITS.
+
+---
+
+## Appendix A. Notation
+
+| Symbol | Meaning |
+|---|---|
+| $\phi(\mathbf{r},\mathbf{\Omega},E,t)$ | radiation (photon or particle) field, flux or occupation |
+| $n_i(\mathbf{r},t)$ | nuclear population fraction in level $i$ |
+| $\lambda$ | source activity (Poisson rate) |
+| $\lambda_m$ | spontaneous decay rate of the isomer ($=\ln 2 / t_{1/2}$) |
+| $\sigma_p,\ \sigma_{\text{trig}}$ | pump and trigger cross sections |
+| $R_{\text{trig}}=\sigma_{\text{trig}}\phi_{\text{ctrl}}$ | field driven release rate |
+| $\beta$ | cascade multiplicity (output quanta per release) |
+| $C_{\text{in}}$ | control quanta consumed per trigger |
+| $\eta,\ \Gamma$ | trigger efficiency; net photon gain |
+| $\mathcal{G}$ | Green's function of the transport operator (the synapse) |
+| $\tau_w$ | coincidence window |
+
+## Appendix B. Derivation sketches
+
+**B.1 Independent streams from one source.** A Poisson process has independent increments; disjoint time slices are independent, and marking or thinning preserves the Poisson property. Hence one physical source yields arbitrarily many decorrelated input streams, no second source and no pseudorandom generator.
+
+**B.2 Coincidence multiply.** For two independent streams with windows $\tau_w$, the joint event (chance coincidence) rate is $\tau_w\lambda_1\lambda_2$ to leading order; the survival form is $P=1-e^{-\tau_w\lambda_1\lambda_2\Delta t}$. With $\lambda_i = x_i\lambda$, output is proportional to $x_1 x_2$.
+
+**B.3 Boltzmann stationarity.** Single site flips with acceptance $\sigma(u_k)=1/(1+e^{-u_k})$, $u_k=\sum_j W_{kj}z_j+b_k$, satisfy detailed balance with respect to $p(z)\propto\exp(\tfrac12 z^\top W z + b^\top z)$ for symmetric $W$.
+
+**B.4 Hebbian aperture rule.** $\Delta\alpha_{ij}\propto$ coincidence rate(pre$<em>i$, post$_j$) reuses the coincidence primitive (the AND gate) as a local learning rule; the gate and the synapse update are the *same* physical event.
+
+## Appendix C. Candidate states (computed from NUBASE2020 and ENSDF in [gates/](gates/); $\beta$ values are summed ENSDF intensities, leverage is energy released per trigger quantum spent)
+
+| State | Energy | $t</em>{1/2}$ | $\lambda_m$ (s⁻¹) | $\beta$ | Leverage | Role | Trigger status |
+|---|---|---|---|---|---|---|---|
+| ²²⁹ᵐTh | 8.355733(8) eV | about 29 min (vac.) | $4.0\times10^{-4}$ | 1 | 1 | memory or qubit, soft threshold | **proven (laser)** |
+| ²³⁵ᵐU | 76.7 eV | 26 min | $4.4\times10^{-4}$ | 1 | | second ultra low energy memory; decays by internal conversion, lifetime is chemistry sensitive | none demonstrated |
+| ⁹³ᵐMo | 2.425 MeV | 6.85 h | $2.8\times10^{-5}$ | 2.87 | $\approx 500$ (4.85 keV gateway) | candidate logic, best energy leverage in the photon sector | NEEC **contested** |
+| ¹⁷⁸ᵐ²Hf | 2.446 MeV | 31 yr | $7.1\times10^{-10}$ | 12.4 | $\approx 245$ (at 10 keV) | high gain logic | IGE **contested** |
+| ¹⁸⁰ᵐTa | 77 keV | stable | 0 | $\approx 1$ | 0.076 | proof that photon triggering is real; energy uphill | photoactivation **proven** (1999) |
+| ²⁴²ᵐAm | 48.6 keV | 141 yr | $1.6\times10^{-10}$ | $\sim 11$ | $8\times10^{12}$ (fission channel) | the bridge: an isomer whose proven trigger opens fission | **proven** ($\sigma_f\approx6.4$ kb thermal) |
+| ¹⁷⁷ᵐLu | 970 keV | 160 d | $5.0\times10^{-8}$ | 5.85 | | high K storage | none demonstrated |
+| ⁵⁷Fe | 14.4 keV | 98 ns | $7\times10^{6}$ | 1 | 1 | Mössbauer, Tier 2 coherence, directional interconnect | **routine** |
+| ²³⁵U (n,f) | 202 MeV released | | | 2.43 n + $\sim 7$ γ | $8\times10^{12}$ | the proven keystone, reactor scale | <strong>proven</strong> (585 b thermal) |
+| ⁹Be (n,2n) | | | | 2 | | neutron multiplier without fissile material; convertible, not self restoring | <strong>proven</strong> (threshold 1.85 MeV) |</p>
 <p>The full catalog (1870 isomeric states: 585 hold a bit for a second, 50 for a day, 38 of those store over 100 keV) is in <a href="gates/isomer_catalog.csv">gates/isomer_catalog.csv</a>, regenerated by <a href="gates/isomer_screen.py">gates/isomer_screen.py</a>.</p>
 <hr />
 <h2 id="license-and-citation">License and citation</h2>

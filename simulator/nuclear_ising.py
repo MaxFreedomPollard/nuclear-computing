@@ -181,7 +181,7 @@ def main():
                      f"ground state ({len(fps)}/25 runs reached it)")
     lines.append("")
     lines.append("## Energy per independent sample, by carrier\n")
-    lines.append("| carrier | J per quantum | J per sample | vs MTJ p-bit "
+    lines.append("| carrier | J per quantum | J per sample | vs MTJ p bit "
                  "(33 fJ/sample) |")
     lines.append("|---|---|---|---|")
     for name, jq, js, ratio in energy_rows:
@@ -239,7 +239,7 @@ def make_figure(ckpts, kls, tvs, emp, p_exact, energy_rows):
     a2.set_ylabel("empirical probability (event counts)")
     a2.set_title("B.  State by state agreement")
 
-    names = [r[0].split(" (")[0] for r in energy_rows] + ["MTJ p-bit\n(silicon)"]
+    names = [r[0].split(" (")[0] for r in energy_rows] + ["MTJ p bit\n(silicon)"]
     vals = [r[2] for r in energy_rows] + [MTJ_J_PER_SAMPLE]
     cols = [PURPLE, AMBER, RED, GREY]
     y = np.arange(len(vals))[::-1]
