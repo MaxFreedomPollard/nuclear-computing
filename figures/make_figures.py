@@ -244,6 +244,7 @@ save(fig, "fig6_readiness")
 # FIG 7. Emergent sigmoid: Siegert first passage firing rate (the neuron)
 # ===========================================================================
 erf = np.vectorize(math.erf)
+trapezoid = getattr(np, "trapezoid", getattr(np, "trapz", None))
 tau_m, t_ref = 10e-3, 2e-3
 Vth, Vr, sig = 15.0, 0.0, 4.0
 mus = np.linspace(0, 22, 240)
@@ -251,7 +252,7 @@ nus = []
 for mu in mus:
     lo, hi = (Vr-mu)/sig, (Vth-mu)/sig
     u = np.linspace(lo, hi, 600)
-    integ = np.trapz(np.exp(u**2)*(1+erf(u)), u)
+    integ = trapezoid(np.exp(u**2)*(1+erf(u)), u)
     nu = 1.0/(t_ref + tau_m*math.sqrt(math.pi)*integ)
     nus.append(nu)
 nus = np.array(nus)
