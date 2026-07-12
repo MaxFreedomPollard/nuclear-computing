@@ -1,0 +1,25 @@
+name: reproduce
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: regenerate figures
+        run: python figures/make_figures.py
+      - name: screen every isomer (cached IAEA data in gates/data)
+        run: python gates/isomer_screen.py
+      - name: run the transport gate demonstrations
+        run: python transport/gate_demos.py
+      - name: run the digital twin
+        run: python simulator/nuclear_ising.py
+      - name: rebuild index.html
+        run: python build_html.py
