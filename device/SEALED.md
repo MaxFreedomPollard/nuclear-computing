@@ -38,7 +38,7 @@ Since the sealed unit cannot write isomer populations, its state lives where the
 
 - a **Monte Carlo appliance**: integrals, expectations, and Bayesian updates evaluated by physics, with accuracy priced by the precision law and immune to aging by degree homogeneity;
 - an **annealer** for the Ising instance ground into its compute shell, field trimmed through the wall, sampling its Boltzmann law at a rate that halves each half life while the law itself never moves;
-- **not** a stored program computer. The empty socket of [DEVICE.md](DEVICE.md) is empty here too, and the ampoule is what the theory can seal *today*.
+- **not** a stored program computer. The empty socket of [TRANSISTOR.md](TRANSISTOR.md) is empty here too, and the ampoule is what the theory can seal *today*.
 
 ## 5. The inventory ledger
 
@@ -76,6 +76,6 @@ A sealed cylinder, roughly a liter, one GBq of ⁹⁰Sr/⁹⁰Y at the core (181
 - proposal budget: thinned streams totalling $10^6$ proposals per second across sites → order $4\times10^4$ independent samples per second at birth (26 decays per sample, measured in [/simulator](../simulator/results.md));
 - readout: 8 bit sample statistics at about 150 reads per second through the counting port, continuous analog anneal energy on the current port;
 - at year 29: exactly half of all of the above, same answers;
-- license class: GBq sealed sources are institutional (this is the tier between the exempt benchtop cell and the reactor gate of [DEVICE.md](DEVICE.md)); the ampoule is a laboratory instrument, not a consumer object, and the document says so.
+- license class: GBq sealed sources are institutional (this is the tier between the exempt benchtop cell and the reactor gate of [TRANSISTOR.md](TRANSISTOR.md)); the ampoule is a laboratory instrument, not a consumer object, and the document says so.
 
 *The ampoule closes the loop the charter opened: a lump of structured matter, bathed in its own radiation, computing. Nothing enters but fields; nothing leaves but light; nothing inside it can be recalled, recharged, or corrected, and by the aging theorem nothing needs to be.*
