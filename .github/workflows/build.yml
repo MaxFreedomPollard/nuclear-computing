@@ -23,6 +23,8 @@ jobs:
         run: python simulator/nuclear_ising.py
       - name: draw the nuclear transistor
         run: python device/make_device_figure.py
+      - name: draw the datasheet curves
+        run: python device/make_datasheet_figure.py
       - name: compute the ampoule
         run: python device/sealed_unit.py
       - name: rebuild index.html

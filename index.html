@@ -422,9 +422,10 @@ $$</p>
 | DRAIN | coincidence rate out | 8.4 eV burst $\propto n_m$ | multiplied leakage |
 | CHANNEL | encoded rate $x\lambda$ | isomer fraction $n_m$ | neutron population |
 | BODY | scintillator | CaF₂ lattice | moderator |
+| switching time | ms (servo aperture) | µs (Doppler) to ns (line response) | $\Lambda/(1-k)$: **gain × bandwidth = $1/\Lambda$** |
 | gain | none ($\beta \approx 1$) | **the empty socket: the keystone** | $1/(1-k)$, proven |
 
-Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942.
+Read the last row left to right and it is the research program in one line: the benchtop cell needs no discovery, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942. The analogy is load bearing, not decorative, and the device document proves it three ways: silicon's *body effect* already exists in the nuclear device as the isomer shift, measured since 1960; the *field effect* already runs on every Mössbauer bench as a coil or Doppler drive gating a γ ray channel (the valve, a pass transistor available today); and the subcritical gate obeys a **constant gain bandwidth product** $M/\tau_{\text{switch}} = 1/\Lambda$ (10 kHz thermal, 100 MHz fast), the op amp law, hiding in reactor kinetics. The full datasheet, characteristic curves, packing densities spanning fourteen orders of magnitude, and absolute maximum ratings are in [device/DEVICE.md](device/DEVICE.md).
 
 ![The nuclear transistor at three scales](figures/fig10_nuclear_transistor.svg)
 
