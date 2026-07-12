@@ -44,11 +44,13 @@ plt.rcParams.update({
     "axes.spines.top": False,
     "axes.spines.right": False,
     "figure.dpi": 130,
+    "svg.hashsalt": "nuclear-computer",
 })
 
 def save(fig, name):
     for ext in ("svg", "png"):
-        fig.savefig(os.path.join(OUT, f"{name}.{ext}"), bbox_inches="tight")
+        kw = {"metadata": {"Date": None}} if ext == "svg" else {}
+        fig.savefig(os.path.join(OUT, f"{name}.{ext}"), bbox_inches="tight", **kw)
     plt.close(fig)
     print("wrote", name)
 
