@@ -4,6 +4,8 @@
 
 **Max Freedom Pollard**, born February 17, 1993 · [ORCID 0009-0007-0059-3319](https://orcid.org/0009-0007-0059-3319)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21330486.svg)](https://doi.org/10.5281/zenodo.21330486)
+
 Nuclear Compute proposes a new type of computer, distinct from classical, quantum, and photonic computing, in which a radiation field and the nuclear states it drives are themselves the processor, the memory, and the interconnect, and the decay of the same medium is the power supply.
 
 > **Thesis.** A radiation field and the nuclear populations it drives are not a power source for a computer, not a data stream into a computer, and not one component of a computer. Together they *are* the computer: its logic, its memory, and its interconnect at once. A constant radioactive source supplies only what every machine needs and none computes with: power, clock, and entropy. **Everything else (encoding, weighting, nonlinearity, memory, recurrence) happens inside the coupled radiation and matter field, with no conventional electronics in the loop.**
