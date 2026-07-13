@@ -13,7 +13,7 @@ A valve is four parts on one sight line:
    - *magnetic*: a coil at the foil; roughly **0.7 linewidths per tesla** on ⁵⁷Fe (the trim ring's ¹⁸¹Ta channels reach 42 per tesla and switch with millitesla; see the [build note](EMBODIMENT.md)).
 4. **DRAIN**: whatever the sight line feeds: a coincidence cavity, another valve, or a boundary counter.
 
-**Measured behavior to expect** (standard Mössbauer practice, quoted as ranges because they are geometry dependent): resonant transmission dips of 30 to 70 percent of the recoil free component; insertion loss from electronic absorption in the foil of a few percent (mass attenuation at 14.4 keV across 1 to 2 µm of iron); OFF to ON contrast on the *resonant component* of 3:1 to 10:1 per stage, compounding across stages in series.
+**Measured behavior to expect** (standard Mössbauer practice, quoted as ranges because they are geometry dependent): resonant transmission dips of 30 to 70 percent of the recoil free component; insertion loss from electronic absorption in the foil of 5 to 10 percent (mass attenuation near 63 cm² per gram at 14.4 keV, across 1 to 2 µm of iron); OFF to ON contrast on the *resonant component* of 3:1 to 10:1 per stage, compounding across stages in series.
 
 **Switching time**: the channel cannot respond faster than the excited state lifetime (141 ns for ⁵⁷Fe), and in practice the gate is limited by the drive: kHz to tens of kHz kinematic, up to MHz for small magnetic swings. The valve is a **microsecond class router**, not a nanosecond one, until faster lines (⁶⁷Zn, ⁷³Ge class) or switched hyperfine media are engineered.
 
@@ -34,7 +34,7 @@ Driven with a waveform instead of a setpoint, the valve writes time structure on
 
 ## 4. The two disciplines
 
-1. **Temperature.** The second order Doppler shift moves the line by about one linewidth per 10 K near room temperature; a valve bank must be either thermally uniform to a few kelvin or per channel trimmed (the trim coils exist anyway). Stated as a specification, not discovered as a mystery drift.
+1. **Temperature.** The second order Doppler shift moves the ⁵⁷Fe line by $7\times10^{-4}$ mm/s per kelvin near room temperature: about one natural linewidth per 130 K. Ten kelvin of gradient across a valve bank therefore costs under a tenth of a linewidth, which ordinary enclosure design provides; metrology grade setpoints trim the residual with the coils that exist anyway. Stated as a specification, not discovered as a mystery drift.
 2. **Background.** The valve gates the *recoil free resonant* component only; Compton scattered and non resonant photons pass regardless, a DC pedestal under the logic. Discrimination is by energy window (the 14.4 keV photopeak) and, where needed, by coincidence with the 122 keV feeding photon of the ⁵⁷Co cascade, which tags true source quanta. The pedestal costs contrast, is fully characterized by a one hour bench scan, and enters the error budget as a known constant, never as noise.
 
 ## 5. Why this note exists
