@@ -2,7 +2,7 @@
 
 ### Power, Logic, Memory, and Interconnect in One Radioactive Medium
 
-**Max Freedom Pollard**· [ORCID 0009-0007-0059-3319](https://orcid.org/0009-0007-0059-3319)
+**Max Freedom Pollard** · [ORCID 0009-0007-0059-3319](https://orcid.org/0009-0007-0059-3319)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21330486.svg)](https://doi.org/10.5281/zenodo.21330486)
 
