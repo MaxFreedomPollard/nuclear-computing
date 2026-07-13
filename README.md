@@ -2,7 +2,7 @@
 
 ### Power, Logic, Memory, and Interconnect in One Radioactive Medium
 
-**Max Freedom Pollard**, born February 17, 1993 · [ORCID 0009-0007-0059-3319](https://orcid.org/0009-0007-0059-3319)
+**Max Freedom Pollard**· [ORCID 0009-0007-0059-3319](https://orcid.org/0009-0007-0059-3319)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21330486.svg)](https://doi.org/10.5281/zenodo.21330486)
 
@@ -252,7 +252,7 @@ A megaelectronvolt γ carries $1.6\times10^{-13}$ J, about **8 orders of magnitu
 
 **Tier 2 levers** (all experimentally seeded, none yet a computer): polarization **entangled annihilation γ pairs**, theoretically maximal, measured *stronger than separable but below maximal* on real detectors, with an open Pryce Ward versus Klein Nishina debate ([Sci. Rep. 2023](https://www.nature.com/articles/s41598-023-34767-8); [APS Physics 2024](https://link.aps.org/doi/10.1103/Physics.17.138)); **Mössbauer coherence** and coherent single γ control at room temperature ([Nature 2014](https://www.nature.com/articles/nature13018)); **nuclear spin qubits** addressed by γ or RF fields.
 
-**Ceiling, stated up front.** The extended Church Turing thesis (quantum form) bounds *any* physical machine by BQP. **Nuclear computing does not claim to exceed quantum computation.** It claims a *different physical road to the same frontier*, one that may be far easier to engineer (no dilution refrigerator; intrinsic radiation tolerance; qubits delivered by the source). Beware anyone who claims more.
+**Ceiling, stated up front.** The extended Church Turing thesis (quantum form) bounds *any* physical machine by BQP. **Nuclear computing does not claim to exceed quantum computation.** It claims a *different physical road to the same frontier*, one that may be far easier to engineer (no dilution refrigerator; intrinsic radiation tolerance; qubits delivered by the source). 
 
 ---
 
