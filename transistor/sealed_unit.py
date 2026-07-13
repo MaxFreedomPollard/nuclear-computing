@@ -170,50 +170,50 @@ def figure(bw_rows):
     A.set_aspect("equal")
     A.axis("off")
     A.set_title("A.  The ampoule: five shells, no penetrations", fontsize=11.5)
-    cx, cy = 46, 47
+    cx, cy = 34, 44
     shells = [
-        (44, "#dfe3ea", "shield and shell"),
-        (37, "#f3e8d8", "boundary: scintillator + diode ring\n+ betavoltaic (the mouth)"),
-        (29, "#ece5f7", "trim layer: Mossbauer foils\n(Zeeman + Doppler tuned)"),
-        (21, "#e2ecfb", "compute shell: geometry = weights,\nthe problem in a can"),
-        (11, "#fde8c8", None),
+        (33, "#dfe3ea"),
+        (27.5, "#f3e8d8"),
+        (21.5, "#ece5f7"),
+        (15, "#e2ecfb"),
     ]
-    for r, c, _ in shells:
+    for r, c in shells:
         A.add_patch(Circle((cx, cy), r, facecolor=c, edgecolor=INK, lw=1.0))
-    A.add_patch(Circle((cx, cy), 11, facecolor=AMBER, edgecolor=INK,
+    A.add_patch(Circle((cx, cy), 8, facecolor=AMBER, edgecolor=INK,
                        lw=1.2, alpha=0.85))
-    A.text(cx, cy + 2.5, "core", fontsize=8.5, ha="center",
+    A.text(cx, cy + 1.5, "core", fontsize=7.5, ha="center",
            fontweight="bold", color="white")
-    A.text(cx, cy - 3.5, "α + Kr lamp\n148 nm", fontsize=7,
+    A.text(cx, cy - 3, "148 nm lamp", fontsize=5.8,
            ha="center", color="white")
+    # label column fully clear of the rings, one leader per shell
+    ang = math.radians(36)
     labels = [
-        (93, 88, "shield and shell", INK, (cx + 29, cy + 30)),
-        (93, 74, "the mouth: counts, current,\nspectrum; self powered", AMBER,
-         (cx + 24, cy + 20)),
-        (93, 57, "trim layer: weights set by\nfields through the wall", PURPLE,
-         (cx + 20, cy + 12)),
-        (93, 40, "compute shell:\nthe problem in a can", BLUE,
-         (cx + 13, cy + 5)),
+        (86, "shield and shell", INK, 33),
+        (71, "the mouth: counts, current,\nspectrum; self powered", AMBER, 27.5),
+        (54, "trim layer: weights set by\nfields through the wall", PURPLE, 21.5),
+        (38, "compute shell:\nthe problem in a can", BLUE, 15),
     ]
-    for tx, ty, s, c, (ax_, ay_) in labels:
-        A.annotate(s, xy=(ax_, ay_), xytext=(tx, ty), fontsize=7.6, color=c,
-                   ha="right", va="center",
+    for ty, s, c, r in labels:
+        A.annotate(s, xy=(cx + (r - 2.5) * math.cos(ang),
+                          cy + (r - 2.5) * math.sin(ang)),
+                   xytext=(71, ty), fontsize=7.4, color=c,
+                   ha="left", va="center",
                    arrowprops=dict(arrowstyle="->", color=c, lw=0.9))
-    # field lines in (left), glow out (right/bottom)
-    for yy in (30, 47, 64):
-        A.add_patch(FancyArrow(1, yy, 8, 0, width=0.5, head_width=2.2,
+    # field lines in (left), glow out (bottom right)
+    for yy in (31, 44, 57):
+        A.add_patch(FancyArrow(0.5, yy, 5.5, 0, width=0.5, head_width=2.2,
                                head_length=2.2, facecolor=PURPLE,
                                edgecolor="none"))
-    A.text(2, 74, "fields in:\nZeeman maps,\nDoppler waveforms,\nmagnetic apertures",
-           fontsize=7.4, color=PURPLE, ha="left")
-    for ang in (-35, -10, 15):
-        rad = math.radians(ang)
-        x0 = cx + 45 * math.cos(rad); y0 = cy + 45 * math.sin(rad)
-        A.add_patch(FancyArrow(x0, y0, 7 * math.cos(rad), 7 * math.sin(rad),
+    A.text(1, 92, "fields in: Zeeman maps,\nDoppler waveforms,\nmagnetic apertures",
+           fontsize=7.2, color=PURPLE, ha="left")
+    for deg in (-58, -40, -22):
+        rad = math.radians(deg)
+        x0 = cx + 33.5 * math.cos(rad); y0 = cy + 33.5 * math.sin(rad)
+        A.add_patch(FancyArrow(x0, y0, 6.5 * math.cos(rad), 6.5 * math.sin(rad),
                                width=0.5, head_width=2.2, head_length=2.2,
                                facecolor=GREEN, edgecolor="none"))
-    A.text(97, 18, "glow out:\nthe answer is\nthe spectrum", fontsize=7.4,
-           color=GREEN, ha="right")
+    A.text(71, 12, "glow out: the answer\nis the spectrum", fontsize=7.2,
+           color=GREEN, ha="left")
 
     # ---- panel B: aging curves -------------------------------------------
     yrs = np.linspace(0, 100, 400)

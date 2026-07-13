@@ -67,9 +67,10 @@ ax1.set_xlabel("precision  b  (bits)")
 ax1.set_ylabel("counts required  $N = rT \\geq 2^{2b}$")
 ax1.set_title("Cost of precision in a Poisson medium")
 ax1.set_xticks(np.arange(2, 17, 2))
-for bb, color in [(8, RED), (16, AMBER)]:
+for bb, color, xyt in [(8, RED, (3.5, 2.0**16 * 6)),
+                       (16, AMBER, (10.6, 2.0**32 / 400))]:
     ax1.annotate(f"{bb} bit\n$N={2**(2*bb):,}$",
-                 xy=(bb, 2.0**(2*bb)), xytext=(bb-4.5, 2.0**(2*bb)*6),
+                 xy=(bb, 2.0**(2*bb)), xytext=xyt,
                  fontsize=9, color=color, fontweight="bold",
                  arrowprops=dict(arrowstyle="->", color=color, lw=1.3))
 
@@ -202,8 +203,8 @@ ax.set_xlim(1e-22, 1e-11)
 for yy, v in zip(y, vals):
     ax.text(v*1.4, yy, f"{v:.0e} J", va="center", fontsize=8, color=INK)
 ax.axvspan(1e-22, 1e-15, color=GREEN, alpha=0.05)
-ax.text(2e-20, len(items)-0.4, "sane logic regime → use the 8.4 eV transition,\nnot MeV quanta, for dense computation",
-        fontsize=8.5, color=INK)
+ax.text(6e-20, 5.42, "sane logic regime: use the 8.4 eV\ntransition, not MeV quanta,\nfor dense computation",
+        fontsize=8, color=INK, va="bottom")
 fig.tight_layout()
 save(fig, "fig5_energy")
 

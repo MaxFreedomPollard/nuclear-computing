@@ -3282,14 +3282,14 @@ z
    </g>
    <g id="legend_2">
     <g id="line2d_57">
-     <path d="M 564.515677 175.027035 
-L 573.015677 175.027035 
-L 581.515677 175.027035 
+     <path d="M 479.230918 272.628706 
+L 487.730918 272.628706 
+L 496.230918 272.628706 
 " style="fill: none; stroke: #2563eb; stroke-width: 2.4; stroke-linecap: square"/>
     </g>
     <g id="text_39">
      <!-- write: $1-e^{-\sigma_p\phi_p t}$ -->
-     <g style="fill: #16213e" transform="translate(588.315677 178.002035) scale(0.085 -0.085)">
+     <g style="fill: #16213e" transform="translate(503.030918 275.603706) scale(0.085 -0.085)">
       <defs>
        <path id="DejaVuSans-2212" d="M 678 2272 
 L 4684 2272 
@@ -3375,14 +3375,14 @@ z
      </g>
     </g>
     <g id="line2d_58">
-     <path d="M 564.515677 187.503441 
-L 573.015677 187.503441 
-L 581.515677 187.503441 
+     <path d="M 479.230918 285.105112 
+L 487.730918 285.105112 
+L 496.230918 285.105112 
 " style="fill: none; stroke: #7c3aed; stroke-width: 2.4; stroke-linecap: square"/>
     </g>
     <g id="text_40">
      <!-- hold: $e^{-\lambda_m t}$ -->
-     <g style="fill: #16213e" transform="translate(588.315677 190.478441) scale(0.085 -0.085)">
+     <g style="fill: #16213e" transform="translate(503.030918 288.080112) scale(0.085 -0.085)">
       <use xlink:href="#DejaVuSans-68" transform="translate(0 0.529687)"/>
       <use xlink:href="#DejaVuSans-6f" transform="translate(63.378906 0.529687)"/>
       <use xlink:href="#DejaVuSans-6c" transform="translate(124.560547 0.529687)"/>
@@ -3923,17 +3923,17 @@ L 1003.523399 297.497846
 " style="fill: none; stroke: #16213e; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_14">
-    <path d="M 869.099736 94.209992 
-Q 904.645516 99.043585 938.972674 103.711467 
+    <path d="M 882.350448 117.239528 
+Q 911.286505 110.907061 939.021157 104.837514 
 " style="fill: none; stroke: #16a34a; stroke-width: 1.1; stroke-linecap: round"/>
-    <path d="M 935.832741 101.568847 
-L 938.972674 103.711467 
-L 935.374618 104.937841 
+    <path d="M 935.336329 103.903682 
+L 939.021157 104.837514 
+L 936.063195 107.225077 
 " style="fill: none; stroke: #16a34a; stroke-width: 1.1; stroke-linecap: round"/>
    </g>
    <g id="text_54">
     <!-- $k=0.9$: gain 10 -->
-    <g style="fill: #16a34a" transform="translate(798.733554 91.492533) scale(0.085 -0.085)">
+    <g style="fill: #16a34a" transform="translate(819.225346 126.127582) scale(0.085 -0.085)">
      <use xlink:href="#DejaVuSans-Oblique-6b" transform="translate(0 0.015625)"/>
      <use xlink:href="#DejaVuSans-3d" transform="translate(77.392578 0.015625)"/>
      <use xlink:href="#DejaVuSans-30" transform="translate(180.664062 0.015625)"/>

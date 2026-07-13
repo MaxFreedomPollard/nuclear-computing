@@ -68,7 +68,7 @@ B.set_xlabel("time  (units of the write constant $1/\\sigma_p\\phi_p$;"
 B.set_ylabel("isomer fraction  $n_m$  (the CHANNEL)")
 B.set_title("B.  Crystal cell: write, hold, read")
 B.set_ylim(0, 1.02)
-B.legend(frameon=False, fontsize=8.5, loc="center right")
+B.legend(frameon=False, fontsize=8.5, loc="lower center")
 
 # ---- C: neutron gain and the constant GBW ----------------------------------
 k = np.linspace(0.5, 0.995, 300)
@@ -79,7 +79,7 @@ for Lam, c, lab in [(1e-4, AMBER, "thermal  $\\Lambda=10^{-4}$ s"),
     C.semilogy(k, Lam * M, color=c, lw=2.0, ls="--",
                label=f"switch time, {lab}")
 C.scatter([0.9], [10], color=GREEN, s=70, zorder=5)
-C.annotate("$k=0.9$: gain 10", xy=(0.9, 10), xytext=(0.62, 40),
+C.annotate("$k=0.9$: gain 10", xy=(0.9, 10), xytext=(0.66, 0.9),
            fontsize=8.5, color=GREEN,
            arrowprops=dict(arrowstyle="->", color=GREEN, lw=1.1))
 C.text(0.52, 2.5e-7,
