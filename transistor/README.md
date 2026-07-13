@@ -49,7 +49,7 @@ This is the p bit of the stochastic tier, and nothing in it awaits a discovery.
 
 **The recurrence loop, specified.** The feedback that makes cells a sampler rather than a calculator is one control law per site, executed on a fixed cycle:
 
-1. count the site's coincidence volume for a window $T_{\text{loop}}$, yielding $n_k$;
+1. count the site's weighted input stream for a window $T_{\text{loop}}$, yielding $n_k$ (the MUX summed singles that physically encode $\sum_j W_{kj} z_j$: a degree one signal at the thinned rate, which is what makes the timing below work);
 2. form the drive $u_k = (n_k - n_0)/s$, with offset and scale set once at calibration (they encode the site's bias and the weight normalization);
 3. set the site's aperture to **duty** $\sigma(u_k)$ for the next window: the shutter dwells open that fraction of the cycle, a pulse width modulated Gibbs acceptance.
 
