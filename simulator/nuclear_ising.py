@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """
 Digital twin of a Tier 1 nuclear computer: a recurrent stochastic sampler
 executed at the level of individual source decays.

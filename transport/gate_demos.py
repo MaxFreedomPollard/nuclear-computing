@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """
 Monte Carlo demonstrations of the three routine gates and the soft
 threshold, from first principles, with no transport code dependency.
