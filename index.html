@@ -392,7 +392,7 @@ $$</p>
 </tr>
 <tr>
 <td><a href="transport/">transport/</a></td>
-<td>Monte Carlo demonstrations of every routine gate: the exact coincidence multiplier, absorption complement, a measured Green's matrix with superposition check, the saturable sigmoid</td>
+<td>Monte Carlo demonstrations of every routine gate (exact coincidence multiplier, absorption complement, measured Green's matrix, saturable sigmoid, Bernstein universality), the degree checker, and the compiler: the adjoint assembler that turns a target weight matrix into a material layout, three ways</td>
 </tr>
 <tr>
 <td><a href="simulator/">simulator/</a></td>
@@ -448,6 +448,10 @@ The worked unit: one liter, 1 GBq of ⁹⁰Sr/⁹⁰Y, a 64 site annealer with i
 
 The lamp's failure carries its own repair, developed in [theory/THEORY.md](theory/THEORY.md) Section 9: the mismatch was a property of *atomic* light, and the inventory contains emitters that are not atomic. Parent isotopes emit their daughters' lines at natural width (the Mössbauer source principle: ⁵⁷Co for ⁵⁷Fe, ¹⁸¹W for ¹⁸¹Ta), ²³³U feeds ²²⁹ᵐTh directly with no photons at all (2 percent branch, a computed standing population of $2\times10^5$ isomers per cm³), and field gradients turn tuning into *addressing* on the MRI principle, with ¹⁸¹Ta moving 42 linewidths per tesla: a millitesla addressed, microsecond latch, fed from inside. Section 10 completes the rate coded canon: the isolation lemma (every fan out is a fresh thinning, never a copy, and then error does not compound with depth at all), the one dial annealing schedule (Geman and Geman applies verbatim to the Poisson event clock), graceful degradation with onboard self calibration against a fixed nuclear line, and multi ampoule composition over energy multiplexed links.
 
+The machine also now has its **compiler** (theory Section 11, demonstrated in [transport/compiler_demo.py](transport/compiler_demo.py)): the algorithm from a target weight matrix to a material layout, three ways. The adjoint identity $\partial\mathcal{G}<em>{io}/\partial s_v = \phi_i(v)\,\psi_o(v)$ (forward flux times importance, the reactor perturbation formula, which is also exactly what backpropagation is) yields the full Jacobian of the whole weight matrix from two transport solves, verified to machine precision; adjoint descent then compiles a random target to 0.65 percent from a blank plate. A crossbar fabric compiles any target by exact aperture arithmetic, and SPSA trims a sealed unit onto its instance from outside the wall using only Poisson counts of its own glow. "The problem is ground into the geometry" is no longer a slogan; it is a function you can call.
+
+![The compiler, three ways](figures/fig14_compiler.svg)
+
 Where this all goes is the subject of [transistor/SCALING.md](transistor/SCALING.md), the **ENIAC ledger**: every component with its improvement lever, its physical ceiling, and whose industrial curve improves it for free (timing and collection ride PET and high energy physics; memory rides the nuclear clock laser program; sources ride isotope production). The machine starts nine orders of magnitude past ENIAC per operation on decay heat alone, and catalog technology, with no new physics, carries the sampler another five to six orders. The primitives are not placeholders: every lever multiplies the same counting, thinning, and coincidence the theory is written in.
 
 ---
@@ -460,7 +464,7 @@ Where this all goes is the subject of [transistor/SCALING.md](transistor/SCALING
 4. Transport level $\mathcal{G}$ for a real geometry that implements a target weight matrix (signed weights via complementary channels).
 5. Tier 2: a concrete two qubit gate on nuclear spin or Mössbauer DOF with a room temperature error budget.
 6. **The addressed long retention write.** The broadband route to self written memory is dead by a bandwidth ratio of $10^{18}$, and the narrowline route is now open in principle (nuclear lamps, radiogenic feeding, resonance addressing: theory Section 9); what remains is a state that is simultaneously *parent fed, gradient addressable, and long lived*. A concrete, computable search: scan the catalog in `/gates` for isomers with lifetime above seconds whose feeding parents emit Mössbauer class lines, and rank by the addressing sensitivity $\Gamma/(dE/dB)$.
-7. Measure realized bits per detected quantum for a pixelated spectroscopic boundary against the $\log_2(N_E N_x N_\tau)$ ceiling of the boundary theory.
+7. Measure realized bits per detected quantum for a pixelated spectroscopic boundary against the $\log_2(N_E N_x N</em>\tau)$ ceiling of the boundary theory.
 
 Open an Issue stating the claim and the test; pair every Pull Request with the Issue it closes.
 
