@@ -39,7 +39,7 @@ A self exciting loop through a saturable stage: x' = Gamma x/(1+x) per pass, see
 | 1.5 | 0.500 | **latched** |
 | 3.0 | 2.000 | **latched** |
 
-Below Gamma = 1 the bit decays geometrically (signal death); above it the loop latches at Gamma minus 1 and holds indefinitely against the saturable ceiling. This is the amplification condition of the keystone criterion reappearing as the *memory regeneration* requirement, the same reason DRAM needs sense amplifiers: **a computer's working memory is an application of gain**. The isomer registers of the crystal cell store without gain (they are nonvolatile), so the machine has memory today; what waits on the keystone is memory the computation itself can rewrite through a loop.
+Below Gamma = 1 the bit decays geometrically (signal death); above it the loop latches at Gamma minus 1 and holds indefinitely against the saturable ceiling. This is the amplification condition of the keystone criterion reappearing as the *memory regeneration* requirement, the same reason DRAM needs sense amplifiers: a computer's working memory is an application of gain. The isomer registers of the crystal cell store without gain (they are nonvolatile), so the machine has memory today; what waits on the keystone is memory the computation itself can rewrite through a loop.
 
 ## 4. The telemetry link (the modulated glow)
 
@@ -53,4 +53,4 @@ A valve keys one internal emission line on and off (contrast m = 0.4, per the va
 | 10.0 ms | 100/60 | 1.42e-02 | 100 |
 | 30.0 ms | 300/180 | 1.00e-04 | 33 |
 
-At 30 ms symbols the measured error rate is 10^-4 at 33 bits per second; pushing to a 10^-9 grade link at this budget and contrast costs roughly 100 ms per symbol, **ten fully reliable bits per second through a sealed wall, with no antenna, no cable, and no emission in any conventional radio band**, carried by a γ line that passes through steel, soil, and vacuum. The receiver is any spectrometer; the transmitter is the machine deciding what its own glow says. Rate scales linearly with detected budget: 10^6 counts per second on the line is a kilobit link at the same reliability.
+At 30 ms symbols the measured error rate is 10^-4 at 33 bits per second; pushing to a 10^-9 grade link at this budget and contrast costs roughly 100 ms per symbol, ten fully reliable bits per second through a sealed wall, with no antenna, no cable, and no emission in any conventional radio band, carried by a γ line that passes through steel, soil, and vacuum. The receiver is any spectrometer; the transmitter is the machine deciding what its own glow says. Rate scales linearly with detected budget: 10^6 counts per second on the line is a kilobit link at the same reliability.

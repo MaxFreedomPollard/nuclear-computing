@@ -126,8 +126,8 @@ def nuclear_lamp():
         say(f"| {name} | {gamma:.2e} | {MU_N01:.1e} eV/T | "
             f"**{lw_per_T:.1f}** | {1000/lw_per_T:.0f} mT | "
             f"{v*1e4:.2f} um/s |")
-    say("\n- reading: 57Fe needs tesla scale steering; **181Ta moves a "
-        "full linewidth per ~24 mT and per 3.6 um/s**: millitesla "
+    say("\n- reading: 57Fe needs tesla scale steering; 181Ta moves a "
+        "full linewidth per ~24 mT and per 3.6 um/s: millitesla "
         "gradients address it, whispers modulate it. Fed by 181W "
         "(121 d), it is the machine's microsecond, field addressed "
         "latch. Known tax: heavy internal conversion and a small recoil "

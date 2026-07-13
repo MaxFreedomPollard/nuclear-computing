@@ -8,12 +8,12 @@ The unit is deliberately named a transistor and not a gate: a transistor is a *t
 
 | terminal | MOSFET | benchtop cell (today) | crystal cell (target) | neutron gate (proven) |
 |---|---|---|---|---|
-| **GATE** (control) | gate voltage | aperture position $\alpha$ | 148.38 nm trigger beam | control absorber position |
-| **SOURCE** (supply) | supply rail | ¹³⁷Cs disk, 1 µCi | pump laser + source bath | driver source and neighbor leakage |
-| **DRAIN** (output) | drain current | coincidence rate out | 8.4 eV fluorescence burst | leakage flux to next region |
-| **CHANNEL** (state) | inversion charge | encoded rate $x\lambda$ | isomer fraction $n_m$ | neutron population |
-| **BODY** (substrate) | silicon | scintillator volume | CaF₂ lattice | moderator block |
-| **gain** | transconductance | none ($\beta \approx 1$) | **the empty socket: the keystone** | $1/(1-k)$, proven |
+| GATE (control) | gate voltage | aperture position $\alpha$ | 148.38 nm trigger beam | control absorber position |
+| SOURCE (supply) | supply rail | ¹³⁷Cs disk, 1 µCi | pump laser + source bath | driver source and neighbor leakage |
+| DRAIN (output) | drain current | coincidence rate out | 8.4 eV fluorescence burst | leakage flux to next region |
+| CHANNEL (state) | inversion charge | encoded rate $x\lambda$ | isomer fraction $n_m$ | neutron population |
+| BODY (substrate) | silicon | scintillator volume | CaF₂ lattice | moderator block |
+| gain | transconductance | none ($\beta \approx 1$) | the empty socket: the keystone | $1/(1-k)$, proven |
 
 Read the last row left to right and you have the entire research program in one line: the benchtop cell works without gain, the crystal cell is complete except for the one socket this repository exists to fill, and the neutron gate has had gain since 1942.
 
@@ -24,11 +24,11 @@ A fair objection: pinout tables are cheap, and "gate, source, drain" could be de
 | MOSFET concept | nuclear counterpart | where it is measured |
 |---|---|---|
 | threshold voltage $V_{th}$ | the resonance condition: a channel conducts when tuned on line | every Mössbauer spectrum ever taken |
-| **body effect** (substrate bias shifts $V_{th}$) | the **isomer shift**: electron density at the nucleus moves the resonance energy with host chemistry | the standard observable of Mössbauer chemistry, tabulated for decades |
+| body effect (substrate bias shifts $V_{th}$) | the isomer shift: electron density at the nucleus moves the resonance energy with host chemistry | the standard observable of Mössbauer chemistry, tabulated for decades |
 | subthreshold leakage | spontaneous decay $\lambda_m$: the channel conducts a little even with no gate drive | the leak condition of the keystone criterion |
 | gate charge (fluence to switch) | pump fluence to write $n_m$ | the write curve, figure 12 panel B |
 | temperature derating | the Debye Waller factor $f(T)$: recoil free fraction falls with temperature | Mössbauer practice; the reason ⁵⁷Fe works at room temperature and heavier lines prefer cold |
-| single event upset | **does not exist**: there is no bit to flip, a lost quantum moves a rate by one part in $N$ | theory Section 10.3 |
+| single event upset | does not exist: there is no bit to flip, a lost quantum moves a rate by one part in $N$ | theory Section 10.3 |
 | gain bandwidth product | $M \cdot (1/\tau_{\text{switch}}) = 1/\Lambda$, a constant, for the subcritical gate | derived below; the op amp behavior, from reactor kinetics |
 
 The body effect row deserves a sentence, because it is the sharpest: in silicon, the substrate's potential quietly shifts every threshold, and designers either fight it or exploit it. In the nuclear device the *chemical environment* does exactly this to every resonant channel, it is called the isomer shift, it has been measured to exquisite precision since 1960, and it is exploitable the same two ways: as a nuisance to be trimmed (the Zeeman coils) or as a free second knob (choosing the host compound chooses the operating point). An analogy that predicts the existence of an effect you then find in the other technology's textbooks is not decoration.
@@ -43,7 +43,7 @@ This is the p bit of the stochastic tier, and nothing in it awaits a discovery.
 
 **The operation.** The disk emits its 662 keV line (via ¹³⁷ᵐBa) as a Poisson stream at $3.7\times10^4$ decays per second. The shutter thins it to $x\lambda$: the CHANNEL state is a rate, set mechanically, exactly the thinning theorem of Appendix B.1. Two cells aimed at a shared scintillator volume with a 100 ns coincidence window form the multiplier of the gate set; the survival form of that gate is verified to 0.4 percent in [/transport](../transport/results.md). Feed the discriminated output back to the next cell's servo and the network is the sampler of [/simulator](../simulator/results.md).
 
-**The numbers.** At a thinned proposal rate of $10^4$ per second and the measured 26 decays per independent sample, one cell contributes about **385 independent samples per second**. An eight cell machine reproducing the digital twin instance fits in a briefcase and costs about $3000. It is slow, honest, and real: every random number in it was manufactured by a nucleus.
+**The numbers.** At a thinned proposal rate of $10^4$ per second and the measured 26 decays per independent sample, one cell contributes about 385 independent samples per second. An eight cell machine reproducing the digital twin instance fits in a briefcase and costs about $3000. It is slow, honest, and real: every random number in it was manufactured by a nucleus.
 
 **What is electronics and what is not.** In this version the weighted sum is geometry, the randomness is nuclear, the state is a rate, and the threshold is a discriminator at the boundary. The purity claim of the charter is staged, not violated: each successive version pushes the boundary outward, and the document says so plainly.
 
@@ -51,13 +51,13 @@ This is the p bit of the stochastic tier, and nothing in it awaits a discovery.
 
 1. count the site's weighted input stream for a window $T_{\text{loop}}$, yielding $n_k$ (the MUX summed singles that physically encode $\sum_j W_{kj} z_j$: a degree one signal at the thinned rate, which is what makes the timing below work);
 2. form the drive $u_k = (n_k - n_0)/s$, with offset and scale set once at calibration (they encode the site's bias and the weight normalization);
-3. set the site's aperture to **duty** $\sigma(u_k)$ for the next window: the shutter dwells open that fraction of the cycle, a pulse width modulated Gibbs acceptance.
+3. set the site's aperture to duty $\sigma(u_k)$ for the next window: the shutter dwells open that fraction of the cycle, a pulse width modulated Gibbs acceptance.
 
-The timing closes on itself: at a thinned input rate of $10^4$ per second and 4 bit drive resolution, the precision law sets $T_{\text{loop}} = 2^{2b}/r \approx 26$ ms, which is a 40 Hz loop, which is exactly a hobby servo's natural cadence. Quantized acceptance biases the sampled law by an amount bounded by the quantization step (the variance calculus of theory Section 10.1 prices it); 4 bits is ample for annealing. Two implementations, honestly ranked: **Mode A** (the working mode): a boundary counter and lookup table drive the servos at up to kHz, electronics touching only counts and servo commands, never quanta in flight. **Mode B** (the demonstration mode): the duty table is printed and a clockwork cam or a patient human executes it at tenths of hertz, proving the loop contains no essential silicon, at a pace that makes the point and nothing else. Electronics free recurrence at speed is precisely what the valve fabric ([VALVE.md](VALVE.md)) and the keystone are for.
+The timing closes on itself: at a thinned input rate of $10^4$ per second and 4 bit drive resolution, the precision law sets $T_{\text{loop}} = 2^{2b}/r \approx 26$ ms, which is a 40 Hz loop, which is exactly a hobby servo's natural cadence. Quantized acceptance biases the sampled law by an amount bounded by the quantization step (the variance calculus of theory Section 10.1 prices it); 4 bits is ample for annealing. Two implementations, honestly ranked: Mode A (the working mode): a boundary counter and lookup table drive the servos at up to kHz, electronics touching only counts and servo commands, never quanta in flight. Mode B (the demonstration mode): the duty table is printed and a clockwork cam or a patient human executes it at tenths of hertz, proving the loop contains no essential silicon, at a pace that makes the point and nothing else. Electronics free recurrence at speed is precisely what the valve fabric ([VALVE.md](VALVE.md)) and the keystone are for.
 
 ## Between the scales: the valve, or why "field effect" is not a metaphor
 
-Before the crystal cell, one device deserves its own heading because it exists today and is usually overlooked: put a resonant absorber foil (⁵⁷Fe, or ¹⁸¹Ta for sensitivity) in a beam from its matched parent source, and wrap it in a coil. The foil transmits when detuned and blocks when on line; the coil's field moves the line (0.7 linewidths per tesla for ⁵⁷Fe, 42 for ¹⁸¹Ta); therefore **current in a coil gates a γ ray stream**. That is a field effect device in the literal sense of both words: a field, effecting conduction in a channel, at 14.4 keV. A piezoelectric Doppler mount does the same job kinematically at kHz to MHz rates, and has since the 1960s in every Mössbauer laboratory on Earth, where it is called a drive and never called what it is: a modulator terminal on a nuclear valve.
+Before the crystal cell, one device deserves its own heading because it exists today and is usually overlooked: put a resonant absorber foil (⁵⁷Fe, or ¹⁸¹Ta for sensitivity) in a beam from its matched parent source, and wrap it in a coil. The foil transmits when detuned and blocks when on line; the coil's field moves the line (0.7 linewidths per tesla for ⁵⁷Fe, 42 for ¹⁸¹Ta); therefore current in a coil gates a γ ray stream. That is a field effect device in the literal sense of both words: a field, effecting conduction in a channel, at 14.4 keV. A piezoelectric Doppler mount does the same job kinematically at kHz to MHz rates, and has since the 1960s in every Mössbauer laboratory on Earth, where it is called a drive and never called what it is: a modulator terminal on a nuclear valve.
 
 The valve is a *pass* transistor: it switches and routes but does not amplify ($\beta = 1$, and conversion and recoil free losses make it lossy in practice). Its switching time is set by the line's response (the 98 ns ⁵⁷Fe lifetime; microseconds for coil inductance). Every ingredient is catalog physics, which makes the valve the correct first hardware milestone for the *logic* story, as the benchtop cell is for the *sampling* story: a demonstrated GATE terminal, waiting for its gain.
 
@@ -83,7 +83,7 @@ This is the cell the whole program is trying to reach, and every part of it exce
 
 $$ M \cdot \frac{1}{\tau_{\text{switch}}} \;=\; \frac{1}{\Lambda}, $$
 
-a **constant gain bandwidth product**, exactly the signature behavior of an operational amplifier, falling out of 1950s reactor kinetics: about **10 kHz for thermal assemblies and 100 MHz for fast ones**. Want ten times the gain, pay ten times the switching time; trade along the curve freely; the product is fixed by the physics of the BODY (the moderator sets $\Lambda$). Figure 12, panel C, draws the whole tradeoff. No stronger evidence exists that the transistor framing is the machine's native language: the analogy did not merely survive contact with reactor kinetics, it *predicted the op amp law hiding inside it*.
+a constant gain bandwidth product, exactly the signature behavior of an operational amplifier, falling out of 1950s reactor kinetics: about 10 kHz for thermal assemblies and 100 MHz for fast ones. Want ten times the gain, pay ten times the switching time; trade along the curve freely; the product is fixed by the physics of the BODY (the moderator sets $\Lambda$). Figure 12, panel C, draws the whole tradeoff. No stronger evidence exists that the transistor framing is the machine's native language: the analogy did not merely survive contact with reactor kinetics, it *predicted the op amp law hiding inside it*.
 
 **Why it is in this document.** Not as a proposal; nobody wants this computer. It is here because a skeptical reader's strongest objection to the crystal cell ("no such device has ever existed") is answered by pointing at this one: the same pinout, with the gain socket filled, has operated on Earth since 1942, and operated *unattended* at Oklo two billion years before that. The crystal cell is that device shrunk by seven orders of magnitude, minus, so far, its gain.
 
@@ -106,7 +106,7 @@ Every parameter below is either computed from constants already cited in this re
 
 Fourteen orders of magnitude of packing density separate the three embodiments of one schematic, which is the miniaturization program stated as a single row of a table.
 
-**Absolute maximum ratings** (exceeding any of these does not damage the analogy; it damages the machine):
+Absolute maximum ratings (exceeding any of these does not damage the analogy; it damages the machine):
 
 - *Benchtop*: pile up above $\sim 10^6$ counts per second per scintillator channel (events merge, information is destroyed, THEORY.md 3.2); scintillator radiation darkening at industrial doses.
 - *Crystal*: VUV solarization and color center formation in CaF₂ under prolonged 148 nm load (a known nuisance in the clock community's crystals); dopant densities above $\sim 10^{18}$ cm⁻³ degrade the lattice; Debye Waller derating at elevated temperature for any Mössbauer channel in the trim fabric.
@@ -128,11 +128,11 @@ A visitor looking at the finished crystal machine would see a lead lined box hol
 
 Six companion notes extend the unit to its consequences, and stay subordinate to it:
 
-- [SEALED.md](SEALED.md): **the machine note**, the ampoule, a sealed self sustaining vessel built from these units, every number computed by [`sealed_unit.py`](sealed_unit.py) into [`sealed_results.md`](sealed_results.md) and figure 11;
-- [EMBODIMENT.md](EMBODIMENT.md): **the build note**, the ampoule at assembly grade: shell by shell dimensions and materials, the assembly sequence, commissioning, the operating procedure, and failure modes;
-- [VALVE.md](VALVE.md): **the logic note**, the field effect γ ray valve as a specified device, an algebra (series is AND of openness, parallel is OR, velocity offsets multiplex one sight line), and a modulator;
-- [COMPONENTS.md](COMPONENTS.md): **the inventory note**, every component of a working computer mapped to its nuclear implementation with an honest status word, the missing ones simulated (figure 13), and the modulated glow as the output row;
-- [POWER.md](POWER.md): **the metabolism note**, the five conversion chains that feed the periphery while the compute core eats decays raw, with load matching;
-- [SCALING.md](SCALING.md): **the trajectory note**, the ENIAC ledger of how each part of the unit improves, on whose budget, toward which ceiling.
+- [SEALED.md](SEALED.md): the machine note, the ampoule, a sealed self sustaining vessel built from these units, every number computed by [`sealed_unit.py`](sealed_unit.py) into [`sealed_results.md`](sealed_results.md) and figure 11;
+- [EMBODIMENT.md](EMBODIMENT.md): the build note, the ampoule at assembly grade: shell by shell dimensions and materials, the assembly sequence, commissioning, the operating procedure, and failure modes;
+- [VALVE.md](VALVE.md): the logic note, the field effect γ ray valve as a specified device, an algebra (series is AND of openness, parallel is OR, velocity offsets multiplex one sight line), and a modulator;
+- [COMPONENTS.md](COMPONENTS.md): the inventory note, every component of a working computer mapped to its nuclear implementation with an honest status word, the missing ones simulated (figure 13), and the modulated glow as the output row;
+- [POWER.md](POWER.md): the metabolism note, the five conversion chains that feed the periphery while the compute core eats decays raw, with load matching;
+- [SCALING.md](SCALING.md): the trajectory note, the ENIAC ledger of how each part of the unit improves, on whose budget, toward which ceiling.
 
 Figure scripts, all deterministic, all run in CI: [`make_transistor_figure.py`](make_transistor_figure.py) (figure 10), [`make_datasheet_figure.py`](make_datasheet_figure.py) (figure 12).

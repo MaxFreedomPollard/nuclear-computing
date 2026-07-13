@@ -153,8 +153,8 @@ def main():
         say(f"| {scale:.2f} λ₀ | {an_bad} | HIGH in {mc_bad:.0%} of trials "
             f"| {an_fix} | HIGH in {mc_fix:.0%} of trials |")
     say("")
-    say("The defective comparator's decision **inverts as the source "
-        "decays** (a degree 2 signal falls as the square); the repaired "
+    say("The defective comparator's decision inverts as the source "
+        "decays (a degree 2 signal falls as the square); the repaired "
         "comparator, one reference stage later, is invariant at every "
         "activity, exactly as the degree homogeneity theorem requires. "
         "Run this check on every layout the way silicon runs design rule "
