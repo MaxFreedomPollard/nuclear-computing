@@ -13,9 +13,9 @@ This directory is the working end of the foundational document's central claim: 
 
 Headline numbers, all computed from the data in this directory:
 
-- 1870 isomeric states known; **585** hold a bit for at least one second; **50** are nonvolatile for at least a day; **38** of those store at least 100 keV.
-- ⁹³ᵐMo releases **β = 2.87** photons per triggered decay (ENSDF intensities), not the vague "few" of the literature.
-- ¹⁷⁸ᵐ²Hf releases **β = 12.39** photons per release once the 1147 keV chain it feeds is counted, confirming the folklore value of about a dozen from primary data.
+- 1870 isomeric states known; 585 hold a bit for at least one second; 50 are nonvolatile for at least a day; 38 of those store at least 100 keV.
+- ⁹³ᵐMo releases β = 2.87 photons per triggered decay (ENSDF intensities), not the vague "few" of the literature.
+- ¹⁷⁸ᵐ²Hf releases β = 12.39 photons per release once the 1147 keV chain it feeds is counted, confirming the folklore value of about a dozen from primary data.
 - The only rows of `candidates.md` where trigger cross section, flux, and multiplicity are all *measured* quantities satisfying both keystone inequalities are the neutron sector rows (²⁴²ᵐAm, ²³⁵U). See `experiment_menu.md` for what that means.
 
 Run it:

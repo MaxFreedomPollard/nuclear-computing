@@ -17,4 +17,4 @@ Decision: AND(THIN 0.8, THIN 0.9)  >  THIN(0.5), at birth activity 5e+05/s, wind
 | 0.50 λ₀ | LOW | HIGH in 0% of trials | HIGH | HIGH in 100% of trials |
 | 0.25 λ₀ | LOW | HIGH in 0% of trials | HIGH | HIGH in 100% of trials |
 
-The defective comparator's decision **inverts as the source decays** (a degree 2 signal falls as the square); the repaired comparator, one reference stage later, is invariant at every activity, exactly as the degree homogeneity theorem requires. Run this check on every layout the way silicon runs design rule checks.
+The defective comparator's decision inverts as the source decays (a degree 2 signal falls as the square); the repaired comparator, one reference stage later, is invariant at every activity, exactly as the degree homogeneity theorem requires. Run this check on every layout the way silicon runs design rule checks.

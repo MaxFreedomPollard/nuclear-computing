@@ -28,7 +28,7 @@
 | 57Fe 14.4 keV | 4.64e-09 | 3.2e-09 eV/T | **0.7** | 1472 mT | 96.62 um/s |
 | 181Ta 6.2 keV | 7.54e-11 | 3.2e-09 eV/T | **41.8** | 24 mT | 3.63 um/s |
 
-- reading: 57Fe needs tesla scale steering; **181Ta moves a full linewidth per ~24 mT and per 3.6 um/s**: millitesla gradients address it, whispers modulate it. Fed by 181W (121 d), it is the machine's microsecond, field addressed latch. Known tax: heavy internal conversion and a small recoil free fraction; the latch is real but photon poor.
+- reading: 57Fe needs tesla scale steering; 181Ta moves a full linewidth per ~24 mT and per 3.6 um/s: millitesla gradients address it, whispers modulate it. Fed by 181W (121 d), it is the machine's microsecond, field addressed latch. Known tax: heavy internal conversion and a small recoil free fraction; the latch is real but photon poor.
 
 ## Boundary bandwidth (detected budget 1e7 events/s)
 
