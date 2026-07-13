@@ -1,0 +1,23 @@
+{
+  "title": "Nuclear Compute: Power, Logic, Memory, and Interconnect in One Radioactive Medium",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Pollard, Max Freedom"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "description": "<p>A radiation field and the nuclear populations it drives are proposed as a complete computational substrate: logic, memory, and interconnect at once, powered and clocked by the decay of the same medium. The theory reduces its entire feasibility to one falsifiable component, a field triggered nuclear release gate with gain, judged by three inequalities (leak, amplification, rate), evaluates that criterion against NUBASE2020 and ENSDF for every known isomer, demonstrates the routine gate set and a decay by decay digital twin in simulation, identifies the neutron sector as the scale at which every keystone inequality is already satisfied by library data, and specifies the reference transistor, the sealed self sustaining ampoule, and its boundary at assembly grade. Code is MIT licensed; prose and figures are CC BY 4.0.</p>",
+  "keywords": [
+    "nuclear computing",
+    "unconventional computation",
+    "nuclear isomers",
+    "stochastic computing",
+    "NEEC",
+    "induced gamma emission",
+    "thorium 229",
+    "Ising machines",
+    "Mossbauer effect",
+    "self sustaining systems"
+  ]
+}
