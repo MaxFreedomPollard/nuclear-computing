@@ -273,6 +273,12 @@ A megaelectronvolt γ carries $1.6\times10^{-13}$ J, about **8 orders of magnitu
 
 ---
 
+## Nomenclature
+
+A new class of machine tends to be reached for under several names before one settles, and this document uses *Nuclear Compute* for the model and *nuclear computing* for the field. The same object is a **nuclear computer** or a **radiative computer** named for its substrate, a **radioisotope computer** or **decay powered computer** named for its metabolism, and, when packaged as a component in the way a CPU, GPU, or NPU is, a **radioactive processing unit (RPU)** or **nuclear processing unit (NPU)**. Where the amplifying keystone gate is driven by a fission channel the machine is a **fission computer** (fission compute); where the driving neutrons come instead from a fusion source it is a **fusion computer** (fusion compute); the two share the neutron sector gate of Section 4 and differ only in what supplies the neutrons. Named for the mechanism that carries the state, it is variously **isomer computing** (isomeric nuclear memory), **gamma ray** or **nuclear photonic computing**, **Mössbauer computing**, and, in its native tier, **stochastic nuclear computing**. These are one machine under many names; the physics is in the sections above, not in the label.
+
+---
+
 ## Technology readiness, and where the risk lives
 
 ![Readiness versus centrality](figures/fig6_readiness.svg)
@@ -341,7 +347,7 @@ Read the last row left to right and it is the research program in one line: the 
 
 ## The ampoule: the machine, sealed
 
-Take the unit above, remove the wall socket, and ask what survives. The answer, worked out in [transistor/SEALED.md](transistor/SEALED.md) and computed line by line in [transistor/sealed_results.md](transistor/sealed_results.md), is a vessel with **no penetrations**: an alpha core in high pressure krypton is a nuclear pumped 148 nm lamp, clock, and entropy source at once; the problem is ground into a compute shell as geometry; weights are trimmed *through the sealed wall* by Zeeman coils (about 0.7 natural linewidths per tesla on ⁵⁷Fe) and piezoelectric Doppler rings (one linewidth per 0.097 mm/s); and a betavoltaic layer harvests the same decay budget to power the boundary readout, so the machine pays for its own mouth. Problems enter as fields, answers leave as glow.
+Take the unit above, remove the wall socket, and ask what survives. The answer, worked out in [transistor/SEALED.md](transistor/SEALED.md) and computed line by line in [transistor/sealed_results.md](transistor/sealed_results.md), is a sealed **radioactive processing unit** (a nuclear processing unit, the RPU to a CPU's role): a vessel with **no penetrations**, an alpha core in high pressure krypton is a nuclear pumped 148 nm lamp, clock, and entropy source at once; the problem is ground into a compute shell as geometry; weights are trimmed *through the sealed wall* by Zeeman coils (about 0.7 natural linewidths per tesla on ⁵⁷Fe) and piezoelectric Doppler rings (one linewidth per 0.097 mm/s); and a betavoltaic layer harvests the same decay budget to power the boundary readout, so the machine pays for its own mouth. Problems enter as fields, answers leave as glow.
 
 Two results, one negative and one positive, make the design honest:
 
