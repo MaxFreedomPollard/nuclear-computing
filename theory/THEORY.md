@@ -295,4 +295,36 @@ Ampoules compose: each unit's boundary glow, filtered to a distinct emission lin
 
 ---
 
-*Sections 1 through 3 are the referee armor: every known way a working gate quietly dies, written down with its inequality. Section 4 is the existence proof that the model survives them all at one scale. Sections 6 through 10 are the machine that needs no keystone, no calibration, and no wires: what can be built while the search runs. The rest is the search itself.*
+## 11. The compiler: from a problem to a piece of matter
+
+Every result so far describes the machine's *instruction set*: the gates, the weights $\mathcal{G}$, the registers. None answers the constructive question a user actually asks: **given my problem, a specific weight matrix $\mathcal{G}^\star$, what layout of matter realizes it?** A computer without an answer to this is a plugboard with no wiring diagram. This section supplies the assembler, and it exists in three forms, verified end to end in [`transport/compiler_demo.py`](../transport/compiler_demo.py) (figure 14).
+
+### 11.1 The forward map is differentiable, and its gradient is free
+
+Freeze the cross sections (Section 5.3): transport is the linear operator $\mathcal{G}(s) = B\,(I - Q(s))^{-1} C$, where $s_v$ is the survival (one minus absorption) at cell $v$, $Q = \mathrm{diag}(s)\,M$ is the cell to cell movement, $B$ injects at input ports and $C$ exits at output ports. The compiler needs $\partial \mathcal{G}_{io}/\partial s_v$ for every port pair and every cell: naively $O(V)$ transport solves, hopeless for a real layout. The adjoint identity collapses it to **two**:
+
+$$ \boxed{\; \frac{\partial \mathcal{G}_{io}}{\partial s_v} \;=\; \phi_i(v)\,\psi_o(v) \;} $$
+
+the **forward visit density** $\phi_i = B_i (I-Q)^{-1}$ (how often a photon entering port $i$ visits cell $v$) times the **importance** $\psi_o(v)$ (the probability that a photon leaving $v$ eventually exits at port $o$), which is the *adjoint* flux $\psi = M(I-Q)^{-1}C + C$. One forward solve gives all $\phi_i$; one adjoint solve gives all $\psi_o$; their outer product is the entire Jacobian of the whole weight matrix with respect to the whole layout. This is not a new trick: it is the **importance function** reactor physicists have computed since the 1950s (Ussachoff 1955), it is what shielding optimizers already use, and it is, exactly, backpropagation. The demo verifies the boxed formula against finite differences to a worst relative error of $9\times10^{-7}$, machine precision.
+
+### 11.2 Way A, full custom: grind the problem into the geometry
+
+With the gradient in hand, compilation is optimization: descend $\tfrac12\|\mathcal{G}(s) - \mathcal{G}^\star\|^2$ over the cell survivals $s_v \in [s_{\min}, s_{\max}]$ (a plate that is mostly transparent, selectively absorbing), then quantize $s_v$ to a fabricable absorber thickness map, the etched channel plates of the [build note](../transistor/EMBODIMENT.md). Three properties make this the flagship route:
+
+- **Nonuniqueness is freedom.** $\mathcal{G}$ has vastly more cells than matrix entries, so the preimage of $\mathcal{G}^\star$ is a high dimensional manifold; the compiler needs *any* point on it, and the slack is precisely what absorbs fabrication tolerance and hosts secondary constraints. The demo recovers a feasible random $4\times4$ target to a worst weight error of **0.65 percent**.
+- **Constraints are first class.** A demanded crosstalk kill (force $\mathcal{G}_{io}\to0$ for a chosen pair) is one penalty term; signed weights compile to complementary on/off resonance channel pairs (Section 5.3); the degree homogeneity rule (Section 7.1) is a compile pass over the result. The demo shows the honest edge too: killing one channel of a *diffusive* fabric while preserving its neighbors is over constrained because the paths physically overlap, and the compiler returns the optimum of that trade rather than a fiction, quantifying exactly how much collimation the target really needs.
+- **It is the reactor perturbation formula**, so it inherits sixty years of validation and, for a real geometry, runs in MCNP or OpenMC adjoint mode with no new physics.
+
+### 11.3 Way B, the crossbar: rent a universal fabric
+
+Fabricate once as a collimated grid of independent sight lines, each carrying one matrix entry, weights set by aperture transmission $T_{io}$. Compilation is then not optimization but arithmetic: $T_{io} = \mathcal{G}^\star_{io}/\mathcal{G}^{\text{fab}}_{io}$, exact to machine precision for any target under the fabric's open ceiling, and **reprogrammable in the field** by moving apertures, no refabrication. The price is flux: dedicated sight lines do not share paths, so photon budget per channel falls as the channel count grows. This is the FPGA to Way A's ASIC, and the two are endpoints of one axis: Way A spends design effort to buy density, Way B spends density to buy instant reprogrammability.
+
+### 11.4 Way C, self calibration: tune the glow through the wall
+
+Neither route above needs the *inside* of a sealed unit once built, because the boundary already emits $\mathcal{G}$ (the glow) and the wall already admits field trims (Section 8.2). So a sealed ampoule is compiled onto its instance from outside by **simultaneous perturbation stochastic approximation** (Spall 1992): perturb *all* trim fields at once by a random sign vector, measure the loss twice (Poisson noisy counts of the boundary spectrum), and step against the two point difference. The cost is **two measurements per iteration regardless of how many trims exist**, and it needs no model of the device and no gradient. The demo drives all 144 cell trims to convergence under native Poisson noise. This is the routine that turns the aging theorem's promised self calibration (Section 10.3) into an algorithm: the machine is re compiled onto its drifting self, forever, using only its own light.
+
+**The three are one workflow.** Way A designs the plate; Way B is the reprogrammable alternative when flux is cheap and edits are frequent; Way C trims whatever was built and keeps it trimmed. Together they are the missing assembler, and with them the phrase "the problem is ground into the geometry" stops being a slogan and becomes a function you can call.
+
+---
+
+*Sections 1 through 3 are the referee armor: every known way a working gate quietly dies, written down with its inequality. Section 4 is the existence proof that the model survives them all at one scale. Sections 6 through 10 are the machine that needs no keystone, no calibration, and no wires. Section 11 is the compiler that turns a problem into a piece of matter. What remains is the search itself.*

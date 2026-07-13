@@ -9,6 +9,8 @@
 5. **The degree checker** ([`degree_check.py`](degree_check.py) writes [`degree_results.md`](degree_results.md)): the design rule tool of theory Section 7.1. It labels every node's coincidence degree, flags unequal degree comparisons, repairs them with reference stages, and demonstrates the stakes by simulation: the defective comparator inverts its decision at half activity, the repaired one never moves.
 6. **Bernstein feed forward universality.** A circuit of thinning, coincidence, and MUX alone evaluates a nonlinear function of its input rate, matching its Bernstein polynomial to counting noise (0.0012) while the polynomial converges to the target as $1/n$ exactly as the theorem in THEORY.md Section 6 requires. Function approximation does not wait on the keystone.
 
+7. **The compiler** ([`compiler_demo.py`](compiler_demo.py) writes [`compiler_results.md`](compiler_results.md), figure 14): the missing assembler, three ways. The adjoint Jacobian of the whole weight matrix (forward flux times importance, the reactor perturbation formula) is verified against finite differences to $9\times10^{-7}$; adjoint descent then compiles a random target to 0.65 percent, a crossbar compiles any target by exact division, and SPSA trims a sealed unit through the wall using only Poisson counts of its glow (theory Section 11).
+
 For engineering geometries (real cross sections, real materials, coupled neutron and photon transport, the subcritical gate of the theory document) the same measurements should be repeated in **OpenMC** (openmc.org: open source, ENDF/B data, Python API); these demonstrations are deliberately dependency free so that every claim can be checked anywhere first.
 
 ```

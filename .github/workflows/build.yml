@@ -21,6 +21,8 @@ jobs:
         run: python transport/gate_demos.py
       - name: run the degree checker
         run: python transport/degree_check.py
+      - name: run the compiler demonstration
+        run: python transport/compiler_demo.py
       - name: compute the EDM channel plan
         run: python gates/edm_plan.py
       - name: run the digital twin
