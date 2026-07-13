@@ -25,6 +25,8 @@ jobs:
         run: python gates/edm_plan.py
       - name: run the digital twin
         run: python simulator/nuclear_ising.py
+      - name: run the component proofs of concept
+        run: python simulator/components.py
       - name: draw the nuclear transistor
         run: python transistor/make_transistor_figure.py
       - name: draw the datasheet curves

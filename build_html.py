@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """Render README.md -> index.html with MathJax + figures, for easy browsing.
 Math spans are protected from the markdown converter, then rendered by MathJax."""
 import re, markdown, os, html
@@ -60,6 +61,9 @@ tpl = f"""<!DOCTYPE html>
 </style></head>
 <body><div class="wrap">
 {body}
+<hr><p style="color:var(--muted);font-size:.85rem">© 2026 Max Freedom Pollard
+(<a href="https://orcid.org/0009-0007-0059-3319">ORCID 0009-0007-0059-3319</a>).
+Text and figures CC BY 4.0; code MIT.</p>
 </div></body></html>"""
 
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(tpl)

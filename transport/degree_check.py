@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """
 The degree checker: a design rule tool for decay powered circuits.
 

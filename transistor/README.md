@@ -126,11 +126,13 @@ A visitor looking at the finished crystal machine would see a lead lined box hol
 
 ## Notes accompanying this reference design
 
-Four companion notes extend the unit to its consequences, and stay subordinate to it:
+Six companion notes extend the unit to its consequences, and stay subordinate to it:
 
 - [SEALED.md](SEALED.md): **the machine note**, the ampoule, a sealed self sustaining vessel built from these units, every number computed by [`sealed_unit.py`](sealed_unit.py) into [`sealed_results.md`](sealed_results.md) and figure 11;
 - [EMBODIMENT.md](EMBODIMENT.md): **the build note**, the ampoule at assembly grade: shell by shell dimensions and materials, the assembly sequence, commissioning, the operating procedure, and failure modes;
 - [VALVE.md](VALVE.md): **the logic note**, the field effect γ ray valve as a specified device, an algebra (series is AND of openness, parallel is OR, velocity offsets multiplex one sight line), and a modulator;
+- [COMPONENTS.md](COMPONENTS.md): **the inventory note**, every component of a working computer mapped to its nuclear implementation with an honest status word, the missing ones simulated (figure 13), and the modulated glow as the output row;
+- [POWER.md](POWER.md): **the metabolism note**, the five conversion chains that feed the periphery while the compute core eats decays raw, with load matching;
 - [SCALING.md](SCALING.md): **the trajectory note**, the ENIAC ledger of how each part of the unit improves, on whose budget, toward which ceiling.
 
 Figure scripts, all deterministic, all run in CI: [`make_transistor_figure.py`](make_transistor_figure.py) (figure 10), [`make_datasheet_figure.py`](make_datasheet_figure.py) (figure 12).

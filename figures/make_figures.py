@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """
 Figure generator for the Nuclear Computing foundational document.
 Produces clean, GitHub-renderable SVG (and PNG) figures with real numbers.
