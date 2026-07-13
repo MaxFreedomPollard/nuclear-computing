@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use or build on this theory, please cite it as below."
-title: "Nuclear Computing: a model of computation in which radiation is the computer"
+title: "Nuclear Compute: Power, Logic, Memory, and Interconnect in One Radioactive Medium"
 authors:
   - family-names: "Pollard"
     given-names: "Max Freedom"

@@ -25,7 +25,7 @@ body = re.sub(r"\x00MATH(\d+)\x00", unstash, body)
 tpl = f"""<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nuclear Computing — Foundational Charter</title>
+<title>Nuclear Compute: Power, Logic, Memory, and Interconnect in One Radioactive Medium</title>
 <script>
   window.MathJax = {{ tex: {{ inlineMath: [['$','$']], displayMath: [['$$','$$']] }},
                       svg: {{ fontCache: 'global' }} }};
