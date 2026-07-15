@@ -16,7 +16,7 @@ A sealed cylindrical vessel, outer envelope 90 mm diameter × 170 mm, about 4 kg
 
 ### 1.2 Compute shell (the weights)
 
-- A stack of etched channel plates: 40 mm outer diameter borosilicate discs, each carrying a photolithographically etched pattern of through channels and blind cavities, with tungsten aperture inserts (fixed thinning fractions) and lead septa (inhibitory blocking). The stacked pattern is the Green's function $\mathcal{G}$ of the programmed instance: the problem, ground into geometry at manufacture.
+- A stack of etched channel plates: 40 mm outer diameter borosilicate discs, each carrying a photolithographically etched pattern of through channels and blind cavities, with tungsten aperture inserts (fixed thinning fractions) and lead septa (inhibitory blocking). The stacked pattern is the Green's function 𝒢 of the programmed instance: the problem, ground into geometry at manufacture.
 - 64 interaction sites (scintillating cavities, 2 mm cells of plastic scintillator or CsI, one per logical site), coincidence pairs defined by shared sight lines through the plates.
 - Design rule enforced at layout time: every compared path has equal coincidence degree (the homogenization procedure, [theory Section 7.1](../theory/THEORY.md), machine checkable with [`transport/degree_check.py`](../transport/degree_check.py)).
 
@@ -45,7 +45,7 @@ A sealed cylindrical vessel, outer envelope 90 mm diameter × 170 mm, about 4 kg
 
 ## 2. Assembly sequence
 
-1. Fabricate and stack the channel plates; verify the etched $\mathcal{G}$ against the instance specification optically (the plates are transparent to visible light; the check is a photograph).
+1. Fabricate and stack the channel plates; verify the etched 𝒢 against the instance specification optically (the plates are transparent to visible light; the check is a photograph).
 2. Run the degree checker on the as built layout; homogenize any flagged comparison with reference apertures (spare blind channels are provided in the plate design for exactly this).
 3. Load the trim ring foils and parent sources in a hot cell; verify each channel's resonance dip on the bench with its own coil and the piezo (a one hour Mössbauer scan per channel).
 4. Mount trim ring on the isolation stage; verify the vibration budget with the ring live.
@@ -53,7 +53,7 @@ A sealed cylindrical vessel, outer envelope 90 mm diameter × 170 mm, about 4 kg
 6. Fill and seal the krypton lamp cell around the previously encapsulated source capsule (the only step requiring the GBq source present; everything before it is cold work).
 7. Close the titanium wall; weld; leak check.
 8. Commission: (a) verify the Poisson floor (dead time corrected counting statistics at every SiPM), (b) run the annealing schedule on a known instance and compare the sampled distribution to the digital twin prediction ([/simulator](../simulator/)), (c) record the birth certificate: activity, per channel resonance positions, and the full transfer matrix, all of which the aging theorem then propagates for the life of the unit.
-9. Ship with the birth certificate; the unit's performance at any future date is that document plus $2^{-t/T}$.
+9. Ship with the birth certificate; the unit's performance at any future date is that document plus 2^(-t/T).
 
 ## 3. Operating procedure
 

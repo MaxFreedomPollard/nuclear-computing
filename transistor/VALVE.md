@@ -6,8 +6,8 @@
 
 A valve is four parts on one sight line:
 
-1. Source: ⁵⁷Co diffused into rhodium foil, 1 to 25 mCi (a standard commercial Mössbauer source). Emits the 14.4 keV line at natural width with recoil free fraction $f_s \approx 0.75$ at room temperature.
-2. Channel medium: the absorber foil, 95 percent enriched ⁵⁷Fe, 1 to 2 µm, epoxy free mounted on 25 µm beryllium. Effective resonant thickness $t_a = f_a n \sigma_0 d$ of order 5 to 15 for this geometry (with the strength split across the six magnetic hyperfine components in α iron): deep dips are routine.
+1. Source: ⁵⁷Co diffused into rhodium foil, 1 to 25 mCi (a standard commercial Mössbauer source). Emits the 14.4 keV line at natural width with recoil free fraction f_s ≈ 0.75 at room temperature.
+2. Channel medium: the absorber foil, 95 percent enriched ⁵⁷Fe, 1 to 2 µm, epoxy free mounted on 25 µm beryllium. Effective resonant thickness t_a = f_a n σ_0 d of order 5 to 15 for this geometry (with the strength split across the six magnetic hyperfine components in α iron): deep dips are routine.
 3. The GATE, in either of two forms:
    - *kinematic*: a piezoelectric velocity transducer carrying source or absorber; one natural linewidth per 0.097 mm/s, full authority within ±10 mm/s, bandwidth from DC to tens of kHz (the ordinary Mössbauer drive);
    - *magnetic*: a coil at the foil; roughly 0.7 linewidths per tesla on ⁵⁷Fe (the trim ring's ¹⁸¹Ta channels reach 42 per tesla and switch with millitesla; see the [build note](EMBODIMENT.md)).
@@ -23,10 +23,10 @@ Let a valve's state be OPEN (detuned, transmitting) or CLOSED (on resonance, abs
 
 - series composition is AND of openness: a stream survives a chain of valves only if every one is open; transmission is the product of stage transmissions, exactly the thinning algebra of the gate set;
 - parallel composition is OR: split paths recombined pass flux if any path is open;
-- NOT is built in: a closed valve is a complement on the resonant component (and its *re emission* is isotropic, so a closed valve is also a tap: the absorbed traffic reappears as $4\pi$ fluorescence, usable as a monitor port);
-- velocity multiplexing: a single physical sight line carries several logical channels at once, one per Doppler offset; a valve tuned to offset $v_i$ gates channel $i$ and ignores the others. This is frequency division multiplexing inside one γ line, orthogonal to the energy division multiplexing between lines ([gates/edm_channels.md](../gates/edm_channels.md)); a Mössbauer drive is a channel selector the way a superheterodyne dial is.
+- NOT is built in: a closed valve is a complement on the resonant component (and its *re emission* is isotropic, so a closed valve is also a tap: the absorbed traffic reappears as 4π fluorescence, usable as a monitor port);
+- velocity multiplexing: a single physical sight line carries several logical channels at once, one per Doppler offset; a valve tuned to offset v_i gates channel i and ignores the others. This is frequency division multiplexing inside one γ line, orthogonal to the energy division multiplexing between lines ([gates/edm_channels.md](../gates/edm_channels.md)); a Mössbauer drive is a channel selector the way a superheterodyne dial is.
 
-What the algebra is for, honestly: valves route, modulate, select, and complement. They do not amplify ($\beta = 1$ and lossy), so valve networks obey the same law as the rest of the routine gate set: any feed forward function (Bernstein, theory Section 6), no unbounded recurrence. A valve network is the machine's *switchboard*; the gain socket is still the keystone's.
+What the algebra is for, honestly: valves route, modulate, select, and complement. They do not amplify (β = 1 and lossy), so valve networks obey the same law as the rest of the routine gate set: any feed forward function (Bernstein, theory Section 6), no unbounded recurrence. A valve network is the machine's *switchboard*; the gain socket is still the keystone's.
 
 ## 3. The modulator
 
@@ -34,7 +34,7 @@ Driven with a waveform instead of a setpoint, the valve writes time structure on
 
 ## 4. The two disciplines
 
-1. **Temperature.** The second order Doppler shift moves the ⁵⁷Fe line by $7\times10^{-4}$ mm/s per kelvin near room temperature: about one natural linewidth per 130 K. Ten kelvin of gradient across a valve bank therefore costs under a tenth of a linewidth, which ordinary enclosure design provides; metrology grade setpoints trim the residual with the coils that exist anyway. Stated as a specification, not discovered as a mystery drift.
+1. **Temperature.** The second order Doppler shift moves the ⁵⁷Fe line by 7×10⁻⁴ mm/s per kelvin near room temperature: about one natural linewidth per 130 K. Ten kelvin of gradient across a valve bank therefore costs under a tenth of a linewidth, which ordinary enclosure design provides; metrology grade setpoints trim the residual with the coils that exist anyway. Stated as a specification, not discovered as a mystery drift.
 2. **Background.** The valve gates the *recoil free resonant* component only; Compton scattered and non resonant photons pass regardless, a DC pedestal under the logic. Discrimination is by energy window (the 14.4 keV photopeak) and, where needed, by coincidence with the 122 keV feeding photon of the ⁵⁷Co cascade, which tags true source quanta. The pedestal costs contrast, is fully characterized by a one hour bench scan, and enters the error budget as a known constant, never as noise.
 
 ## 5. Why this note exists

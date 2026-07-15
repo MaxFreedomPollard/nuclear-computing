@@ -10,7 +10,7 @@ The deepest self powering property is that the computation needs almost no *conv
 
 | chain | physics | scale (per GBq class inventory) | feeds | provenance |
 |---|---|---|---|---|
-| direct charge | beta emitter on an insulated electrode accumulates charge: current $= A e \approx 0.16$ nA per GBq, potentials to kilovolts | nA at kV; charges 10 pF to 1 kV in about a minute | electrostatic actuation and holding: aperture states latched by charge, zero current to hold | the oldest nuclear battery there is (Moseley, 1913) |
+| direct charge | beta emitter on an insulated electrode accumulates charge: current = A e ≈ 0.16 nA per GBq, potentials to kilovolts | nA at kV; charges 10 pF to 1 kV in about a minute | electrostatic actuation and holding: aperture states latched by charge, zero current to hold | the oldest nuclear battery there is (Moseley, 1913) |
 | betavoltaic | beta junction converts particle energy to current at a few percent | order 0.1 µW electrical per GBq of ⁶³Ni | the counting ASIC at the boundary, duty cycled | commercial product class for decades |
 | radioluminescent photovoltaic | phosphor converts betas to light, photodiode converts light to current | order 0.01 to 0.1 µW per GBq through the double conversion | trickle loads, indicator functions | tritium betalights plus ordinary PV, both catalog items |
 | thermoelectric | decay heat across a thermoelectric generator at 5 to 7 percent | needs Ci to kCi to matter: milliwatts to watts at rack scale (²³⁸Pu: 0.57 W thermal per gram) | multi ampoule racks, external cooling fans, anything hungry | every deep space probe since the 1970s |
