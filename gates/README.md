@@ -1,11 +1,11 @@
 # /gates: the keystone criterion evaluated against nuclear data
 
-This directory is the working end of the foundational document's central claim: that the entire viability of nuclear computing collapses onto one falsifiable component, the triggered release gate with gain, judged by the leak condition $\eta > \tfrac12$ and the amplification condition $\Gamma > 1$.
+This directory is the working end of the foundational document's central claim: that the entire viability of nuclear computing collapses onto one falsifiable component, the triggered release gate with gain, judged by the leak condition η > ½ and the amplification condition Γ > 1.
 
 | file | what it is |
 |---|---|
 | `isomer_screen.py` | screens every isomer in NUBASE2020 (1870 states) and evaluates a curated candidate set; regenerates the catalog, the candidate table, and figure 8 |
-| `isomer_catalog.csv` | every isomer on Earth: excitation energy, half life, $\lambda_m$, spin parity, decay modes |
+| `isomer_catalog.csv` | every isomer on Earth: excitation energy, half life, λ_m, spin parity, decay modes |
 | `candidates.csv`, `candidates.md` | the curated candidates with measured multiplicities, trigger mechanisms, energy leverage, and citations |
 | `experiment_menu.md` | required trigger cross sections and fluxes per candidate per facility; where the keystone lives and dies |
 | `edm_plan.py`, `edm_channels.md` | the computed energy division multiplexing channel plan: eight clean CZT interconnect channels from catalog sources, with leakage matrices and longevity |
