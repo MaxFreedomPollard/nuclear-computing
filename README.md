@@ -461,7 +461,7 @@ The full catalog (1870 isomeric states: 585 hold a bit for a second, 50 for a da
 
 ## License and citation
 
-Prose and figures are CC BY 4.0; code is MIT (see [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS)). Cite via [CITATION.cff](CITATION.cff). Contributions follow the rule above: open an Issue stating the claim and the test, and pair every Pull Request with the Issue it closes.
+Prose and figures are CC BY-NC 4.0; code is Apache 2.0 (see [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS)). Cite via [CITATION.cff](CITATION.cff). Contributions follow the rule above: open an Issue stating the claim and the test, and pair every Pull Request with the Issue it closes.
 
 ---
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: MIT
+# Copyright 2026 Max Freedom Pollard
+# SPDX-License-Identifier: Apache-2.0
 """
 Proofs of concept for the remaining logical components of a working
 computer, each run as a simulation whose physics is already demonstrated

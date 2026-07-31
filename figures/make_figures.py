@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: MIT
+# Copyright 2026 Max Freedom Pollard
+# SPDX-License-Identifier: Apache-2.0
 """
 Figure generator for the Nuclear Computing foundational document.
 Produces clean, GitHub-renderable SVG (and PNG) figures with real numbers.

@@ -7,7 +7,7 @@ authors:
     orcid: "https://orcid.org/0009-0007-0059-3319"
 repository-code: "https://github.com/MaxFreedomPollard/nuclear-computing"
 doi: 10.5281/zenodo.21330486
-license: CC-BY-4.0
+license: CC-BY-NC-4.0
 keywords:
   - nuclear computing
   - unconventional computation

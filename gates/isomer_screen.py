@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: MIT
+# Copyright 2026 Max Freedom Pollard
+# SPDX-License-Identifier: Apache-2.0
 """
 Isomer screener for the keystone gate criterion.
 
