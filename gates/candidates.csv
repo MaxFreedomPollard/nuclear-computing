@@ -3,7 +3,7 @@ key,E_keV,t_half_s,beta_gamma,beta_note,mech,E_trig_keV,leverage,status,cite
 235mU,0.0767,1560.0,1.0,internal conversion only,electronic environment / electronic bridge,,,no demonstrated trigger,NUBASE2020; lifetime is chemistry sensitive
 93mMo,2424.89,24660.0,2.87,ENSDF cascade,NEEC through the 4.85 keV gateway,4.85,499.977,CONTESTED (claim vs theory gap ~1e9),"Nature 554, 216 (2018); PRL 122, 212501 (2019); arXiv 2501.05217"
 178m2Hf,2446.09,978264706.0,12.39,ENSDF cascade incl. 1147 keV chain,IGE by keV X rays (claimed),10.0,244.609,"CONTESTED, unreproduced","Collins et al. PRL 82, 695 (1999); refuted PRL 92, 052504"
-180mTa,77.1,stable,1.0,"depletion feeds beta decay, not a cascade",photoactivation via gateways at and above 1.01 MeV,1010.0,0.076,"PROVEN trigger, energy uphill","Belic et al. PRL 83, 5242 (1999); PRC 65, 035801 (2002)"
+180mTa,75.3,stable,1.0,"depletion feeds beta decay, not a cascade",photoactivation via gateways at and above 1.01 MeV,1010.0,0.075,"PROVEN trigger, energy uphill","Belic et al. PRL 83, 5242 (1999); PRC 65, 035801 (2002)"
 242mAm,48.6,4449526566.0,11.0,thermal fission: ~3.3 n + ~8 prompt gamma,"thermal neutron induced fission, sigma_f ~ 6.4 kb",2.5e-08,8080000000000.0,PROVEN trigger (fission channel),ENDF/B-VIII.0 MT=18; nu-bar ~ 3.26
 177mLu,970.18,13858560.0,5.85,ENSDF cascade (21.4% IT branch),proposed photodepletion (high K),,,no demonstrated trigger,ENSDF; depletion proposals in literature
 108mAg,109.44,13821933588.0,3.6,ENSDF cascade (mostly EC branch),none demonstrated,,,storage only,ENSDF

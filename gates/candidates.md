@@ -4,7 +4,7 @@
 | 235mU | 0.0767 keV | 26 min | 4.44e-04 | 1 | electronic environment / electronic bridge |  |  | no demonstrated trigger |
 | 93mMo | 2424.89 keV | 6.85 h | 2.81e-05 | 2.87 | NEEC through the 4.85 keV gateway | 4.85 keV | 499.977 | CONTESTED (claim vs theory gap ~1e9) |
 | 178m2Hf | 2446.09 keV | 31 y | 7.09e-10 | 12.39 | IGE by keV X rays (claimed) | 10 keV | 244.609 | CONTESTED, unreproduced |
-| 180mTa | 77.1 keV | stable | 0 | 1 | photoactivation via gateways at and above 1.01 MeV | 1010 keV | 0.076 | PROVEN trigger, energy uphill |
+| 180mTa | 75.3 keV | stable | 0 | 1 | photoactivation via gateways at and above 1.01 MeV | 1010 keV | 0.075 | PROVEN trigger, energy uphill |
 | 242mAm | 48.6 keV | 141 y | 1.56e-10 | 11 | thermal neutron induced fission, sigma_f ~ 6.4 kb | 2.5e-08 keV | 8.08e+12 | PROVEN trigger (fission channel) |
 | 177mLu | 970.18 keV | 160 d | 5.00e-08 | 5.85 | proposed photodepletion (high K) |  |  | no demonstrated trigger |
 | 108mAg | 109.44 keV | 438 y | 5.01e-11 | 3.6 | none demonstrated |  |  | storage only |

@@ -4490,7 +4490,7 @@ z
    </g>
    <g id="text_22">
     <!-- ¹⁸⁰ᵐTa -->
-    <g style="fill: #16a34a" transform="translate(542.072297 136.779186) scale(0.08 -0.08)">
+    <g style="fill: #16a34a" transform="translate(542.072297 137.274836) scale(0.08 -0.08)">
      <defs>
       <path id="DejaVuSans-Bold-2070" d="M 1806 3400 
 Q 1806 3891 1706 4091 
@@ -4522,7 +4522,7 @@ z
      <use xlink:href="#DejaVuSans-Bold-61" x="253.091797"/>
     </g>
     <!-- photodepletion proven -->
-    <g style="fill: #16a34a" transform="translate(542.072297 145.737436) scale(0.08 -0.08)">
+    <g style="fill: #16a34a" transform="translate(542.072297 146.233086) scale(0.08 -0.08)">
      <use xlink:href="#DejaVuSans-Bold-70"/>
      <use xlink:href="#DejaVuSans-Bold-68" x="71.582031"/>
      <use xlink:href="#DejaVuSans-Bold-6f" x="142.773438"/>
@@ -4963,7 +4963,7 @@ z
 " style="stroke: #ffffff; stroke-width: 1.2"/>
     </defs>
     <g clip-path="url(#p1c11c5dc0a)">
-     <use xlink:href="#m520a5e7c85" x="532.782595" y="154.244718" style="fill: #16a34a; stroke: #ffffff; stroke-width: 1.2"/>
+     <use xlink:href="#m520a5e7c85" x="532.782595" y="154.740368" style="fill: #16a34a; stroke: #ffffff; stroke-width: 1.2"/>
     </g>
    </g>
    <g id="PathCollection_7">
