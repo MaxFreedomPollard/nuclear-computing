@@ -87,6 +87,8 @@ a constant gain bandwidth product, exactly the signature behavior of an operatio
 
 **Why it is in this document.** Not as a proposal; nobody wants this computer. It is here because a skeptical reader's strongest objection to the crystal cell ("no such device has ever existed") is answered by pointing at this one: the same pinout, with the gain socket filled, has operated on Earth since 1942, and operated *unattended* at Oklo two billion years before that. The crystal cell is that device shrunk by seven orders of magnitude, minus, so far, its gain.
 
+**Computed, not cited.** The device above is now built in [/neutron](../neutron/): two solution tanks in OpenMC with ENDF/B-VIII.0, an absorber between them as the GATE, a Cf-252 point source as the SOURCE, the fission rate in the far tank as the DRAIN. Its measured pinout is M = 11.5 for the pair, a drain of 1.49 fission neutrons in the far tank per driver neutron with the gate open against 0.67 with a boron carbide blade in, a generation time of 106 µs, and a gain bandwidth product 1/Λ of 9.4 kHz, which is the theorem above checked against a real light water assembly rather than a textbook figure. The same calculation returns the bad news the table above cannot show: the gate's ON/OFF contrast is 2.2, because an absorber in a moderated gap programs a weight and not a threshold, and the sector has no signal controlled inversion. The GATE terminal is real, and it is an analog knob.
+
 ---
 
 ## The datasheet
