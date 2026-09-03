@@ -1,0 +1,56 @@
+{
+ "provenance": {
+  "openmc_version": "0.16.0",
+  "cross_sections": "/private/tmp/claude-501/-Users-maxmoussa-Claude/24fa5303-a712-43bf-9ff2-c92c88f6a9a0/scratchpad/nuclear-computing/neutron/data/endfb-viii.0-hdf5/cross_sections.xml",
+  "particles": 10000,
+  "batches": 420,
+  "inactive": 40
+ },
+ "cases": {
+  "HEU-MET-FAST-001": {
+   "k": [
+    0.999693951243486,
+    0.00034692785011164543
+   ],
+   "benchmark": [
+    1.0,
+    0.001
+   ],
+   "jeff31": [
+    0.99644,
+    0.00019
+   ],
+   "seconds": 5.4
+  },
+  "LEU-SOL-THERM-001": {
+   "k": [
+    1.011349690028446,
+    0.0004994331152143327
+   ],
+   "benchmark": [
+    0.9991,
+    0.0029
+   ],
+   "jeff31": [
+    1.01252,
+    0.00086
+   ],
+   "seconds": 33.5
+  },
+  "LEU-SOL-THERM-004-1": {
+   "k": [
+    1.0000045906278952,
+    0.0004812588163242119
+   ],
+   "benchmark": [
+    0.9994,
+    0.0008
+   ],
+   "jeff31": [
+    1.00046,
+    0.00076
+   ],
+   "seconds": 58.7
+  }
+ }
+}
