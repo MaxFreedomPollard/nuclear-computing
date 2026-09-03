@@ -1,3 +1,5 @@
 AGENTS.md
 .DS_Store
 __pycache__/
+neutron/data/
+neutron/work/
