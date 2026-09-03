@@ -3,3 +3,4 @@ AGENTS.md
 __pycache__/
 neutron/data/
 neutron/work/
+photon/cache/
