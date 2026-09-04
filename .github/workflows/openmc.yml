@@ -1,0 +1,101 @@
+name: OpenMC reproductions
+on:
+  push:
+    branches: [main]
+    paths: ["neutron/**", "ampoule/**", ".github/workflows/openmc.yml"]
+  pull_request:
+    paths: ["neutron/**", "ampoule/**", ".github/workflows/openmc.yml"]
+  workflow_dispatch:
+
+# Reproduces the two OpenMC directories at their quick budgets with the
+# official ENDF/B-VIII.0 library. The main reproduce job rebuilds every
+# results.md and figure from the committed tallies without OpenMC; these jobs
+# are the proof that the tallies themselves can be regenerated from public
+# code and data. Each job streams the 3.4 GB official archive once and keeps
+# about 2 GB of it; the data directory is cached on the fetcher's own hash.
+jobs:
+  neutron:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: openmc
+          create-args: >-
+            python=3.12
+            openmc=0.16.0=*nompi*
+            numpy
+            matplotlib
+            h5py
+          init-shell: bash
+          cache-environment: true
+      - name: cache the ENDF/B-VIII.0 files the two directories use
+        uses: actions/cache@v4
+        with:
+          path: neutron/data
+          key: endfb-viii.0-${{ hashFiles('neutron/data.py') }}
+      - name: fetch and verify the data
+        shell: micromamba-shell {0}
+        run: python neutron/data.py --verify
+      - name: calibrate against the handbook (quick)
+        shell: micromamba-shell {0}
+        run: python neutron/benchmarks.py --quick
+      - name: run the gate protocol (quick)
+        shell: micromamba-shell {0}
+        run: python neutron/gate.py --quick
+      - name: report
+        shell: micromamba-shell {0}
+        run: python neutron/report.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: neutron-gate-quick
+          path: |
+            neutron/tallies.json
+            neutron/benchmarks.json
+            neutron/results.md
+            figures/fig15_neutron_gate.svg
+            figures/fig15_neutron_gate.png
+
+  ampoule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: openmc
+          create-args: >-
+            python=3.12
+            openmc=0.16.0=*nompi*
+            numpy
+            matplotlib
+            h5py
+          init-shell: bash
+          cache-environment: true
+      - name: cache the ENDF/B-VIII.0 files the two directories use
+        uses: actions/cache@v4
+        with:
+          path: neutron/data
+          key: endfb-viii.0-${{ hashFiles('neutron/data.py') }}
+      - name: fetch and verify the data
+        shell: micromamba-shell {0}
+        run: python neutron/data.py --verify
+      - name: calibrate the photon instrument
+        shell: micromamba-shell {0}
+        run: python ampoule/calibrate.py
+      - name: run the vessel (quick)
+        shell: micromamba-shell {0}
+        run: python ampoule/model.py --quick
+      - name: report
+        shell: micromamba-shell {0}
+        run: python ampoule/report.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ampoule-quick
+          path: |
+            ampoule/tallies.json
+            ampoule/calibration.json
+            ampoule/results.md
+            figures/fig17_ampoule.svg
+            figures/fig17_ampoule.png
