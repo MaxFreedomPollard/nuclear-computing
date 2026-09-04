@@ -4,3 +4,4 @@ __pycache__/
 neutron/data/
 neutron/work/
 photon/cache/
+ampoule/work/
