@@ -8,8 +8,8 @@ library, fetched once and cached.
 The library is the one the OpenMC project distributes at openmc.org
 (ENDF/B-VIII.0 processed to HDF5 by NJOY, neutron data at 250 to 2500 K,
 thermal scattering at 284 to 800 K). The archive is 3.4 GB compressed and
-13.7 GB unpacked, and this machine needs 53 files from it, so the archive
-is streamed and only those members are written to disk: about 1.5 GB,
+13.7 GB unpacked, and this machine needs 129 files from it, so the archive
+is streamed and only those members are written to disk: about 2 GB,
 the two large ones being the uranium evaluations and the water thermal
 scattering law. Nothing is modified; the files are the library's own.
 
@@ -40,10 +40,24 @@ NUCLIDES = [
     "Fe58", "Ni58", "Ni60", "Ni61", "Ni62", "Ni64", "P31",   # for the SHEBA-II
     "S32", "S33", "S34", "S36", "N15", "U236",               # and STACY benchmarks
     "U234", "U235", "U238",                                  # the fuel
+    # the ampoule's materials (/ampoule): OpenMC expands an element into its
+    # natural isotopes and needs their neutron files even in a photon run
+    "Sr84", "Sr86", "Sr87", "Sr88", "Ti46", "Ti47", "Ti48", "Ti49", "Ti50", "Y89",
+    "Kr78", "Kr80", "Kr82", "Kr83", "Kr84", "Kr86",
+    "Mo92", "Mo94", "Mo95", "Mo96", "Mo97", "Mo98", "Mo100",
+    "Cs133", "I127", "Te120", "Te122", "Te123", "Te124", "Te125", "Te126", "Te128", "Te130",
+    "W180", "W182", "W183", "W184", "W186", "Pb204", "Pb206", "Pb207", "Pb208",
+    "Mg24", "Mg25", "Mg26", "K39", "K40", "K41", "Na23",
 ]
 THERMAL = ["c_H_in_H2O"]
+# photoatomic and electron data for the ampoule's materials (/ampoule): the
+# source ceramic and capsule, krypton, the glass and scintillator of the
+# compute shell, tungsten and lead, the detectors, and the shield
+PHOTON = ["H", "B", "C", "N", "O", "F", "Na", "Mg", "Al", "Si", "K", "Ti", "Cr", "Mn",
+          "Fe", "Ni", "Mo", "Kr", "Sr", "Y", "Zn", "Cd", "Te", "Cs", "I", "W", "Pb"]
 MEMBERS = ([f"{LIBRARY}/neutron/{n}.h5" for n in NUCLIDES] +
-           [f"{LIBRARY}/thermal/{t}.h5" for t in THERMAL])
+           [f"{LIBRARY}/thermal/{t}.h5" for t in THERMAL] +
+           [f"{LIBRARY}/photon/{e}.h5" for e in PHOTON])
 
 
 def data_dir():
@@ -94,6 +108,8 @@ def write_cross_sections(root):
         lines.append(f'  <library materials="{n}" path="neutron/{n}.h5" type="neutron" />')
     for t in THERMAL:
         lines.append(f'  <library materials="{t}" path="thermal/{t}.h5" type="thermal" />')
+    for e in PHOTON:
+        lines.append(f'  <library materials="{e}" path="photon/{e}.h5" type="photon" />')
     lines.append("</cross_sections>")
     path = os.path.join(root, LIBRARY, "cross_sections.xml")
     open(path, "w").write("\n".join(lines) + "\n")
@@ -124,6 +140,10 @@ def verify(log=print):
     for t in THERMAL:
         d = openmc.data.ThermalScattering.from_hdf5(os.path.join(root, LIBRARY, "thermal", t + ".h5"))
         log(f"  {t}: {', '.join(sorted(d.temperatures, key=lambda s: float(s[:-1])))}")
+    for e in PHOTON:
+        d = openmc.data.IncidentPhoton.from_hdf5(os.path.join(root, LIBRARY, "photon", e + ".h5"))
+        log(f"  {e:3s} photoatomic, Z = {d.atomic_number}, {len(d.reactions)} reactions, "
+            f"bremsstrahlung {'yes' if d.bremsstrahlung else 'no'}")
 
 
 if __name__ == "__main__":
