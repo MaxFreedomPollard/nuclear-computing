@@ -7,7 +7,11 @@
 # not in the image; neutron/data.py streams the official ENDF/B-VIII.0
 # archive into a directory you mount at /data (about 2 GB, once). conda-forge
 # builds OpenMC 0.16.0 for x86-64 only, so the image is pinned to that
-# platform; on an Apple silicon Mac Docker runs it under emulation, slowly.
+# platform; on an Apple silicon Mac Docker runs it under emulation, slowly,
+# and the emulated BLAS spins unless its threads are pinned, so add
+# -e OPENBLAS_NUM_THREADS=1 to docker run there (on an x86-64 host leave
+# the threads alone: OpenMC uses them). The transport runs themselves are
+# best left to an x86-64 machine or to .github/workflows/openmc.yml.
 #
 #   docker build -t nuclear-compute .
 #   docker run --rm -v "$PWD:/repo" -v "$HOME/nc-data:/data" nuclear-compute \
