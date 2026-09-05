@@ -311,7 +311,7 @@ Freeze the cross sections (Section 5.3): transport is the linear operator 𝒢(s
 
 > `(∂ 𝒢_io)/(∂ s_v) = φ_i(v) ψ_o(v)`
 
-the forward visit density φ_i = B_i (I-Q)⁻¹ (how often a photon entering port i visits cell v) times the importance ψ_o(v) (the probability that a photon leaving v eventually exits at port o), which is the *adjoint* flux ψ = M(I-Q)⁻¹C + C. One forward solve gives all φ_i; one adjoint solve gives all ψ_o; their outer product is the entire Jacobian of the whole weight matrix with respect to the whole layout. This is not a new trick: it is the importance function reactor physicists have computed since the 1950s (Ussachoff 1955), it is what shielding optimizers already use, and it is, exactly, backpropagation. The demo verifies the boxed formula against finite differences to a worst relative error of 1×10⁻⁸, machine precision.
+the forward visit density φ_i = B_i (I-Q)⁻¹ (how often a photon entering port i visits cell v) times the importance ψ_o(v) (the probability that a photon leaving v eventually exits at port o), which is the *adjoint* flux ψ = M(I-Q)⁻¹C + C. One forward solve gives all φ_i; one adjoint solve gives all ψ_o; their outer product is the entire Jacobian of the whole weight matrix with respect to the whole layout. This is not a new trick: it is the importance function reactor physicists have computed since the 1950s (Ussachoff 1955), it is what shielding optimizers already use, and it is, exactly, backpropagation. The demo verifies the boxed formula against finite differences to a worst relative error below 10⁻⁷, machine precision.
 
 ### 11.2 Way A, full custom: grind the problem into the geometry
 

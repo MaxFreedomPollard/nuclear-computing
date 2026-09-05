@@ -21,7 +21,7 @@ The founding edition stated the theory, evaluated its criterion against the nucl
 - `Dockerfile`: the OpenMC 0.16.0 environment of the two transport directories, the image the neutron README referred to, for the x86-64 platform conda-forge builds it on.
 - `data-manifest.sha256` and [DATA.md](DATA.md): every committed input with its digest and its source; the two compressed tables are written without a timestamp so they reproduce.
 - [GLOSSARY.md](GLOSSARY.md): the terms the work coins, each with the place it is defined.
-- The finite difference check of the adjoint compiler uses a step where truncation and not rounding sets the residual, so it reads the same on every BLAS (1×10⁻⁸ where it read 9×10⁻⁷).
+- The finite difference check of the adjoint compiler uses a step where truncation rather than rounding dominates the residual, and reports the bound the residual satisfies (below 10⁻⁷) rather than digits that depend on which BLAS inverted the matrix, so it reads the same on every platform.
 - `CITATION.cff` carries the version.
 
 ### Corrections

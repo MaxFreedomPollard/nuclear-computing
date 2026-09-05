@@ -2,7 +2,7 @@
 
 ## Way A: the adjoint compiler (full custom)
 
-- adjoint Jacobian (flux times importance, two solves) versus finite differences at 5 random cells: worst relative error **9.6e-09** (machine precision: the reactor perturbation formula, verified)
+- adjoint Jacobian (flux times importance, two solves) versus finite differences at 5 random cells: worst relative error **below 10⁻⁷** (machine precision: the reactor perturbation formula, verified)
 - **fidelity**: handed a feasible random 4 x 4 target and a blank plate, the compiler recovers every significant weight to worst error **0.65%** in 1500 Adam steps (final loss 4.5e-09), without ever being told the seed layout
 - **the silence demand**: killing one channel of a diffusive fabric while preserving its neighbors is deliberately over constrained (the paths overlap), and the compiler finds the physical optimum of the trade: the loudest crosstalk channel G[2,3] suppressed **3x** at a worst collateral error of **61.1%** on the kept weights. Perfect isolation wants collimation (Way B), and the compiler quantifies exactly how much
 ## Way B: the crossbar (universal fabric)

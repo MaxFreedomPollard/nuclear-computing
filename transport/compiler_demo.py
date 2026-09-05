@@ -48,6 +48,11 @@ def say(s=""):
     print(s)
 
 
+def pow10(x):
+    """A power of ten as 10ⁿ."""
+    return "10" + str(int(round(math.log10(x)))).translate(str.maketrans("0123456789-", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻"))
+
+
 # ---------------------------------------------------------------------------
 # the transport fabric: movement matrix M (cell to cell) and exits X (cell
 # to port), fixed by geometry; survival s_v is the compiled variable
@@ -123,7 +128,7 @@ def main():
     s0 = RNG.uniform(0.96, 0.999, V)
     G0, phi0, psi0 = transport(s0)
     adj = jacobian_entry(phi0, psi0, 1, 2)
-    h = 1e-4          # a step where truncation, not rounding, sets the residual: the check then reads the same on every BLAS
+    h = 1e-4          # a step where truncation, not rounding, dominates the residual
     fd = np.zeros(5)
     cells = RNG.choice(V, 5, replace=False)
     for k, v in enumerate(cells):
@@ -131,10 +136,13 @@ def main():
         sm = s0.copy(); sm[v] -= h
         fd[k] = (transport(sp)[0][1, 2] - transport(sm)[0][1, 2]) / (2 * h)
     err = np.max(np.abs(adj[cells] - fd) / np.abs(fd))
+    # the residual is a few parts in 10^9 and its digits depend on which BLAS inverted the
+    # matrix, so it is reported as the bound it satisfies, which reads the same everywhere
+    bound = 1e-7 if err < 1e-7 else 10.0 ** math.ceil(math.log10(err))
     say("## Way A: the adjoint compiler (full custom)\n")
     say(f"- adjoint Jacobian (flux times importance, two solves) versus "
         f"finite differences at 5 random cells: worst relative error "
-        f"**{err:.1e}** (machine precision: the reactor perturbation "
+        f"**below {pow10(bound)}** (machine precision: the reactor perturbation "
         "formula, verified)")
 
     # ---- compile: (1) a feasible target exactly, (2) a silence demand ----
