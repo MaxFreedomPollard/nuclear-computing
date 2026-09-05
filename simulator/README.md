@@ -18,4 +18,6 @@ python3 nuclear_ising.py
 
 Requires `numpy`; `matplotlib` for the figure.
 
+The same sampler at 64 sites, on the ampoule's own lattice, is checked against an exact transfer matrix in [ampoule/compile.py](../ampoule/compile.py): 3.3 sweeps per independent sample, the 8 site cost unchanged by an eightfold larger machine.
+
 `components.py` extends the twin with proofs of concept for the remaining machine components: the MUX adder (exact to counting noise), the divide by N clock (jitter exactly 1/√N), the bistable cell (a written bit dies below loop gain 1 and latches above it: the keystone, measured as a memory requirement), and the modulated glow telemetry link (bit error rate versus symbol time over the Poisson counting channel). Results in `components_results.md` and figure 13.

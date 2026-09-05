@@ -8,12 +8,13 @@ This document is that ledger for the nuclear machine: every component as it exis
 
 ## The comparison that sets the tone
 
-The 1 GBq ampoule of [SEALED.md](SEALED.md) draws about 38,000 independent samples per second from 181 µW of deposited decay power: roughly 5 nanojoules per sample against ENIAC's 30 joules per operation, ahead by nine to ten orders of magnitude on the day it is sealed, unpowered, with no moving electrons it did not inherit from nuclei. The machine does not begin where ENIAC began. It begins past it, and the ledger below says where it goes.
+The 1 GBq ampoule of [SEALED.md](SEALED.md) draws, as priced on its proposal budget, about 38,000 independent samples per second from 181 µW of deposited decay power: roughly 5 nanojoules per sample against ENIAC's 30 joules per operation, nine to ten orders ahead. As built, with its synapse currents measured in transport and compiled ([`ampoule/compile_results.md`](../ampoule/compile_results.md)), it draws 0.34 per second, half a millijoule per sample, still nearly five orders past ENIAC on the day it is sealed, unpowered, with no moving electrons it did not inherit from nuclei. The machine does not begin where ENIAC began. It begins past it, and the ledger below says where it goes, its newest row first.
 
 ## The ledger
 
 | component | 1945 analog | in this repository today | the lever | the ceiling | headroom |
 |---|---|---|---|---|---|
+| synapse current | plugboard wiring by hand | 16 photons per second per nearest neighbour bond (CsI cells, the vessel as built) | cells packed face to face (×148 in solid angle); activity (×10³ to the terabecquerel tier); collimated sight lines carrying the instance's bonds instead of the glass | the solid angle ceiling: one interaction per photon that enters | ×10⁵, to the priced unit |
 | source activity | more tubes, bigger rooms | 3.7×10⁴ decays/s (exempt benchtop); 10⁹ (ampoule) | licensing tiers: GBq institutional, TBq industrial irradiator class | pile up: activity must be spread over n ≳ λτ_d sites (THEORY.md 3.2); self absorption | ×10³ to 10⁹ |
 | coincidence window | tube switching speed | 100 ns (plastic scintillator, conservative) | LaBr₃ at ~1 ns; time of flight PET silicon photomultipliers at ~200 ps; Cherenkov timing near 30 ps in research devices | nuclear level lifetimes (fs) are far below any electronics | ×10³ |
 | collection | hand wiring | ~1 percent solid angle (benchtop) | 4π enclosure geometries; photodetector efficiency ~50 percent; total body PET raised system sensitivity ~40× in one product generation | unity | ×10² |
