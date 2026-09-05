@@ -18,7 +18,7 @@ The tank of the transistor note's third scale, drawn to a size a criticality saf
 - two identical cylindrical tanks, 24 cm inner radius, 40 cm of solution, 1.6 mm type 1100 aluminium shells, 72 litres each, of 4.9 percent enriched uranyl fluoride solution: the benchmark model composition of handbook case LEU-SOL-THERM-002, which is why every atom density in the model is a published number and not a choice;
 - standing side by side in a water bath, axes 3 cm of water apart at the walls, 20 cm of water beyond the tanks on every side: the moderator is the BODY;
 - an absorber that can be lowered into the water between them: the GATE. Two are computed, a 1 mm cadmium sheet (the classic thermal filter, insertable in quarters, so that its transfer curve is a curve) and a 2 cm natural boron carbide blade, each overhanging the tanks by 6 cm;
-- a point source on the axis of tank A, the SOURCE: Cf-252 (Fröhner's Watt fit, mean 2.13 MeV), the driver of every source driven subcritical assembly ever built for teaching; a second source on the axis of B for the coincidence gate, and a 14.1 MeV point source there for the fusion driven case of the nomenclature section;
+- a point source on the axis of tank A, the SOURCE: ²⁵²Cf (Fröhner's Watt fit, mean 2.13 MeV), the driver of every source driven subcritical assembly ever built for teaching; a second source on the axis of B for the coincidence gate, and a 14.1 MeV point source there for the fusion driven case of the nomenclature section;
 - the fission rate in tank B, the DRAIN; the neutron population in B, the CHANNEL.
 
 The dimensions were chosen so that a tank alone sits at k ≈ 0.90, the working point the transistor note names. Nothing else was tuned.

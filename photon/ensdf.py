@@ -171,7 +171,7 @@ def main():
                                     "jp": r["Jpi"], "modes": r["decay_modes"]} for r in keep[(Z, A)]]}
         if (n + 1) % 25 == 0:
             print(f"  {n+1}/{len(keep)} nuclides, {time.time()-t0:.0f} s", flush=True)
-    with gzip.open(PACKED, "wt", encoding="utf-8") as f:
+    with io.TextIOWrapper(gzip.GzipFile(PACKED, "wb", mtime=0), encoding="utf-8") as f:   # mtime 0: byte identical run to run
         json.dump({"source": "IAEA Live Chart of Nuclides, ENSDF adopted levels and gammas",
                    "t_min_s": T_MIN, "nuclides": packed, "failed": failed}, f)
     nl = sum(len(v["levels"]) for v in packed.values())

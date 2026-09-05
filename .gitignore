@@ -5,3 +5,4 @@ neutron/data/
 neutron/work/
 photon/cache/
 ampoule/work/
+.venv/

@@ -123,7 +123,7 @@ def main():
     s0 = RNG.uniform(0.96, 0.999, V)
     G0, phi0, psi0 = transport(s0)
     adj = jacobian_entry(phi0, psi0, 1, 2)
-    h = 1e-6
+    h = 1e-4          # a step where truncation, not rounding, sets the residual: the check then reads the same on every BLAS
     fd = np.zeros(5)
     cells = RNG.choice(V, 5, replace=False)
     for k, v in enumerate(cells):
