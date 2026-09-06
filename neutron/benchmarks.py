@@ -191,7 +191,9 @@ def main():
     exe = os.environ.get("OPENMC_EXEC", "openmc")
     particles, batches, inactive = (10000, 420, 40) if not args.quick else (4000, 90, 30)
     out = {"provenance": {"openmc_version": openmc.__version__,
-                          "cross_sections": os.environ.get("OPENMC_CROSS_SECTIONS"),
+                          # the library and file name only, never the machine path
+                          "cross_sections": "/".join(os.environ["OPENMC_CROSS_SECTIONS"].replace(os.sep, "/").split("/")[-2:])
+                                            if os.environ.get("OPENMC_CROSS_SECTIONS") else None,
                           "particles": particles, "batches": batches, "inactive": inactive},
            "cases": {}}
     for key, builder in CASES:

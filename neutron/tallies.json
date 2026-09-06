@@ -11899,7 +11899,7 @@
  },
  "provenance": {
   "openmc_version": "0.16.0",
-  "cross_sections": "/private/tmp/claude-501/-Users-maxmoussa-Claude/24fa5303-a712-43bf-9ff2-c92c88f6a9a0/scratchpad/xsdata/official/endfb-viii.0-hdf5/cross_sections.xml",
+  "cross_sections": "endfb-viii.0-hdf5/cross_sections.xml",
   "library": "ENDF/B-VIII.0, official OpenMC HDF5 distribution (openmc.org)",
   "budget": "full",
   "budget_numbers": {
