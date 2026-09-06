@@ -386,7 +386,7 @@ def main():
     say(f"- the compiler has one more pass, and it is the collar. The crosstalk is a sum of many weak couplings, so "
         "most of it is a constant the compiler can predict from the target law it already knows exactly, and a "
         "constant drive is a bias, which is the collar opening. Subtracting the mean crosstalk from every site's "
-        f"bias leaves only its fluctuation, and that fluctuation is the verdict: site by site it has a standard "
+        f"bias leaves only its fluctuation, and that fluctuation is the verdict: site by site, treating the sites as independent, it has a standard "
         f"deviation of {fluct.mean():.1f} in weight units against {drive.mean():.1f} for the drive the instance "
         f"wanted, **{(fluct/drive).mean():.1f}×** the signal, so the sampled marginals still miss the intended law by "
         f"{rms_col:.2f} rms and {max_col:.2f} at the worst site. What the collar cannot remove is what a diffusive "
@@ -449,7 +449,8 @@ def main():
     short_pl4 = PRICED_SAMPLES / asbuilt[("plastic cells", 4)]
     say(f"The vessel as built draws about **{rate(asbuilt[('CsI cells', 4)])} independent samples per second** with "
         f"CsI cells at 4 bit weights, {sci(short_cs4)} short of the figure the machine note printed, and "
-        f"{rate(asbuilt[('plastic cells', 4)])} per second with plastic, {sci(short_pl4)} short. It is proposal "
+        f"{rate(asbuilt[('plastic cells', 4)])} per second with plastic, {sci(short_pl4)} short. The currents are ceilings, "
+        "so every rate in the table is a ceiling too. It is proposal "
         "rich and synapse poor: a gigabecquerel makes a million proposals a second and delivers a few "
         "hundred synapse photons a second to each site, and the sampler runs at the pace of the second "
         "number. The 26 decays per sample of the twin counted proposals and assumed the weighted sum was "
@@ -472,10 +473,11 @@ def main():
         say(f"| {name} | {rate(r_)} | {lever} |")
     say("")
     say(f"Two of the four rungs are already measured in this repository and the other two are geometry and "
-        f"licensing: with CsI cells packed face to face and a terabecquerel core the vessel reaches "
+        f"licensing: with CsI cells packed face to face and a terabecquerel core the vessel reaches up to "
         f"{ladder[3][1]:,.0f} samples per second at 4 bit weights, {ladder[3][1]/PRICED_SAMPLES:.1f}× the "
-        "priced figure, so the machine note's number is reachable, on an industrial licence, at 4 bits, "
-        "with no new physics. At 8 bits every rung is 256× lower. What the ladder does not contain is a "
+        "priced figure at the ceiling of the currents, so the machine note's number is within reach of catalogue "
+        "levers, on an industrial licence, at 4 bits, with no new physics, and within the factor of a few that "
+        "the scatter share of CsI takes off the ceiling. At 8 bits every rung is 256× lower. What the ladder does not contain is a "
         "way to run a nearest neighbour instance without the crosstalk of Section 1: packing the cells "
         "closer raises every coupling class together. The clean synapse wants collimation, the sight "
         "lines of the build note's channel plates, which this vessel's transport did not include and "
