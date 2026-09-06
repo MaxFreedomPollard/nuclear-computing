@@ -600,7 +600,9 @@ def protocol(args):
 
     results["provenance"] = {
         "openmc_version": openmc.__version__,
-        "cross_sections": os.environ.get("OPENMC_CROSS_SECTIONS"),
+        # the library and file name only, never the machine path
+        "cross_sections": "/".join(os.environ["OPENMC_CROSS_SECTIONS"].replace(os.sep, "/").split("/")[-2:])
+                          if os.environ.get("OPENMC_CROSS_SECTIONS") else None,
         "library": "ENDF/B-VIII.0, official OpenMC HDF5 distribution (openmc.org)",
         "budget": "quick" if args.quick else "full",
         "budget_numbers": budget,

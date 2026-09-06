@@ -1,7 +1,7 @@
 {
  "provenance": {
   "openmc_version": "0.16.0",
-  "cross_sections": "endfb-viii.0-hdf5/cross_sections.xml (the official OpenMC ENDF/B-VIII.0 distribution, fetched and verified by neutron/data.py)",
+  "cross_sections": "endfb-viii.0-hdf5/cross_sections.xml",
   "particles": 10000,
   "batches": 420,
   "inactive": 40

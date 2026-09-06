@@ -2,6 +2,10 @@
 
 Every release of this repository is archived on Zenodo under the concept DOI [10.5281/zenodo.21330486](https://doi.org/10.5281/zenodo.21330486); the version DOI of each release is on its Zenodo record.
 
+## Unreleased
+
+- The two OpenMC generators, `neutron/gate.py` and `neutron/benchmarks.py`, record the cross section library by directory and file name rather than by the path of the machine that ran them, and the committed tally files carry the same form.
+
 ## 1.1.0: the second edition
 
 The founding edition stated the theory, evaluated its criterion against the nuclear data record, and specified the device. This edition computes the machine: the keystone in the neutron sector in real neutron transport, the photon sector keystone searched for in ENSDF, the sealed vessel in real photon transport, and the compiler run on what that transport measured. It also makes the repository's oldest promise, that every number regenerates from public data, into a checked one.
