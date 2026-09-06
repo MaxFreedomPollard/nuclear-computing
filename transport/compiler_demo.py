@@ -201,8 +201,11 @@ def main():
     T = np.clip(G_star / np.maximum(G_fab, 1e-9), 0, 1)
     G_xbar = G_fab * T
     err_x = np.max(np.abs(G_xbar - G_star)[G_star > 0] / G_star[G_star > 0])
+    # G_fab * (G*/G_fab) is G* up to rounding, which lands on exactly zero on one architecture
+    # and on a few 10^-16 on another; the bound is the platform independent statement
+    bound_x = 1e-15 if err_x < 1e-15 else 10.0 ** math.ceil(math.log10(err_x))
     say(f"- fabricate once wide open, program apertures per channel: "
-        f"T = G*/G_fab elementwise; error **{err_x:.1e}** by construction "
+        f"T = G*/G_fab elementwise; error **below {pow10(bound_x)}**, zero to rounding, by construction "
         "for any target under the fabric ceiling. No optimization, "
         "instant reprogramming, at the price of dedicated sight lines "
         "(flux per channel falls as the channel count grows): the FPGA "
