@@ -53,6 +53,8 @@ jobs:
           if [ -n "$changed" ]; then
             echo "the tree is not the same after regeneration:"; echo "$changed"
             git --no-pager diff --stat -- . ':(exclude)*.png'
+            echo "what moved in the text outputs:"
+            git --no-pager diff -- '*.md' '*.csv' '*.txt' '*.json' '*.cff' | head -300
             exit 1
           fi
           echo "the tree is the same after regeneration"

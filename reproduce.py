@@ -99,6 +99,11 @@ def main():
             print("   ", p)
         print("(a changed results file means a number moved; a changed SVG means a figure moved; "
               "a new file means a step wrote something the repository does not track)")
+        text = [p for p in changed if p.endswith((".md", ".csv", ".txt", ".json", ".cff"))]
+        if text:
+            print("what moved in the text outputs:")
+            print(subprocess.run(["git", "--no-pager", "diff", "--", *text], cwd=ROOT,
+                                 capture_output=True, text=True).stdout[:12000])
         return 2
     print("the tree is the same after regeneration: every number, table and vector figure reproduced byte for byte")
     return 0
