@@ -435,13 +435,17 @@ def figure(cur, mids, D, curve, G, Gsep, srcs, power, dc, d10, d100, ds, leak, s
 
     # C: the Green's function
     Gp = np.maximum(G, 1e-6)
-    im = C.imshow(Gp, norm=LogNorm(vmin=1e-5, vmax=max(Gp.max(), 1e-2)), cmap="Blues", origin="lower")
+    # drawn as vector cells rather than an embedded raster, so the SVG is the same on every platform
+    im = C.pcolormesh(np.arange(65) - 0.5, np.arange(65) - 0.5, Gp,
+                      norm=LogNorm(vmin=1e-5, vmax=max(Gp.max(), 1e-2)), cmap="Blues", shading="flat")
+    C.set_aspect("equal")
     for b in range(8, 64, 8):
         C.axhline(b - 0.5, color=GREY, lw=0.5); C.axvline(b - 0.5, color=GREY, lw=0.5)
     C.set_xlabel("photon born in site j (8 heights × 8 azimuths)"); C.set_ylabel("interacts in site k")
     C.set_title("C.  The synapse: G between the 64 sites")
     C.grid(False)
-    plt.colorbar(im, ax=C, fraction=0.046, pad=0.03, label="G_kj per photon")
+    cb = plt.colorbar(im, ax=C, fraction=0.046, pad=0.03, label="G_kj per photon")
+    cb.solids.set_rasterized(False)                # the colour bar as vectors too, for the same reason
 
     # D: energy budget and dose
     labels = list(power); vals = [power[k] * 1e6 for k in labels]

@@ -1,0 +1,46 @@
+# Glossary
+
+The terms this work coins or uses in a fixed sense, each with the place it is defined. The physics is in those places; this page is the index to it.
+
+| term | meaning | where |
+|---|---|---|
+| nuclear compute | the model of computation in which a radiation field and the nuclear states it drives are the processor, the memory and the interconnect, and the decay of the same medium is the power supply; *nuclear computing* is the field, *Nuclear Compute* the work | [README](README.md), the thesis and the nomenclature |
+| the two governing equations | radiation transport with field dependent cross sections (the wiring and the weighted sum) coupled to nuclear kinetics with a field triggered release term (the gate and the memory) | [README](README.md), the dynamics |
+| the synapse | the linear part of transport with cross sections frozen: φ_out = 𝒢 φ_in, the Green's function as a weight matrix | [README](README.md), the gate set; [theory 5.3](theory/THEORY.md) |
+| the routine gates | coincidence AND (a multiplier), scattering MUX (a weighted add), absorption NOT (a complement), and the saturable soft threshold: all demonstrated physics, none with gain | [README](README.md), the gate set; [transport](transport/) |
+| the keystone | the triggered release gate with gain: an isomer released by a control field with more usable quanta out than control quanta in; the one component of the model not demonstrated in a compact state | [README](README.md), the keystone gate criterion |
+| the keystone criterion | three inequalities: the leak condition η > ½, the amplification condition Γ > 1, and the rate condition R_trig ≳ f_gate; existence is the first two, usefulness the third | [README](README.md); [theory 1](theory/THEORY.md) |
+| the areal density wall | the requirement N_A > 1/(β σ_trig) that a slab gate places on inverted nuclei per cm², which every level restoring candidate in ENSDF meets by orders of magnitude | [theory 1.1](theory/THEORY.md); [photon](photon/) |
+| level restoration | a gate's output being of the kind and energy that trigger the next gate, with the released energy and not the input setting the output scale; self restoring (fission), convertible (heterogeneous isomer pairs) or terminal | [theory 2](theory/THEORY.md) |
+| the convertible class | pairs of isomers whose release lines and gateway absorptions are mutually resonant; counted in ENSDF as 12470 candidates the data cannot resolve and none that survive the areal density wall | [theory 2](theory/THEORY.md); [photon](photon/) |
+| a gateway | a level above an isomer that a photon or a captured electron can lift it into; observed where ENSDF lists the line, allowed where spin and parity permit it and the line is unobserved | [photon](photon/README.md) |
+| the NEEC class | releasing gateways within 30 keV of their isomer, whose triggers are electron capture resonances; 34 in the chart, the Phase B1 target list | [photon](photon/results.md) |
+| the veto gateway | a second releasing gateway whose cascade bypasses the signal line, so that opening it empties the register without producing the signal: inhibition native to isomers | [photon](photon/results.md); [theory 2](theory/THEORY.md) |
+| the neutron sector | the keystone as it already exists: a subcritical multiplying region is a triggered release gate with gain 1/(1 − k), coupled regions are the synapse with gain on the diagonal, fission neutrons are level restoring | [theory 4](theory/THEORY.md); [neutron](neutron/) |
+| the photon sector | the same criterion applied to isomers triggered by photons or electrons, where gain is unproven and the miniaturisation program lives | [README](README.md), the central tension |
+| the fission matrix | Avery's coupling coefficients K_ij, fission neutrons born in region i per fission neutron born in region j, computed one generation at a time; its dominant eigenvalue tests the two region reduction | [neutron](neutron/results.md) |
+| the tilt mode | the antisymmetric mode of two weakly coupled regions, whose dominance ratio approaches one as the coupling weakens and which the Shannon entropy is nearly blind to | [neutron](neutron/results.md), Section 3.1 |
+| the precision law | b bits of a rate cost 2²ᵇ counts (Poisson, Cramér Rao); throughput is bought with activity | [README](README.md), physical limits; [theory 5.6](theory/THEORY.md) |
+| the throughput law | a network sharing an event budget λ sustains at most λ/2²ᵇ gate evaluations per second at b bits | [README](README.md), physical limits |
+| ops per decay | the figure of merit: computation extracted per event that was going to be paid for anyway, against C_eval and not C_in alone | [README](README.md), energy honesty; [theory 3.1](theory/THEORY.md) |
+| the pile up ceiling | activity must be spread over n ≳ λ τ_d interaction sites or events merge | [theory 3.2](theory/THEORY.md) |
+| the digital twin | the Tier 1 machine run decay by decay in software: thinned Poisson proposals, the frozen Green's function as the weighted sum, the soft threshold as the acceptance, checked against the exact Boltzmann law | [simulator](simulator/) |
+| the Bernstein construction | feed forward universality without the keystone: any continuous function on [0, 1] as a Bernstein polynomial of thinning, coincidence and MUX | [theory 6](theory/THEORY.md) |
+| coincidence degree | the power of the activity a signal scales with: a thinned stream has degree 1, a coincidence adds degrees, MUX and absorption preserve them | [theory 7](theory/THEORY.md) |
+| degree homogeneity | the theorem that a decision comparing like degree signals is invariant under global scaling of the activity, so a sealed machine slows without becoming wrong; the design rule is compare like degree only with like | [theory 7](theory/THEORY.md); [transport/degree_check.py](transport/degree_check.py) |
+| the isolation lemma | every fan out is a fresh thinning, never a copy, and then error does not compound with depth; only the bill does | [theory 10.1](theory/THEORY.md) |
+| the boundary | the skin of the machine: outputs as counts, currents and spectra, inputs as apertures, Doppler drives, Zeeman maps and beams; the no penetration principle | [theory 8](theory/THEORY.md) |
+| energy division multiplexing | distinct emission lines as orthogonal channels through one window; the computed channel plan | [gates/edm_channels.md](gates/edm_channels.md) |
+| the reference transistor | the unit of the machine at three scales with one pinout: the benchtop cell, the crystal cell and the neutron gate, with gate, source, drain, channel and body | [transistor](transistor/README.md) |
+| the valve | a resonant absorber foil in a beam from its matched parent, gated by a coil or a Doppler drive: a field effect pass transistor at 14.4 keV, available from catalogues | [transistor/VALVE.md](transistor/VALVE.md) |
+| the gain bandwidth theorem | M × 1/τ_switch = 1/Λ for the subcritical gate: the op amp law from reactor kinetics, 9.4 kHz measured for the solution tanks | [transistor](transistor/README.md); [neutron](neutron/results.md) |
+| the ampoule | the sealed machine: five shells, no penetrations, powered, clocked and randomised by its own inventory, programmed through the wall by fields, read by its glow | [transistor/SEALED.md](transistor/SEALED.md) |
+| the nuclear lamp | a parent isotope that decays into the working transition emits the daughter's line at natural width: bandwidth ratio one, the fix for the broadband lamp that cannot write | [theory 9](theory/THEORY.md) |
+| the addressed long retention write | the open problem of a state that is parent fed, gradient addressable and long lived at once | [theory 9.4](theory/THEORY.md), Open Problem 6 |
+| the compiler | the algorithm from a target weight matrix to a material layout, three ways: Way A adjoint descent, Way B the crossbar, Way C self calibration through the wall | [theory 11](theory/THEORY.md); [transport/compiler_demo.py](transport/compiler_demo.py) |
+| the fabric | the Green's function a vessel offers before any instance is placed on it; for the transported ampoule, solid angle times an interaction probability | [ampoule/compile_results.md](ampoule/compile_results.md) |
+| the collar pass | subtracting the predictable mean of the fabric's crosstalk from every bias through the collar openings, the compiler's last pass on a diffusive shell | [ampoule/compile_results.md](ampoule/compile_results.md) |
+| timing closure | the pricing of every weight as a photon current and every read as 2²ᵇ of those photons; the vessel's sample rate as built | [ampoule/compile_results.md](ampoule/compile_results.md); [theory 11.5](theory/THEORY.md) |
+| the ENIAC ledger | every component with its lever, its ceiling and whose industrial curve improves it | [transistor/SCALING.md](transistor/SCALING.md) |
+| the kill criteria | the falsifiable failure conditions of the roadmap: A for the stochastic tier, B for the keystone, C for Tier 2 coherence | [README](README.md), the roadmap |
+| a claim and its test | the form every issue in this repository takes: one falsifiable sentence and the measurement, calculation or dataset that settles it | [.github/ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE/claim-and-test.md) |

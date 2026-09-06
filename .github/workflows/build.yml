@@ -41,5 +41,20 @@ jobs:
         run: python photon/census.py
       - name: report the ampoule from the committed tallies (no OpenMC, no network)
         run: python ampoule/report.py
+      - name: compile the instance onto the measured vessel and close its timing
+        run: python ampoule/compile.py
       - name: rebuild index.html
         run: python build_html.py
+      - name: run the tests (prose against computed numbers, links, style, physics, the manifest)
+        run: pip install pytest && python -m pytest -q tests
+      - name: verify that every number, table and vector figure came back byte for byte
+        run: |
+          changed=$(git status --porcelain --untracked-files=all | grep -v -i '\.png$' || true)
+          if [ -n "$changed" ]; then
+            echo "the tree is not the same after regeneration:"; echo "$changed"
+            git --no-pager diff --stat -- . ':(exclude)*.png'
+            echo "what moved in the text outputs:"
+            git --no-pager diff -- '*.md' '*.csv' '*.txt' '*.json' '*.cff' | head -300
+            exit 1
+          fi
+          echo "the tree is the same after regeneration"

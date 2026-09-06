@@ -130,7 +130,7 @@ The cadmium sheet cuts the coupling k_BA by a factor 1.7, the boron carbide blad
 
 ## 4. The gate: driven, with multiplication on
 
-A Cf-252 point source (Fröhner Watt spectrum, mean 2.13 MeV) or a 14.1 MeV deuterium tritium point source on the axis of a tank is the SOURCE terminal. Fixed source transport with full multiplication gives the steady fission neutron production in each tank per driver neutron; production in B is the DRAIN current. The point model of coupled regions predicts the same numbers from Section 3 and the first generation response c of each tank to the driver, P = (I - K)⁻¹ c, and the comparison is reported because the gap is physics, not noise.
+A ²⁵²Cf point source (Fröhner Watt spectrum, mean 2.13 MeV) or a 14.1 MeV deuterium tritium point source on the axis of a tank is the SOURCE terminal. Fixed source transport with full multiplication gives the steady fission neutron production in each tank per driver neutron; production in B is the DRAIN current. The point model of coupled regions predicts the same numbers from Section 3 and the first generation response c of each tank to the driver, P = (I - K)⁻¹ c, and the comparison is reported because the gap is physics, not noise.
 
 | drive | absorber | c_A | c_B | P_A transport | P_B transport | P_A point model | P_B point model | 1 + P_A + P_B |
 |---|---|---|---|---|---|---|---|---|
@@ -176,7 +176,7 @@ In a linear medium the coincidence AND is a threshold on a weighted sum, a perce
 | drive (open) | the input to tank B | mean energy crossing B's wall | fraction of that below 0.625 eV | mean energy of fission neutrons born in B |
 |---|---|---|---|---|
 | cfA | the leakage of tank A, through 3 cm of water | 0.251 MeV | 0.67 | 2.011 MeV |
-| cfB | a Cf-252 spectrum at the axis, mean 2.13 MeV | 0.089 MeV | 0.73 | 2.008 MeV |
+| cfB | a ²⁵²Cf spectrum at the axis, mean 2.13 MeV | 0.089 MeV | 0.73 | 2.008 MeV |
 | dtB | a 14.1 MeV line at the axis | 0.116 MeV | 0.72 | 2.009 MeV |
 
 Read the middle columns with care. When A is driven, everything tank B receives crosses its wall, and it arrives moderated: 0.251 MeV on average, 67% of it already thermal, because 3 cm of water is a moderator as well as a gap. In the other two rows the driver sits inside B, so the wall current is only the return from the water reflector and the input proper is the point source itself: a 2 MeV fission spectrum, and a 14.1 MeV line.
