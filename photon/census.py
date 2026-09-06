@@ -56,6 +56,7 @@ Writes gateways.csv, pairs.csv.gz, inhibitors.csv, results.md, figure 16.
 """
 import csv
 import gzip
+import io
 import json
 import math
 import os
@@ -406,7 +407,8 @@ def write_csv(path, rows, drop=()):
         open(path, "w").write("")
         return
     cols = [c for c in rows[0] if c not in drop]
-    opener = (lambda: gzip.open(path, "wt", newline="")) if path.endswith(".gz") else (lambda: open(path, "w", newline=""))
+    opener = ((lambda: io.TextIOWrapper(gzip.GzipFile(path, "wb", mtime=0), encoding="utf-8", newline=""))
+              if path.endswith(".gz") else (lambda: open(path, "w", newline="")))   # mtime 0: the file is byte identical run to run
     with opener() as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
         w.writeheader()

@@ -9,8 +9,8 @@
 | 177mLu | 970.18 keV | 160 d | 5.00e-08 | 5.85 | proposed photodepletion (high K) |  |  | no demonstrated trigger |
 | 108mAg | 109.44 keV | 438 y | 5.01e-11 | 3.6 | none demonstrated |  |  | storage only |
 | 166mHo | 5.98 keV | 1.2e+03 y | 1.83e-11 | 3.7 | none demonstrated |  |  | storage only |
-| 137mBa | 661.66 keV | 2.55 min | 4.53e-03 | 1 | readout reference (Cs-137 generator) |  |  | readout workhorse |
-| 99mTc | 142.68 keV | 6.01 h | 3.21e-05 | 0.98 | availability reference (Mo-99 generator) |  |  | most available isomer on Earth |
+| 137mBa | 661.66 keV | 2.55 min | 4.53e-03 | 1 | readout reference (¹³⁷Cs generator) |  |  | readout workhorse |
+| 99mTc | 142.68 keV | 6.01 h | 3.21e-05 | 0.98 | availability reference (⁹⁹Mo generator) |  |  | most available isomer on Earth |
 | 57mFe | 14.41 keV | 98.3 ns | 7.05e+06 | 1 | nuclear forward scattering (coherent, directional) | 14.41 keV | 1 | Tier 2 interconnect reference |
 | 235U (n_th, f) | 202000 keV | 7.04e+08 y | 3.12e-17 | 9.4 | thermal neutron induced fission, sigma_f = 585 b | 2.5e-08 keV | 8.08e+12 | PROVEN, tabulated to 4 digits |
 | 9Be (n, 2n) | (binding energy) | stable | 0 | 2 | threshold reaction, E_n > 1.85 MeV, sigma ~ 0.5 b | 1850 keV |  | PROVEN (standard reflector physics) |

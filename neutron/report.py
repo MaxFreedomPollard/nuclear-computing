@@ -317,7 +317,7 @@ def main():
 
     # ---- 4. the gate ----------------------------------------------------------
     say("## 4. The gate: driven, with multiplication on\n")
-    say("A Cf-252 point source (Fröhner Watt spectrum, mean 2.13 MeV) or a 14.1 MeV deuterium tritium "
+    say("A ²⁵²Cf point source (Fröhner Watt spectrum, mean 2.13 MeV) or a 14.1 MeV deuterium tritium "
         "point source on the axis of a tank is the SOURCE terminal. Fixed source transport with full "
         "multiplication gives the steady fission neutron production in each tank per driver neutron; "
         "production in B is the DRAIN current. The point model of coupled regions predicts the same "
@@ -399,7 +399,7 @@ def main():
     say("|---|---|---|---|---|")
     spectra = {}
     for drive, desc in (("cfA", "the leakage of tank A, through 3 cm of water"),
-                        ("cfB", "a Cf-252 spectrum at the axis, mean 2.13 MeV"),
+                        ("cfB", "a ²⁵²Cf spectrum at the axis, mean 2.13 MeV"),
                         ("dtB", "a 14.1 MeV line at the axis")):
         r = runs[f"gate_{drive}_open"]
         chi, e_chi, _ = spectrum(r, "chi_B", edges)
@@ -550,7 +550,7 @@ def figure(curve, runs, P, spectra, edges, ts, Pt, Pinf, L, kpair):
     # C: level restoration. The three outputs coincide, so draw them so that is visible.
     mid = np.sqrt(edges[:-1] * edges[1:])
     styles = [("cfA", BLUE, 5.0, 0.30, "driven from tank A (moderated input)"),
-              ("cfB", PURPLE, 2.6, 0.95, "Cf-252 at the axis of B"),
+              ("cfB", PURPLE, 2.6, 0.95, "²⁵²Cf at the axis of B"),
               ("dtB", GREEN, 1.3, 1.00, "14.1 MeV at the axis of B")]
     for drive, c, lw, al, lab in styles:
         C.step(mid, spectra[drive][0], where="mid", color=c, lw=lw, alpha=al,
@@ -558,7 +558,7 @@ def figure(curve, runs, P, spectra, edges, ts, Pt, Pinf, L, kpair):
     arr = spectra["cfA"][1]
     C.step(mid, arr * (spectra["cfA"][0].max() / max(arr.max(), 1e-30)), where="mid",
            color=AMBER, lw=1.6, ls="--", label="input: entering B through its wall (scaled)", zorder=2)
-    for e_in, lab, frac, ha in ((2.13e6, "Cf-252 mean input\n2.13 MeV", 0.72, "right"),
+    for e_in, lab, frac, ha in ((2.13e6, "²⁵²Cf mean input\n2.13 MeV", 0.72, "right"),
                                 (14.1e6, "14.1 MeV\ninput line", 0.50, "left")):
         C.axvline(e_in, color=GREY, ls=":", lw=1.2, zorder=1)
         pad = "  " if ha == "left" else ""
